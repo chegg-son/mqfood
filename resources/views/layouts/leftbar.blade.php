@@ -68,6 +68,7 @@
                 <li>
                     <a href={{route('checkout') }}>
                         <i class="mdi mdi-cart-variant"></i>
+                        {{-- catatan jika item 0 maka hide dari database --}}
                         <span class="badge bg-danger rounded-pill float-end">0</span>
                         <span> Keranjang </span>
                     </a>
@@ -116,7 +117,7 @@
                     <a href="apps-projects.html">
                         <i class="mdi mdi-briefcase-variant-outline"></i>
                         <span> Projects </span>
-                    </a>    
+                    </a>
                 </li>
                 <li>
                     <a href="#contacts" data-bs-toggle="collapse">
@@ -221,7 +222,7 @@
                         <ul class="nav-second-level">
                             <li>
                                 <a href="layouts-horizontal.html">Horizontal</a>
-                            </li>                       
+                            </li>
                             <li>
                                 <a href="layouts-preloader.html">Preloader</a>
                             </li>
