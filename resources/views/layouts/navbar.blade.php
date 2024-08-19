@@ -27,7 +27,7 @@
                             <i class="fe-aperture me-1"></i>
                             <span>How can I help you?</span>
                         </a>
-            
+
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fe-settings me-1"></i>
@@ -43,7 +43,9 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="d-flex align-items-start">
-                                    <img class="d-flex me-2 rounded-circle" src="assets/images/logos/logo-user-login.svg" alt="Generic placeholder image" height="32">
+                                    <img class="d-flex me-2 rounded-circle"
+                                        src="assets/images/logos/logo-user-login.svg" alt="Generic placeholder image"
+                                        height="32">
                                     <div class="w-100">
                                         <h5 class="m-0 font-14">Admin</h5>
                                         <span class="font-12 mb-0">Administrator</span>
@@ -63,24 +65,27 @@
                             </a> --}}
                         </div>
 
-                    </div> 
+                    </div>
                 </div>
             </form>
         </li>
 
         <li class="dropdown d-inline-block d-lg-none">
-            <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
+                href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-search noti-icon"></i>
             </a>
             <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
                 <form class="p-3">
-                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                    <input type="text" class="form-control" placeholder="Search ..."
+                        aria-label="Recipient's username">
                 </form>
             </div>
         </li>
 
         <li class="dropdown notification-list topbar-dropdown">
-            <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
+                role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-bell noti-icon"></i>
                 <span class="badge bg-danger rounded-circle noti-icon-badge">3</span>
             </a>
@@ -102,7 +107,8 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item active">
                         <div class="notify-icon">
-                            <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                            <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" />
+                        </div>
                         <p class="notify-details">Cristina Pride</p>
                         <p class="text-muted mb-0 user-msg">
                             <small>Hi, How are you? What about our next meeting</small>
@@ -122,7 +128,8 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon">
-                            <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                            <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" />
+                        </div>
                         <p class="notify-details">Karen Robinson</p>
                         <p class="text-muted mb-0 user-msg">
                             <small>Wow ! this admin looks good and awesome design</small>
@@ -170,7 +177,8 @@
             </div>
         </li>
 
-        <li class="dropdown notification-list topbar-dropdown">
+        {{-- jika berhasil login maka ditampilkan --}}
+        {{-- <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="assets/images/logos/logo-user-login.svg" alt="user-image" class="rounded-circle">
             </a>
@@ -201,7 +209,7 @@
                 </a>
 
             </div>
-        </li>
+        </li> --}}
 
         <li class="dropdown notification-list">
             <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
@@ -244,6 +252,6 @@
 
     </ul>
 
-    <div class="clearfix"></div> 
+    <div class="clearfix"></div>
 
 </div>

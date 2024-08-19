@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [KategoriController::class, 'index'])->name('user');
 
+Route::get('/login-admin', function () {
+    return view('pages.admin.login');
+});
+
 Route::get('/admin-panel', function () {
     return view('pages.admin.index');
 })->name('admin');
