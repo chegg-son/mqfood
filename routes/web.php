@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.user.index');
-})->name('user');
+
+Route::get('/', [KategoriController::class, 'index'])->name('user');
 
 Route::get('/admin-panel', function () {
     return view('pages.admin.index');
@@ -13,3 +13,6 @@ Route::get('/admin-panel', function () {
 Route::get('/checkout', function () {
     return view('pages.user.checkout');
 })->name('checkout');
+
+// use route resources for kategoris
+Route::resource('category', KategoriController::class);
