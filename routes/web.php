@@ -1,21 +1,24 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login-admin', function () {
-    return view('pages.admin.login');
-})->name('login');
+// Users Route
+Route::get('users', [UserController::class, 'index'])->name('users');
+Route::post('adduser', [UserController::class, 'add'])->name('add.user');
 
-Route::post('actionlogin', [KategoriController::class, 'login'])->name('action.login');
-Route::get('actionlogout', [KategoriController::class, 'logout'])->name('action.logout');
-
+// Admin Route
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
+Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth');
 Route::get('/admin-panel', function () {
     return view('pages.admin.index');
-})->name('admin.panel');
+})->name('admin.panel')->middleware('auth');
 
-Route::get('/', [KategoriController::class, 'index'])->name('user')->middleware('auth');
-
+// User Route
+Route::get('/', [KategoriController::class, 'index'])->name('user');
 Route::get('/checkout', function () {
     return view('pages.user.checkout');
 })->name('checkout');

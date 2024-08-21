@@ -38,24 +38,29 @@
                     <div class="card">
                         <div class="card-body p-4">
 
-                            <div class="text-center mb-4">
+                            <div class="text-center mb-1">
                                 <h4 class="text-uppercase mt-0">LOG IN</h4>
                             </div>
 
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    <b>Oops!</b> {{ session('error') }}
+                                </div>
+                            @endif
+
                             {{-- form submit --}}
-                            <form action="#">
+                            <form action="{{ route('action.login') }}" method="post">
                                 @csrf
-                                @method('POST')
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input class="form-control" type="text" id="username" required
-                                        placeholder="Enter your username">
+                                    <input name="username" class="form-control" type="text" id="username" required
+                                        placeholder="">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input class="form-control" type="password" required id="password"
-                                        placeholder="Enter your password">
+                                    <input name="password" class="form-control" type="password" required id="password"
+                                        placeholder="">
                                 </div>
 
                                 <div class="mb-3 d-grid text-center">
