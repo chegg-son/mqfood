@@ -12,7 +12,6 @@ class UserController extends Controller
 
     public function index()
     {
-        // return json with status success arrray
         return response()->json(['success' => true, 'data' => User::all(), 'message' => 'Users retrieved successfully', 'csrf' => csrf_token()]);
     }
 

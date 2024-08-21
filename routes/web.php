@@ -21,7 +21,7 @@ Route::get('/admin-panel', function () {
 Route::get('/', [KategoriController::class, 'index'])->name('user');
 Route::get('/checkout', function () {
     return view('pages.user.checkout');
-})->name('checkout');
+})->name('checkout')->middleware('auth');
 
 // use route resources for kategoris
 Route::resource('category', KategoriController::class);

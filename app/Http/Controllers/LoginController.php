@@ -14,9 +14,10 @@ class LoginController extends Controller
     {
         if (Auth::check()) {
             return redirect()->route('user');
-        } else {
-            return view('pages.admin.login');
         }
+        // } else {
+        //     return view('pages.admin.login');
+        // }
     }
 
     public function actionlogin(Request $request)
