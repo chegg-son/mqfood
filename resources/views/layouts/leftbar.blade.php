@@ -59,13 +59,19 @@
             <ul id="side-menu">
                 <li class="menu-title">Menu</li>
                 <li>
-                    <a href={{ route('user') }}>
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="badge bg-success rounded-pill float-end">9+</span>
+                    <a href={{ route('home') }}>
+                        <i class="mdi mdi-home"></i>
                         <span> Beranda </span>
                     </a>
                 </li>
                 @if (auth()->check() && auth()->user()->is_admin == 1)
+                    <li class="menu-title">Admin Menu</li>
+                    <li>
+                        <a href='{{ route('master.product') }}'>
+                            <i class="mdi mdi-dropbox"></i>
+                            <span> Master Barang </span>
+                        </a>
+                    </li>
                 @elseif (auth()->check() && auth()->user()->is_admin == 0)
                     <li>
                         <a href={{ route('checkout') }}>

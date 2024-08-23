@@ -12,7 +12,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategoris = Kategori::all();
-        return view('pages.user.index', compact('kategoris'));
+        return view('pages.home.index', compact('kategoris'));
     }
 
     // store new kategori

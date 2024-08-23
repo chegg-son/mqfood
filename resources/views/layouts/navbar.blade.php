@@ -188,7 +188,7 @@
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Ahlan wasahlan ! <span
+                        <h6 class="text-overflow m-0">Assalamu'alaikum! <span
                                 class="text-danger">{{ auth()->user()->name }}</span></h6>
                     </div>
 

@@ -18,13 +18,14 @@ class BarangSeeder extends Seeder
         // using faker
         $faker = Factory::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             Barang::create([
                 'kode_barang' => $faker->ean8,
                 'nama_barang' => $faker->name,
                 'stok' => $faker->numberBetween(0, 100),
-                'harga' => $faker->numberBetween(0, 1000),
-                'kelas' => $faker->randomElement(['A', 'B', 'C']),
+                'harga' => $faker->numberBetween(0, 1000000),
+                'kelas' => $faker->randomElement(['7', '8', '9', '10', '11', '12']),
+                'kategori_id' => $faker->randomElement(['1', '2']),
             ]);
         }
     }

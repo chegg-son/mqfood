@@ -13,11 +13,10 @@ class LoginController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('user');
+            return redirect()->route('home');
+        } else {
+            return view('pages.login.index');
         }
-        // } else {
-        //     return view('pages.admin.login');
-        // }
     }
 
     public function actionlogin(Request $request)
@@ -33,7 +32,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($data)) {
-            return redirect()->route('admin.panel');
+            return redirect()->route('home');
         } else {
             Session::flash('error', 'Username atau Password salah');
             return redirect()->route('login');
@@ -43,6 +42,6 @@ class LoginController extends Controller
     public function actionlogout()
     {
         Auth::logout();
-        return redirect()->route('user');
+        return redirect()->route('home');
     }
 }

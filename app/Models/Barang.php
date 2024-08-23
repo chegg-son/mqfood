@@ -10,7 +10,8 @@ class Barang extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['kode_barang', 'nama_barang', 'stok', 'harga', 'kelas'];
+    // kategori_id masih belum dihapus
+    protected $fillable = ['kode_barang', 'nama_barang', 'stok', 'harga', 'kelas', 'kategori_id'];
 
     public function kategori()
     {
@@ -21,5 +22,4 @@ class Barang extends Model
     {
         return $this->belongsTo(Transaksi_Detail::class);
     }
-
 }

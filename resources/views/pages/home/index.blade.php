@@ -63,3 +63,26 @@
         </div> <!-- content -->
     </div>
 @endsection
+
+@push('scripts')
+    <!-- Vendor -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+
+    <!-- isotope filter plugin -->
+    <script src="assets/libs/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Magnific Popup-->
+    <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Gallery Init-->
+    <script src="assets/js/pages/gallery.init.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.min.js"></script>
+@endpush
