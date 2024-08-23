@@ -25,7 +25,7 @@ class BarangController extends Controller
     public function add(Request $request, FlasherInterface $flasher)
     {
         $request->validate([
-            'kode_barang' => 'required|string|unique:barangs, kode_barang',
+            'kode_barang' => 'required|string|unique:barangs',
             'nama_barang' => 'required|string|min:3',
             'stok' => 'required|numeric|min:0',
             'harga' => 'required|numeric|min:0',
