@@ -20,23 +20,22 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('action.add.product') }}" class="needs-validation" id="addProduct"
-                                    method="post" novalidate>
+                                    method="post">
                                     @csrf
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="validationCustom01" class="form-label">Kode Barang</label>
-                                        <input name="kode_barang" type="text" class="form-control"
-                                            id="validationCustom01" required />
-                                        {{-- check error from validator in controller --}}
+                                        <input name="kode_barang" type="text"
+                                            class="form-control @error('kode_barang') is-invalid @enderror" id=""
+                                            value="{{ old('kode_barang') }}" />
                                         @error('kode_barang')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            <div class="invalid-feedback">{{ $message }}!</div>
                                         @enderror
-
-
-                                    </div>
+                                    </div> --}}
+                                    <x-input.text name="kode_barang" label="Kode Barang" />
                                     <div class="mb-3">
                                         <label for="validationCustom02" class="form-label">Nama Barang</label>
                                         <input name="nama_barang" type="text" class="form-control"
-                                            id="validationCustom02" required />
+                                            id="validationCustom02" value="{{ old('nama_barang') }}" />
                                         <div class="invalid-feedback">
                                             Nama Barang harap diisi!
                                         </div>
@@ -47,7 +46,7 @@
                                             <span class="input-group-text" id="inputGroupPrepend">Qty</span>
                                             <input name="stok" inputmode="numeric" type="number" class="form-control"
                                                 id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-                                                required />
+                                                value="{{ old('stok') }}" />
                                             <div class="invalid-feedback">
                                                 Stok Barang harap diisi!
                                             </div>
@@ -58,7 +57,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="inputGroupPrepend">Rp</span>
                                             <input name="harga" inputmode="numeric" type="number" class="form-control"
-                                                id="validationCustom03" required />
+                                                id="validationCustom03" value="{{ old('harga') }}" />
                                             <div class="invalid-feedback">
                                                 Harga Barang harap diisi
                                             </div>
@@ -68,19 +67,19 @@
                                     <div class="mb-3">
                                         <label for="validationCustom04" class="form-label">Kelas</label>
                                         <input name="kelas" type="text" class="form-control" id="validationCustom04"
-                                            required />
+                                            value="{{ old('kelas') }}" />
                                         <div class="invalid-feedback">
                                             Pilih minimal 1 kelas!
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="validationCustom05" class="form-label">Kategori Barang</label>
-                                        <select name="kategori_id" id="validationCustom05" class="form-select"
-                                            required="">
+                                        <select name="kategori_id" id="validationCustom05" class="form-select">
                                             <option value="">Pilih Kategori Barang</option>
-                                            {{-- ambil data option dari db --}}
                                             @foreach ($kategoris as $kategori)
-                                                <option value="{{ $kategori->id }}">{{ $kategori->jenis }}</option>
+                                                <option value="{{ $kategori->id }}"
+                                                    {{ old('kategori_id') == $kategori->id }}>{{ $kategori->jenis }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">
