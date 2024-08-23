@@ -10,6 +10,6 @@
     <input name="{{ $name }}" type="{{ $type }}" class="form-control @error($name) is-invalid @enderror"
         id="" value="{{ old($name) }}" />
     @error($name)
-        <div class="invalid-feedback">{{ $label }} harap diisi!</div>
+        <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
