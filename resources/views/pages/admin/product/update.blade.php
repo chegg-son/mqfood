@@ -2,14 +2,13 @@
 @section('content')
     <div class="content-page">
         <div class="content">
-
             <!-- Start Content-->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="">Tambah Barang</h3>
+                                <h3 class="">Edit Barang</h3>
                             </div>
                         </div>
                     </div>
@@ -19,9 +18,10 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('action.edit.product') }}" class="needs-validation" id="addProduct"
-                                    method="post" novalidate>
+                                <form action="{{ route('action.edit.product', $barang->id) }}" class="needs-validation"
+                                    id="addProduct" method="POST" novalidate>
                                     @csrf
+                                    @method('PUT')
                                     <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
                                     <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
                                     <x-input.group type="number" name="stok" label="Stok Barang"
@@ -31,8 +31,7 @@
                                     <x-input.text name="kelas" label="Kelas"></x-input.text>
                                     <x-input.option name="kategori_id" label="Kategori Barang"
                                         :options="$kategoris"></x-input.option>
-
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                    <button class="btn btn-primary" type="submit">Update Data</button>
                                 </form>
                             </div>
                         </div>
@@ -56,4 +55,15 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#kode_barang').val('{{ $barang->kode_barang }}');
+            $('#nama_barang').val('{{ $barang->nama_barang }}');
+            $('#stok').val('{{ $barang->stok }}');
+            $('#harga').val('{{ $barang->harga }}');
+            $('#kelas').val('{{ $barang->kelas }}');
+            $('#kategori_id').val('{{ $barang->kategori_id }}').change();
+        });
+    </script>
 @endpush

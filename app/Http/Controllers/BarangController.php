@@ -65,22 +65,22 @@ class BarangController extends Controller
 
     public function edit($id)
     {
+        $barang = Barang::findOrFail($id);
         $kategoris = Kategori::all();
-        $barang = Barang::find($id);
-        return view('pages.admin.product.update', compact('kategoris', 'barang'));
+        return view('pages.admin.product.update', compact('barang', 'kategoris'));
     }
 
-    public function actionedit(Request $request)
+    public function update(Request $request, $id)
     {
+
         $request->validate([
-            'kode_barang' => 'required|string|unique:barangs',
+            'kode_barang' => 'required|string|min:3',
             'nama_barang' => 'required|string|min:3',
             'stok' => 'required|numeric|min:0',
             'harga' => 'required|numeric|min:0',
             'kelas' => 'required|string|min:1',
             'kategori_id' => 'required|exists:kategoris,id',
         ], [
-            'kode_barang.unique' => 'Kode barang sudah ada!',
             'kode_barang.required' => 'Kode barang harus diisi!',
             'kode_barang.min' => 'Kode barang minimal 3 karakter!',
             'nama_barang.required' => 'Nama harus diisi!',
@@ -95,7 +95,8 @@ class BarangController extends Controller
             'kategori_id.exists' => 'Kategori tidak ditemukan!',
         ]);
 
-        $barang = Barang::find($request->id);
+        $barang = Barang::findOrFail($id);
+
         $barang->update([
             'kode_barang' => $request->kode_barang,
             'nama_barang' => $request->nama_barang,

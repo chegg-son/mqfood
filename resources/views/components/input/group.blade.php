@@ -10,8 +10,8 @@
     <div class="input-group">
         <span class="input-group-text" id="inputGroupPrepend">{{ $prefix }}</span>
         <input name="{{ $name }}" inputmode="numeric" type="{{ $type }}"
-            class="form-control  @error($name) is-invalid @enderror" id="" aria-describedby="inputGroupPrepend"
-            value="{{ old($name) }}" />
+            class="form-control  @error($name) is-invalid @enderror" id="{{ $name }}"
+            aria-describedby="inputGroupPrepend" value="{{ old($name) }}" />
         <div class="invalid-feedback">
             {{ $label }} harap diisi!
         </div>

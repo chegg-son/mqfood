@@ -39,7 +39,8 @@
                                                 <td>{{ $barang->kategori->jenis }}</td>
                                                 <td>
                                                     <a href="#" class="btn btn-primary btn-sm">Detail</a>
-                                                    <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+                                                    <a href="{{ route('edit.product', $barang->id) }}"
+                                                        class="btn btn-secondary btn-sm">Edit</a>
                                                     <a href="{{ route('delete.product', $barang->id) }}"
                                                         class="btn btn-danger btn-sm" data-confirm-delete="true">Delete</a>
                                                 </td>

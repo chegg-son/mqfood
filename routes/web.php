@@ -16,11 +16,11 @@ Route::middleware(['isAdmin'])->group(function () {
     })->name('admin.panel');
 
     // Barang Route
-    Route::get('/master-product', [BarangController::class, 'index'])->name('master.product');
-    Route::get('/add-product', [BarangController::class, 'create'])->name('add.product');
-    Route::post('actionaddproduct', [BarangController::class, 'store'])->name('action.add.product');
+    Route::get('/products', [BarangController::class, 'index'])->name('master.product');
+    Route::get('/products/create', [BarangController::class, 'create'])->name('add.product');
+    Route::post('products', [BarangController::class, 'store'])->name('action.add.product');
     Route::get('/edit-product/{id}', [BarangController::class, 'edit'])->name('edit.product');
-    Route::post('actioneditproduct', [BarangController::class, 'actionedit'])->name('action.edit.product');
+    Route::put('edit-product/{id}', [BarangController::class, 'update'])->name('action.edit.product');
     Route::delete('/delete-product/{id}', [BarangController::class, 'destroy'])->name('delete.product');
 });
 // Route::get('/admin-panel', function () {
