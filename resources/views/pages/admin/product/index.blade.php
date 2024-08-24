@@ -56,11 +56,12 @@
                                                 <td>{{ $barang->harga }}</td>
                                                 <td>{{ $barang->kategori->jenis }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-sm">Detail</a>
                                                     <a href="{{ route('edit.product', $barang->id) }}"
-                                                        class="btn btn-secondary btn-sm">Edit</a>
+                                                        class="btn btn-secondary btn-sm"><span
+                                                            class="mdi mdi-pencil"></span></a>
                                                     <a href="{{ route('delete.product', $barang->id) }}"
-                                                        class="btn btn-danger btn-sm" data-confirm-delete="true">Delete</a>
+                                                        class="btn btn-danger btn-sm" data-confirm-delete="true"><span
+                                                            class="mdi mdi-delete"></span></a>
                                                 </td>
                                             </tr>
                                         @endforeach

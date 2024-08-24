@@ -39,22 +39,24 @@
                     </div>
                 </div>
 
-                {{-- list barang --}}
+                {{-- container list barang --}}
                 <div class="port">
-                    <div class="portfolioContainer">
-                        <div class="col-md-6 col-xl-3 col-lg-4 Buku">
-                            <div class="gal-detail thumb">
-                                <div class="text-center">
-                                    <a href="assets/images/gallery/11.jpg" class="" title="Screenshot-11">
-                                        <img src="assets/images/gallery/11.jpg" class="thumb-img img-fluid"
-                                            alt="work-thumbnail" />
-                                    </a>
+                    <div class="row portfolioContainer">
+
+                        {{-- list barang --}}
+                        <div class="col-md-6 col-xl-3 Buku">
+                            <div class="card p-1">
+                                <img class="card-img-top img-fluid" src="assets/images/gallery/11.jpg" alt="Card cap">
+                                <div class="card-body">
+                                    <h2 class="card-title">Kitab Al Arabiyyah Baina Yadaik</h2>
+                                    <h4 class="fw-bold">Harga: Rp. 100.000</h4>
+                                    <p>stok: 1</p>
+                                    <p class="fw-bold text-end">Terjual: 1rb</p>
+                                    <a href="#" class="btn btn-danger"><span class="mdi mdi-cart"></span></a>
                                 </div>
-                                <h4 class="font-24">Kitab Al Arabiyyah baina Yadaik</h4>
-                                <p style="font-weight: bold" class="font-18">Rp: 90.000</p>
-                                <p class="text-right">1rb terjual</p>
                             </div>
-                        </div>
+                        </div><!-- end col -->
+
                     </div>
                 </div>
 
