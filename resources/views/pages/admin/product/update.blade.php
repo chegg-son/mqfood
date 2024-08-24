@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('action.add.product') }}" class="needs-validation" id="addProduct"
+                                <form action="{{ route('action.edit.product') }}" class="needs-validation" id="addProduct"
                                     method="post" novalidate>
                                     @csrf
                                     <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
@@ -45,7 +45,6 @@
 @endsection
 
 @push('scripts')
-    <script></script>
     <!-- Vendor -->
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -21,7 +21,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::post('actionaddproduct', [BarangController::class, 'store'])->name('action.add.product');
     Route::get('/edit-product/{id}', [BarangController::class, 'edit'])->name('edit.product');
     Route::post('actioneditproduct', [BarangController::class, 'actionedit'])->name('action.edit.product');
-    Route::get('/delete-product/{id}', [BarangController::class, 'delete'])->name('delete.product');
+    Route::delete('/delete-product/{id}', [BarangController::class, 'destroy'])->name('delete.product');
 });
 // Route::get('/admin-panel', function () {
 //     return view('pages.admin.index');

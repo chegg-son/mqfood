@@ -23,6 +23,7 @@
 {{-- penambahan push stacks js --}}
 <!--====== Javascripts & Jquery ======-->
 @stack('scripts')
+@include('sweetalert::alert')
 </body>
 
 </html>
