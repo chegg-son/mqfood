@@ -4,10 +4,14 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+
 use Illuminate\Support\Facades\Route;
 
-// Admin Route
+// Login Route
 Route::get('/login', [LoginController::class, 'login'])->name('login');
+
+// Admin Route
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth');
 Route::middleware(['isAdmin'])->group(function () {
@@ -27,10 +31,12 @@ Route::middleware(['isAdmin'])->group(function () {
 //     return view('pages.admin.index');
 // })->name('admin.panel')->middleware('auth');
 
+// Home Route
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 // User Route
-Route::get('/', [KategoriController::class, 'index'])->name('home');
 Route::get('users', [UserController::class, 'index'])->name('users');
-Route::post('adduser', [UserController::class, 'add'])->name('add.user');
+Route::post('adduser', [UserController::class, 'store'])->name('add.user');
 Route::get('/checkout', function () {
     return view('pages.user.checkout');
 })->name('checkout')->middleware('auth');

@@ -15,7 +15,7 @@ class UserController extends Controller
         return response()->json(['success' => true, 'data' => User::all(), 'message' => 'Users retrieved successfully', 'csrf' => csrf_token()]);
     }
 
-    public function add(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'string|nullable',
