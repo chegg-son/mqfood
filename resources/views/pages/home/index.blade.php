@@ -63,6 +63,8 @@
                     </div><!-- end col -->
                     @endforeach
 
+                    {{ $barangs->links() }}
+
                 </div>
             </div>
 
