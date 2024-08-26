@@ -33,6 +33,7 @@ Route::middleware(['isAdmin'])->group(function () {
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [BarangController::class, 'search'])->name('search');
 
 // User Route
 Route::get('users', [UserController::class, 'index'])->name('users');

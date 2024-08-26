@@ -12,7 +12,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barangs = Barang::all();
+        $barangs = Barang::latest()->paginate(10);
         $title = 'Hapus Data?';
         $text = 'Apakah anda yakin ingin menghapus data ini?';
         confirmDelete($title, $text);
@@ -116,5 +116,17 @@ class BarangController extends Controller
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Barang berhasil dihapus!');
         }
         return redirect()->route('master.product');
+    }
+
+    public function search(Request $request)
+    {
+        $kategoris = Kategori::all();
+        $search = $request->input('query');
+        $barangs = Barang::where(function ($query) use ($search) {
+            $query->where('nama_barang', 'like', "%$search%");
+            // ->orWhere('nama_barang', 'like', '%' . $search . '%');
+        })->paginate(10);
+
+        return view('pages.home.index', compact('barangs', 'search', 'kategoris'));
     }
 }
