@@ -12,7 +12,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barangs = Barang::latest()->paginate(10);
+        $barangs = Barang::latest()->paginate(12);
         $title = 'Hapus Data?';
         $text = 'Apakah anda yakin ingin menghapus data ini?';
         confirmDelete($title, $text);
@@ -125,8 +125,14 @@ class BarangController extends Controller
         $barangs = Barang::where(function ($query) use ($search) {
             $query->where('nama_barang', 'like', "%$search%");
             // ->orWhere('nama_barang', 'like', '%' . $search . '%');
-        })->paginate(10);
+        })->paginate(12);
 
         return view('pages.home.index', compact('barangs', 'search', 'kategoris'));
+    }
+
+    public function show($id)
+    {
+        $barang = Barang::findOrFail($id);
+        return view('pages.home.show.index', compact('barang'));
     }
 }

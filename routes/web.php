@@ -27,9 +27,9 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('edit-product/{id}', [BarangController::class, 'update'])->name('action.edit.product');
     Route::delete('/delete-product/{id}', [BarangController::class, 'destroy'])->name('delete.product');
 });
-// Route::get('/admin-panel', function () {
-//     return view('pages.admin.index');
-// })->name('admin.panel')->middleware('auth');
+
+// Barang Route Show
+Route::get('/products/{id}/show', [BarangController::class, 'show'])->name('show.product');
 
 // Home Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
