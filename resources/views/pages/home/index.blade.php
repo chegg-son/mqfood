@@ -63,15 +63,14 @@
                                 <div class="input-group rounded">
                                     <input class="form-control me-2" type="search" name="query" id="search"
                                         placeholder="Cari Barang..." aria-label="Search"
-                                        value="{{ isset($searchBarang) ? $searchBarang : '' }}">
+                                        value="{{ isset($search) ? $search : '' }}">
                                     <button class="btn btn-outline-primary" type="submit">Cari</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                     <div class="row portfolioContainer">
-                        @foreach ($barangs as $barang)
+                        @forelse ($barangs as $barang)
                             {{-- list barang --}}
                             <div class="col-md-6 col-xl-3 {{ $barang->kategori->jenis }}">
                                 <a href="{{ route('show.product', $barang->id) }}">
@@ -94,7 +93,9 @@
                                 </a>
 
                             </div><!-- end col -->
-                        @endforeach
+                        @empty
+                            <h3 class="text-center">Afwan, Barang tidak ditemukan.</h3>
+                        @endforelse
                     </div>
                 </div>
             </div> <!-- container-fluid -->
