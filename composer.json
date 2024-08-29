@@ -6,8 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "darryldecode/cart": "^4.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5",
         "php-flasher/flasher-laravel": "^2.0",
         "realrashid/sweet-alert": "^7.2"
     },

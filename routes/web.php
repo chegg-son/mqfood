@@ -5,6 +5,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Livewire\Counter;
 
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,9 @@ Route::post('adduser', [UserController::class, 'store'])->name('add.user');
 Route::get('/checkout', function () {
     return view('pages.user.checkout');
 })->name('checkout')->middleware('auth');
+
+// Livewire Route test
+Route::get('counter', Counter::class);
 
 // use route resources for kategoris
 Route::resource('category', KategoriController::class);

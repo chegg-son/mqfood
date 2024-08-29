@@ -77,7 +77,8 @@
                         <a href={{ route('checkout') }}>
                             <i class="mdi mdi-cart-variant"></i>
                             {{-- catatan jika item 0 maka hide dari database --}}
-                            <span class="badge bg-danger rounded-pill float-end">0</span>
+                            {{-- <span class="badge bg-danger rounded-pill float-end">0</span> --}}
+                            @livewire('cart-counter')
                             <span> Keranjang </span>
                         </a>
                     </li>
