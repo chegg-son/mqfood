@@ -6,6 +6,8 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-size: 17pt;
+            font-weight: bold;
         }
     </style>
 @endpush
@@ -46,14 +48,10 @@
 
                     </div>
                 </div>
-
                 {{-- container list barang --}}
                 @livewire('products-table')
-
             </div> <!-- container-fluid -->
-
         </div> <!-- content -->
-        {{ $barangs->links() }}
     </div>
 @endsection
 

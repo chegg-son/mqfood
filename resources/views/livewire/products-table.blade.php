@@ -1,9 +1,12 @@
 <div class="port">
     <div class="row mb-2 justify-content-end">
         <div class="col-md-3">
-            <form action="{{ route('search') }}">
+            {{-- <form action="{{ route('search') }}">
                 <input class="form-control me-2" type="search" name="query" id="search" placeholder="Cari Barang..."
                     aria-label="Search">
+            </form> --}}
+            <form wire:submit="searchProducts">
+                <input type="text" wire:model="query" class="form-control" placeholder="Cari Barang...">
             </form>
         </div>
     </div>
@@ -38,10 +41,12 @@
                 </a>
 
             </div><!-- end col -->
+
         @empty
             <h3 class="text-center">Afwan, Barang tidak ditemukan.</h3>
         @endforelse
 
+        {{ $barangs->links() }}
     </div>
 
 </div>
