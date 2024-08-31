@@ -21,20 +21,15 @@ class ProductsTable extends Component
     protected $queryString = ['search' => ['except' => '']];
 
     public array $qty = [];
-    // public function mount()
-    // {
-    //     $barangs = Barang::all();
-    //     foreach ($barangs as $barang) {
-    //         $this->qty[$barang->id] = 1;
-    //     }
-    // }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
-        // $barangs = $this->query === null ?
-        //     Barang::latest()->paginate(12) :
-        //     Barang::latest()->where('nama_barang', 'like', '%' . $this->query . '%')
-        //     ->paginate(12);
+
         $barangs = Barang::where('nama_barang', 'like', '%' . $this->query . '%')
             ->latest()
             ->paginate(12);
