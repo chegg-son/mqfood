@@ -50,11 +50,10 @@
                 {{-- container list barang --}}
                 @livewire('products-table')
 
-                {{ $barangs->links() }}
             </div> <!-- container-fluid -->
 
         </div> <!-- content -->
-
+        {{ $barangs->links() }}
     </div>
 @endsection
 

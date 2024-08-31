@@ -41,5 +41,7 @@
         @empty
             <h3 class="text-center">Afwan, Barang tidak ditemukan.</h3>
         @endforelse
+
     </div>
+
 </div>

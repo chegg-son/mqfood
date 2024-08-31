@@ -10,28 +10,28 @@ use Livewire\WithPagination;
 class ProductsTable extends Component
 {
     use WithPagination;
-    public $paginate = 12;
+
     public $search;
-    public $barangs;
+    // public $barangs;
     public array $qty = [];
     public function mount()
     {
-        $this->barangs = Barang::all();
-        foreach ($this->barangs as $barang) {
+        $barangs = Barang::all();
+        foreach ($barangs as $barang) {
             $this->qty[$barang->id] = 1;
         }
     }
     public function render()
     {
-        $search = $this->search === null ?
-            Barang::latest()->paginate($this->paginate) :
-            Barang::latest()->where('nama_barang', 'like', '%' . $this->search . '%')
-            ->paginate($this->paginate);
+        // $search = $this->search === null ?
+        //     Barang::latest()->paginate($this->paginate) :
+        //     Barang::latest()->where('nama_barang', 'like', '%' . $this->search . '%')
+        //     ->paginate($this->paginate);
         $barangs = Barang::latest()->paginate(12);
         $title = 'Hapus Data?';
         $text = 'Apakah anda yakin ingin menghapus data ini?';
         confirmDelete($title, $text);
-        return view('livewire.products-table', compact('barangs', 'search'));
+        return view('livewire.products-table', compact('barangs'));
     }
 
     public function addToCart($id)
