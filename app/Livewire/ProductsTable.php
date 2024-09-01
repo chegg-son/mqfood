@@ -6,31 +6,22 @@ use Livewire\Component;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 use App\Models\Barang;
 use Livewire\WithPagination;
-use App\Models\Kategori;
 use Livewire\Attributes\Url;
 
 class ProductsTable extends Component
 {
     use WithPagination;
-
     protected $paginationTheme = 'bootstrap';
 
     #[Url]
     public $query = null;
-
     protected $queryString = ['search' => ['except' => '']];
-
-    public array $qty = [];
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
 
     public function render()
     {
 
         $barangs = Barang::where('nama_barang', 'like', '%' . $this->query . '%')
+            ->with('kategori')
             ->latest()
             ->paginate(12);
 
