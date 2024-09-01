@@ -16,6 +16,7 @@ class ProductsTable extends Component
 
     #[Url]
     public $query = null;
+    // cari display items by category with livewire
     protected $queryString = ['search' => ['except' => '']];
 
     public function render()
