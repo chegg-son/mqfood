@@ -2,11 +2,12 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Darryldecode\Cart\Facades\CartFacade as Cart;
 use App\Models\Barang;
-use Livewire\WithPagination;
+use Livewire\Component;
+use App\Models\Kategori;
 use Livewire\Attributes\Url;
+use Livewire\WithPagination;
+use Darryldecode\Cart\Facades\CartFacade as Cart;
 
 class ProductsTable extends Component
 {
@@ -19,16 +20,15 @@ class ProductsTable extends Component
 
     public function render()
     {
-
         $barangs = Barang::where('nama_barang', 'like', '%' . $this->query . '%')
             ->with('kategori')
             ->latest()
             ->paginate(12);
-
+        $kategoris = Kategori::all();
         $title = 'Hapus Data?';
         $text = 'Apakah anda yakin ingin menghapus data ini?';
         confirmDelete($title, $text);
-        return view('livewire.products-table', compact('barangs'));
+        return view('livewire.products-table', compact('barangs', 'kategoris'));
     }
 
     public function searchProducts()
