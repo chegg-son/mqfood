@@ -35,9 +35,6 @@ class ProductsTable extends Component
             ->with('kategori')
             ->latest()
             ->paginate(12);
-        $title = 'Hapus Data?';
-        $text = 'Apakah anda yakin ingin menghapus data ini?';
-        confirmDelete($title, $text);
         return view('livewire.products-table', compact('barangs', 'kategoris'));
     }
 

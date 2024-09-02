@@ -14,6 +14,9 @@ class BarangController extends Controller
     {
         $barangs = Barang::with(['kategori', 'transaksi_detail'])->latest()->paginate(12);
         $kategoris = Kategori::all();
+        $title = 'Hapus Data?';
+        $text = 'Apakah anda yakin ingin menghapus data ini?';
+        confirmDelete($title, $text);
         return view('pages.admin.product.index', compact('barangs', 'kategoris'));
     }
 
