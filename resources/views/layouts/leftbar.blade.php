@@ -65,11 +65,23 @@
                     </a>
                 </li>
                 @if (auth()->check() && auth()->user()->is_admin == 1)
-                    <li class="menu-title">Admin Menu</li>
+                    <li class="menu-title">Administrator Menu</li>
                     <li>
                         <a href='{{ route('master.product') }}'>
                             <i class="mdi mdi-dropbox"></i>
                             <span> Master Barang </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='{{ route('users') }}'>
+                            <i class="mdi mdi-account-cog-outline"></i>
+                            <span> Master User </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <i class="mdi mdi-book-cog-outline"></i>
+                            <span> Master Kategori </span>
                         </a>
                     </li>
                 @elseif (auth()->check() && auth()->user()->is_admin == 0)

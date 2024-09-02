@@ -27,6 +27,11 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/edit-product/{id}', [BarangController::class, 'edit'])->name('edit.product');
     Route::put('edit-product/{id}', [BarangController::class, 'update'])->name('action.edit.product');
     Route::delete('/delete-product/{id}', [BarangController::class, 'destroy'])->name('delete.product');
+
+    // Management Users Route
+    Route::get('users', [UserController::class, 'index'])->name('users');
+    Route::get('/users/create', [UserController::class, 'create'])->name('add.user');
+    Route::post('users', [UserController::class, 'store'])->name('action.add.user');
 });
 
 // Barang Route Show
@@ -38,7 +43,6 @@ Route::get('/search', [BarangController::class, 'search'])->name('search');
 
 // User Route
 Route::get('users', [UserController::class, 'index'])->name('users');
-Route::post('adduser', [UserController::class, 'store'])->name('add.user');
 Route::get('/checkout', function () {
     return view('pages.user.checkout');
 })->name('checkout')->middleware('auth');
