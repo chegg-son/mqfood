@@ -16,16 +16,25 @@ class ProductsTable extends Component
 
     #[Url]
     public $query = null;
-    // cari display items by category with livewire
-    protected $queryString = ['search' => ['except' => '']];
+    public $category = null;
+
+    protected $queryString = ['query', 'category' => ['except' => '']];
 
     public function render()
     {
-        $barangs = Barang::where('nama_barang', 'like', '%' . $this->query . '%')
+        $kategoris = Kategori::all();
+        $barangs = Barang::query()
+            ->when($this->category, function ($query) {
+                $query->whereHas('kategori', function ($kategoriQuery) {
+                    $kategoriQuery->where('id', 'like', '%' . $this->category . '%');
+                });
+            })
+            ->when($this->query, function ($query) {
+                $query->where('nama_barang', 'like', '%' . $this->query . '%');
+            })
             ->with('kategori')
             ->latest()
             ->paginate(12);
-        $kategoris = Kategori::all();
         $title = 'Hapus Data?';
         $text = 'Apakah anda yakin ingin menghapus data ini?';
         confirmDelete($title, $text);
@@ -33,6 +42,16 @@ class ProductsTable extends Component
     }
 
     public function searchProducts()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingQuery()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingCategory()
     {
         $this->resetPage();
     }
