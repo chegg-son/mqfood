@@ -6,7 +6,8 @@
 @section('content')
     <div class="content-page">
         <div class="content">
-            <div class="container-fluid">
+            <div class="container">
+                {{-- Nama Barang --}}
                 <div class="row">
                     <div class="col">
                         <div class="card">
@@ -15,31 +16,78 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="card p-3 align-items-center">
-                            <img class="rounded" src="{{ asset('assets/images/gallery/11.jpg') }}" alt="Card cap"
-                                style="width: 40%">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>dibuatkan table</p>
-                                <h3 class="card-text">Stok : {{ $barang->stok }}</h3>
-                                <h3 class="card-text"> Harga : {{ $barang->harga }}</h3>
-                                <h3 class="card-text"> Kelas : {{ $barang->kelas }}</h3>
-                                <h3 class="card-text"> Kategori : {{ $barang->kategori->jenis }}</h3>
+                    {{-- data barang --}}
+                    <div>
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card p-3 align-items-center">
+                                    <img class="rounded" src="{{ asset('assets/images/gallery/11.jpg') }}" alt="Card cap"
+                                        style="width: 100%">
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <a class="card-link" href="{{ url()->previous() }}"><span class="mdi mdi-home"></span>
-                                    Kembali
-                                    ke Beranda</a>
+
+                            <div class="col-xl-4">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="text-center fw-bold">Detail Barang</h3>
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
+                                                <tbody>
+                                                    {{-- <tr>
+                                                        <td>{{ $barang->stok }}</td>
+                                                        <td>{{ $barang->harga }}</td>
+                                                        <td>{{ $barang->kelas }}</td>
+                                                        <td>{{ $barang->kategori->jenis }}</td>
+                                                    </tr> --}}
+                                                    <tr>
+                                                        <td class="fw-bold fs-4 col-1">
+                                                            Stok
+                                                        </td>
+                                                        <td class="col-1">:</td>
+                                                        <td class="fs-4 col-10 text-start">
+                                                            {{ $barang->stok }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold fs-4 col-1">
+                                                            Harga
+                                                        </td>
+                                                        <td class="col-1">:</td>
+                                                        <td class="fs-4 col-10 text-start">
+                                                            {{ $barang->harga }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold fs-4 col-1">
+                                                            Kelas
+                                                        </td>
+                                                        <td class="col-1">:</td>
+                                                        <td class="fs-4 col-10 text-start">
+                                                            {{ $barang->kelas }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold fs-4 col-1">
+                                                            Kategori
+                                                        </td>
+                                                        <td class="col-1">:</td>
+                                                        <td class="fs-4 col-10 text-start">
+                                                            {{ $barang->kategori->jenis }}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="card-link" href="{{ url()->previous() }}"><span
+                                                class="mdi mdi-arrow-left"></span>
+                                            Kembali</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

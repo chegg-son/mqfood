@@ -23,7 +23,8 @@
             </div>
             <div class="col-md-3">
                 <form wire:submit="searchProducts">
-                    <input type="text" wire:model="query" class="form-control" placeholder="Cari Barang...">
+                    <input type="text" wire:model="query" wire:keydown.enter='resetPage' class="form-control"
+                        placeholder="Cari Barang...">
                 </form>
             </div>
         </div>

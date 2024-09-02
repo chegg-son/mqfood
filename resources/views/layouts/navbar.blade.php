@@ -14,7 +14,7 @@
             </div>
         </li>
 
-        <li class="dropdown notification-list topbar-dropdown">
+        {{-- <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
                 role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-bell noti-icon"></i>
@@ -106,7 +106,7 @@
                 </a>
 
             </div>
-        </li>
+        </li> --}}
 
 
 
@@ -127,12 +127,6 @@
                     <a href="contacts-profile.html" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>My Account</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="auth-lock-screen.html" class="dropdown-item notify-item">
-                        <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
@@ -199,9 +193,9 @@
             </button>
         </li>
 
-        <li>
+        {{-- <li>
             <h4 class="page-title-main">Marketplace</h4>
-        </li>
+        </li> --}}
 
     </ul>
 
