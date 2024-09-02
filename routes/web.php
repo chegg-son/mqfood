@@ -32,6 +32,9 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users');
     Route::get('/users/create', [UserController::class, 'create'])->name('add.user');
     Route::post('users', [UserController::class, 'store'])->name('action.add.user');
+    Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit.user');
+    Route::put('edit-user/{id}', [UserController::class, 'update'])->name('action.edit.user');
+    Route::delete('/delete-user/{id}', [UserController::class, 'destroy'])->name('delete.user');
 });
 
 // Barang Route Show

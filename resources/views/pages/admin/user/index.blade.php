@@ -64,7 +64,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-secondary btn-sm"><span
+                                                    <a href="{{ route('edit.user', $user->id) }}"
+                                                        class="btn btn-secondary btn-sm"><span
                                                             class="mdi mdi-pencil"></span></a>
                                                     <a href="#" class="btn btn-danger btn-sm"
                                                         data-confirm-delete="true"><span class="mdi mdi-delete"></span></a>

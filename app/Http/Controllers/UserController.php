@@ -50,9 +50,47 @@ class UserController extends Controller
         return redirect()->route('users');
     }
 
-    public function show($id) {}
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('pages.admin.user.update', compact('user'));
+    }
 
-    public function update($id) {}
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|',
+            'username' => 'required|string|unique:users',
+            'password' => 'required|string',
+            'is_admin' => 'required|boolean'
+        ], [
+            'name.required' => 'Nama tidak boleh kosong!',
+            'username.required' => 'Username tidak boleh kosong!',
+            'username.unique' => 'Username sudah digunakan :(',
+            'password.required' => 'Password harap diisi!',
+            'is_admin.required' => 'Role mohon untuk diisi!',
+        ]);
 
-    public function destroy($id) {}
+        $hashedpassword = Hash::make($request->password);
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => $hashedpassword,
+            'is_admin' => $request->is_admin,
+        ]);
+
+        flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Barang berhasil diubah!');
+        return redirect()->route('master.product');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if ($user->delete()) {
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil dihapus!');
+        }
+        return redirect()->route('users');
+    }
 }
