@@ -60,29 +60,34 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|',
-            'username' => 'required|string|unique:users',
-            'password' => 'required|string',
+            'username' => 'required|string',
             'is_admin' => 'required|boolean'
         ], [
             'name.required' => 'Nama tidak boleh kosong!',
             'username.required' => 'Username tidak boleh kosong!',
-            'username.unique' => 'Username sudah digunakan :(',
-            'password.required' => 'Password harap diisi!',
             'is_admin.required' => 'Role mohon untuk diisi!',
         ]);
 
-        $hashedpassword = Hash::make($request->password);
         $user = User::findOrFail($id);
 
-        $user->update([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => $hashedpassword,
-            'is_admin' => $request->is_admin,
-        ]);
-
-        flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Barang berhasil diubah!');
-        return redirect()->route('master.product');
+        if ($request->password == '') {
+            $user->update([
+                'name' => $request->name,
+                'username' => $request->username,
+                'is_admin' => $request->is_admin,
+            ]);
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil diubah!');
+            return redirect()->route('users');
+        } else {
+            $user->update([
+                'name' => $request->name,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'is_admin' => $request->is_admin,
+            ]);
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil diubah!');
+            return redirect()->route('users');
+        }
     }
 
     public function destroy($id)

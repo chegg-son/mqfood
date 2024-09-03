@@ -24,10 +24,11 @@
                                     @method('PUT')
                                     <x-input.text name="name" label="Nama"></x-input.text>
                                     <x-input.text name="username" label="Username"></x-input.text>
-                                    <x-input.text type="password" name="password" label="Password"></x-input.text>
+                                    <x-input.text type="password" name="password" label="Password"
+                                        placeholder="Isi password jika ingin merubahnya"></x-input.text>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Role</label>
-                                        <select name="is_admin" id="" class="form-select">
+                                        <select name="is_admin" id="is_admin" class="form-select">
                                             <option value="">Pilih Jenis Role</option>
                                             <option value="1">Admin</option>
                                             <option value="0">User</option>
@@ -36,7 +37,7 @@
                                             Pilih salah satu dari Role yang ada!
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" type="submit">Update Data</button>
+                                    <button id="btnSubmit" class="btn btn-primary" type="submit">Update Data</button>
                                 </form>
                             </div>
                         </div>
@@ -84,7 +85,6 @@
         $(document).ready(function() {
             $('#name').val('{{ $user->name }}');
             $('#username').val('{{ $user->username }}');
-            $('#password').val('{{ $user->password }}');
             $('#is_admin').val('{{ $user->is_admin }}').change();
         });
     </script>
