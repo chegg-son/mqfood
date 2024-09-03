@@ -35,6 +35,14 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit.user');
     Route::put('edit-user/{id}', [UserController::class, 'update'])->name('action.edit.user');
     Route::delete('/delete-user/{id}', [UserController::class, 'destroy'])->name('delete.user');
+
+    // Management Categorys Route
+    Route::get('categories', [KategoriController::class, 'index'])->name('categories');
+    Route::get('/categories/create', [KategoriController::class, 'create'])->name('add.category');
+    Route::post('category', [KategoriController::class, 'store'])->name('action.add.category');
+    Route::get('/edit-category/{id}', [KategoriController::class, 'edit'])->name('edit.category');
+    Route::put('edit-category/{id}', [KategoriController::class, 'update'])->name('action.edit.category');
+    Route::delete('/delete-category/{id}', [KategoriController::class, 'destroy'])->name('delete.category');
 });
 
 // Barang Route Show
@@ -52,6 +60,3 @@ Route::get('/checkout', function () {
 
 // Livewire Route test
 Route::get('counter', Counter::class);
-
-// use route resources for kategoris
-Route::resource('category', KategoriController::class);

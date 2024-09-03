@@ -13,7 +13,22 @@
             </tr>
         </thead>
         <tbody>
-
+            @foreach ($cart_items as $item)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>
+                        <a class="btn btn-default btn-sm me-1" wire:click="decrement({{ $item->id }})"><span
+                                class="mdi mdi-minus"></span></a>
+                        {{ $item->quantity }}
+                        <a class="btn btn-default btn-sm ms-1" wire:click="increment({{ $item->id }})"><span
+                                class="mdi mdi-plus"></span></a>
+                    </td>
+                    <td>{{ $item->price }}</td>
+                    <td>{{ $item->price * $item->quantity }}</td>
+                    <td><a class="btn btn-danger btn-sm"><span class="mdi mdi-delete"></span></a></td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
     <div class="row justify-content-end">

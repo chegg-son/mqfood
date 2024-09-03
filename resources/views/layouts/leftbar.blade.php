@@ -1,31 +1,19 @@
-<div class="left-side-menu">
-
+<div class="left-side-menu" style="z-index: 0">
     <div class="h-100" data-simplebar>
-
-        <!-- User box -->
-        {{-- <div class="user-box text-center">
-
-            <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-md">
+        @auth
+            <!-- User box -->
+            <div class="user-box text-center">
+                <img src="assets/images/logos/logo-user-login.svg" alt="user-img" title="Mat Helme"
+                    class="rounded-circle img-thumbnail avatar-md">
                 <div class="dropdown">
-                    <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"  aria-expanded="false">User</a>
+                    <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
+                        aria-expanded="false">{{ auth()->user()->name }}</a>
                     <div class="dropdown-menu user-pro-dropdown">
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fe-user me-1"></i>
                             <span>My Account</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-settings me-1"></i>
-                            <span>Settings</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-lock me-1"></i>
-                            <span>Lock Screen</span>
                         </a>
 
                         <!-- item-->
@@ -37,22 +25,20 @@
                     </div>
                 </div>
 
-            <p class="text-muted left-user-info">Admin Head</p>
+                <p class="text-muted left-user-info">{{ auth()->user()->is_admin == 1 ? 'Admin' : 'User' }}</p>
 
-            <ul class="list-inline">
+                {{-- <ul class="list-inline">
                 <li class="list-inline-item">
                     <a href="#" class="text-muted left-user-info">
                         <i class="mdi mdi-cog"></i>
                     </a>
-                </li>
+                </li> --}}
+                </ul>
+            </div>
+        @endauth
 
-                <li class="list-inline-item">
-                    <a href="#">
-                        <i class="mdi mdi-power"></i>
-                    </a>
-                </li>
-            </ul>
-        </div> --}}
+
+
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
@@ -79,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href='#'>
+                        <a href='{{ route('categories') }}'>
                             <i class="mdi mdi-book-cog-outline"></i>
                             <span> Master Kategori </span>
                         </a>

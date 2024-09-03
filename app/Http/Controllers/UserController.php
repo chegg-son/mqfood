@@ -92,7 +92,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         if ($user->delete()) {
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil dihapus!');
         }

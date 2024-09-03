@@ -1,4 +1,4 @@
-<div class="navbar-custom">
+<div class="navbar-custom" style="z-index: 1">
     <ul class="list-unstyled topnav-menu float-end mb-0">
 
         <li class="dropdown d-inline-block d-lg-none">
@@ -112,9 +112,9 @@
 
         @auth
             <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light rounded" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="assets/images/logos/logo-user-login.svg" alt="user-image" class="rounded-circle">
+                    <i class="fe-settings noti-icon"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                     <!-- item-->
@@ -122,6 +122,7 @@
                         <h6 class="text-overflow m-0">Assalamu'alaikum! <span
                                 class="text-danger">{{ auth()->user()->name }}</span></h6>
                     </div>
+
 
                     <!-- item-->
                     <a href="contacts-profile.html" class="dropdown-item notify-item">
@@ -158,11 +159,11 @@
             </li>
         @endguest
 
-        <li class="dropdown notification-list">
+        {{-- <li class="dropdown notification-list">
             <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                 <i class="fe-settings noti-icon"></i>
             </a>
-        </li>
+        </li> --}}
 
     </ul>
 

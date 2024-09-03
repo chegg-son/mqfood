@@ -22,6 +22,7 @@ class ProductsTable extends Component
 
     public function render()
     {
+        $cart = Cart::session(session()->getId())->getContent();
         $kategoris = Kategori::all();
         $barangs = Barang::query()
             ->when($this->category, function ($query) {
@@ -35,7 +36,7 @@ class ProductsTable extends Component
             ->with('kategori')
             ->latest()
             ->paginate(12);
-        return view('livewire.products-table', compact('barangs', 'kategoris'));
+        return view('livewire.products-table', compact('barangs', 'kategoris', 'cart'));
     }
 
     public function searchProducts()
