@@ -29,7 +29,6 @@ class CartCheckout extends Component
     public function increment($id)
     {
         $cart = Cart::session(session()->getId());
-        $item = $this->qty[$id];
         $cart->update($id, [
             'quantity' => 1,
         ]);
@@ -38,14 +37,21 @@ class CartCheckout extends Component
     public function decrement($id)
     {
         $cart = Cart::session(session()->getId());
-        $item = $this->qty[$id];
-
-        if ($item = 1) {
-            $cart->update($id, [
-                'quantity' => -1
-            ]);
+        $itemCount = $cart->get($id)->quantity;
+        $cart->update($id, [
+            'quantity' => -1
+        ]);
+        if ($itemCount == 1) {
             $cart->remove($id);
             unset($item);
+            $this->dispatch('cart_updated');
         }
+    }
+
+    public function destroy($id)
+    {
+        $cart = Cart::session(session()->getId());
+        $cart->remove($id);
+        flash()->option('position', 'bottom-right')->option('timeout', 2000)->success('Berhasil dihapus!');
     }
 }

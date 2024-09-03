@@ -39,20 +39,8 @@ class ProductsTable extends Component
         return view('livewire.products-table', compact('barangs', 'kategoris', 'cart'));
     }
 
-    public function searchProducts()
-    {
-        $this->resetPage();
-    }
+    public function searchProducts() {}
 
-    public function updatingQuery()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingCategory()
-    {
-        $this->resetPage();
-    }
 
     public function addToCart($id)
     {

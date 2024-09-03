@@ -13,6 +13,7 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach ($cart_items as $item)
                 <tr>
                     <td>{{ ++$i }}</td>
@@ -25,10 +26,19 @@
                                 class="mdi mdi-plus"></span></a>
                     </td>
                     <td>{{ $item->price }}</td>
-                    <td>{{ $item->price * $item->quantity }}</td>
-                    <td><a class="btn btn-danger btn-sm"><span class="mdi mdi-delete"></span></a></td>
+                    {{-- <td>{{ $item->price * $item->quantity }}</td> --}}
+                    <td>{{ $item->getPriceSum() }}</td>
+                    <td><a wire:click="destroy({{ $item->id }})" class="btn btn-danger btn-sm"><span
+                                class="mdi mdi-delete"></span></a></td>
                 </tr>
             @endforeach
+            @if ($cart_items->count() == 0)
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <h3>Tidak ada barang di keranjang.</h3>
+                    </td>
+                </tr>
+            @endif
         </tbody>
     </table>
     <div class="row justify-content-end">
