@@ -30,9 +30,8 @@ class CartCheckout extends Component
     {
         $cart = Cart::session(session()->getId());
         $item = $this->qty[$id];
-        ++$item;
         $cart->update($id, [
-            'quantity' => $item,
+            'quantity' => 1,
         ]);
     }
 
@@ -41,12 +40,10 @@ class CartCheckout extends Component
         $cart = Cart::session(session()->getId());
         $item = $this->qty[$id];
 
-        if ($item >= 1) {
-            --$item;
+        if ($item = 1) {
             $cart->update($id, [
-                'quantity' => $item
+                'quantity' => -1
             ]);
-        } else {
             $cart->remove($id);
             unset($item);
         }
