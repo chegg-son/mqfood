@@ -43,11 +43,11 @@
     </table>
     <div class="row justify-content-end">
         <div class="col-xl-3 col-6 offset-xl-3">
-            <p class="text-end"><b>Sub-total:</b> 2930.00</p>
-            <p class="text-end">Discout: 12.9%</p>
-            <p class="text-end">VAT: 12.9%</p>
+            <p class="text-end"><b>Sub-total:</b> {{ $subtotal }}</p>
+            {{-- <p class="text-end">Discount: 12.9%</p> --}}
+            {{-- <p class="text-end">VAT: 12.9%</p> --}}
             <hr>
-            <h3 class="text-end">USD 2930.00</h3>
+            <h3 class="text-end">IDR {{ $subtotal }}</h3>
         </div>
     </div>
 </div>

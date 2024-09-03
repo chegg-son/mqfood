@@ -23,7 +23,8 @@ class CartCheckout extends Component
     {
         $cart = Cart::session(session()->getId());
         $cart_items = $cart->getContent();
-        return view('livewire.cart-checkout', compact('cart_items'));
+        $subtotal = $cart->getSubTotal();
+        return view('livewire.cart-checkout', compact('cart_items', 'subtotal'));
     }
 
     public function increment($id)
