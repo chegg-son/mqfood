@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Date;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -97,5 +99,14 @@ class UserController extends Controller
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil dihapus!');
         }
         return redirect()->route('users');
+    }
+
+    public function checkout()
+    {
+        $time = Carbon::now()->format('H:i:s');
+        $time = strtotime($time);
+
+        $faktur = Carbon::now()->format('Y-m-') . $time;
+        return view('pages.user.checkout', compact('faktur'));
     }
 }

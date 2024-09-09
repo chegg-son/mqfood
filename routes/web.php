@@ -54,9 +54,7 @@ Route::get('/search', [BarangController::class, 'search'])->name('search');
 
 // User Route
 Route::get('users', [UserController::class, 'index'])->name('users');
-Route::get('/checkout', function () {
-    return view('pages.user.checkout');
-})->name('checkout')->middleware('auth');
+Route::get('/checkout', [UserController::class, 'checkout'])->name('checkout')->middleware('auth');
 
 // Livewire Route test
 Route::get('counter', Counter::class);

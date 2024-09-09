@@ -18,7 +18,7 @@
                                         </div>
                                         <div class="float-end">
                                             <h4>Faktur # <br>
-                                                <strong>2016-04-23654789</strong>
+                                                <strong>{{ $faktur }}</strong>
                                             </h4>
                                         </div>
                                     </div>
@@ -35,7 +35,8 @@
                                                 </address>
                                             </div>
                                             <div class="float-end mt-3">
-                                                <p><strong>Order Date: </strong> Jan 17, 2016</p>
+                                                <p><strong>Order Date: </strong>
+                                                    {{ \Carbon\Carbon::now()->translatedFormat('F d, Y') }}</p>
                                                 <p class="m-t-10"><strong>Order Status: </strong> <span
                                                         class="label label-pink">Pending</span></p>
                                                 <p class="m-t-10"><strong>Order ID: </strong> #123456</p>
