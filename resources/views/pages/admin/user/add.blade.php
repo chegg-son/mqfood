@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="">Tambah Barang</h3>
+                                <h3 class="">Tambah User</h3>
                             </div>
                         </div>
                     </div>
@@ -19,18 +19,23 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('action.add.product') }}" class="needs-validation" id="addProduct"
+                                <form action="{{ route('action.add.user') }}" class="needs-validation" id="addUser"
                                     method="post" novalidate>
                                     @csrf
-                                    <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
-                                    <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
-                                    <x-input.group type="number" name="stok" label="Stok Barang"
-                                        prefix="Qty"></x-input.group>
-                                    <x-input.group type="number" name="harga" label="Harga Barang"
-                                        prefix="Rp"></x-input.group>
-                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
-                                    <x-input.option name="kategori_id" label="Kategori Barang"
-                                        :options="$kategoris"></x-input.option>
+                                    <x-input.text name="name" label="Nama"></x-input.text>
+                                    <x-input.text name="username" label="Username"></x-input.text>
+                                    <x-input.text type="password" name="password" label="Password"></x-input.text>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Role</label>
+                                        <select name="is_admin" id="" class="form-select">
+                                            <option value="">Pilih Jenis Role</option>
+                                            <option value="1">Admin</option>
+                                            <option value="0">User</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilih salah satu dari Role yang ada!
+                                        </div>
+                                    </div>
 
                                     <button class="btn btn-primary" type="submit">Submit form</button>
                                 </form>

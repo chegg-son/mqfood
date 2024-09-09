@@ -17,6 +17,7 @@
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 @endpush
+
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -27,24 +28,20 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="mt-0">Daftar Barang</h3>
+                                <h3 class="mt-0">Daftar Kategori</h3>
                                 <hr>
                                 <div class="mb-2">
-                                    <a href="{{ route('add.product') }}">
+                                    <a href="{{ route('add.category') }}">
                                         <button type="button" class="btn btn-success waves-effect waves-light"><i
                                                 class="mdi mdi-plus me-1"></i>
-                                            Tambah Barang</button>
+                                            Tambah Kategori</button>
                                     </a>
                                 </div>
                                 <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kode Barang</th>
-                                            <th>Nama Barang</th>
-                                            <th>Stok</th>
-                                            <th>Harga</th>
-                                            <th>Kategori ID</th>
+                                            <th>Jenis Kategori</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -52,19 +49,15 @@
                                         <?php
                                         $i = 0;
                                         ?>
-                                        @foreach ($barangs as $barang)
+                                        @foreach ($kategoris as $kategori)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
-                                                <td>{{ $barang->kode_barang }}</td>
-                                                <td>{{ $barang->nama_barang }}</td>
-                                                <td>{{ $barang->stok }}</td>
-                                                <td>{{ $barang->harga }}</td>
-                                                <td>{{ $barang->kategori->jenis }}</td>
+                                                <td>{{ $kategori->jenis }}</td>
                                                 <td>
-                                                    <a href="{{ route('edit.product', $barang->id) }}"
+                                                    <a href="{{ route('edit.category', $kategori->id) }}"
                                                         class="btn btn-secondary btn-sm"><span
                                                             class="mdi mdi-pencil"></span></a>
-                                                    <a href="{{ route('delete.product', $barang->id) }}"
+                                                    <a href="{{ route('delete.category', $kategori->id) }}"
                                                         class="btn btn-danger btn-sm" data-confirm-delete="true"><span
                                                             class="mdi mdi-delete"></span></a>
                                                 </td>

@@ -8,7 +8,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="">Edit Barang</h3>
+                                <h3 class="">Edit Kategori</h3>
                             </div>
                         </div>
                     </div>
@@ -18,20 +18,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('action.edit.product', $barang->id) }}" class="needs-validation"
-                                    id="addProduct" method="POST" novalidate>
+                                <form action="{{ route('action.edit.category', $kategori->id) }}" class="needs-validation"
+                                    id="editUser" method="POST" novalidate>
                                     @csrf
                                     @method('PUT')
-                                    <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
-                                    <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
-                                    <x-input.group type="number" name="stok" label="Stok Barang"
-                                        prefix="Qty"></x-input.group>
-                                    <x-input.group type="number" name="harga" label="Harga Barang"
-                                        prefix="Rp"></x-input.group>
-                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
-                                    <x-input.option name="kategori_id" label="Kategori Barang"
-                                        :options="$kategoris"></x-input.option>
-                                    <button class="btn btn-primary" type="submit">Update Data</button>
+                                    <x-input.text name="jenis" label="Jenis Kategori"></x-input.text>
+                                    <button id="btnSubmit" class="btn btn-primary" type="submit">Update Data</button>
                                 </form>
                             </div>
                         </div>
@@ -77,12 +69,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#kode_barang').val('{{ $barang->kode_barang }}');
-            $('#nama_barang').val('{{ $barang->nama_barang }}');
-            $('#stok').val('{{ $barang->stok }}');
-            $('#harga').val('{{ $barang->harga }}');
-            $('#kelas').val('{{ $barang->kelas }}');
-            $('#kategori_id').val('{{ $barang->kategori_id }}').change();
+            $('#jenis').val('{{ $kategori->jenis }}');
         });
     </script>
 @endpush

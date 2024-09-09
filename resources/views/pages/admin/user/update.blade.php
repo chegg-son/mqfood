@@ -8,7 +8,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="">Edit Barang</h3>
+                                <h3 class="">Edit User</h3>
                             </div>
                         </div>
                     </div>
@@ -18,20 +18,26 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('action.edit.product', $barang->id) }}" class="needs-validation"
-                                    id="addProduct" method="POST" novalidate>
+                                <form action="{{ route('action.edit.user', $user->id) }}" class="needs-validation"
+                                    id="editUser" method="POST" novalidate>
                                     @csrf
                                     @method('PUT')
-                                    <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
-                                    <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
-                                    <x-input.group type="number" name="stok" label="Stok Barang"
-                                        prefix="Qty"></x-input.group>
-                                    <x-input.group type="number" name="harga" label="Harga Barang"
-                                        prefix="Rp"></x-input.group>
-                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
-                                    <x-input.option name="kategori_id" label="Kategori Barang"
-                                        :options="$kategoris"></x-input.option>
-                                    <button class="btn btn-primary" type="submit">Update Data</button>
+                                    <x-input.text name="name" label="Nama"></x-input.text>
+                                    <x-input.text name="username" label="Username"></x-input.text>
+                                    <x-input.text type="password" name="password" label="Password"
+                                        placeholder="Isi password jika ingin merubahnya"></x-input.text>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Role</label>
+                                        <select name="is_admin" id="is_admin" class="form-select">
+                                            <option value="">Pilih Jenis Role</option>
+                                            <option value="1">Admin</option>
+                                            <option value="0">User</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilih salah satu dari Role yang ada!
+                                        </div>
+                                    </div>
+                                    <button id="btnSubmit" class="btn btn-primary" type="submit">Update Data</button>
                                 </form>
                             </div>
                         </div>
@@ -77,12 +83,9 @@
 
     <script>
         $(document).ready(function() {
-            $('#kode_barang').val('{{ $barang->kode_barang }}');
-            $('#nama_barang').val('{{ $barang->nama_barang }}');
-            $('#stok').val('{{ $barang->stok }}');
-            $('#harga').val('{{ $barang->harga }}');
-            $('#kelas').val('{{ $barang->kelas }}');
-            $('#kategori_id').val('{{ $barang->kategori_id }}').change();
+            $('#name').val('{{ $user->name }}');
+            $('#username').val('{{ $user->username }}');
+            $('#is_admin').val('{{ $user->is_admin }}').change();
         });
     </script>
 @endpush

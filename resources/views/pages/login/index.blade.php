@@ -51,6 +51,7 @@
                             {{-- form submit --}}
                             <form action="{{ route('action.login') }}" method="post">
                                 @csrf
+                                {{-- {{ csrf_field() }} --}}
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
                                     <input name="username" class="form-control" type="text" id="username" required

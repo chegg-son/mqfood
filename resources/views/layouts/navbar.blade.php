@@ -1,4 +1,4 @@
-<div class="navbar-custom">
+<div class="navbar-custom" style="z-index: 1">
     <ul class="list-unstyled topnav-menu float-end mb-0">
 
         <li class="dropdown d-inline-block d-lg-none">
@@ -14,7 +14,7 @@
             </div>
         </li>
 
-        <li class="dropdown notification-list topbar-dropdown">
+        {{-- <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
                 role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-bell noti-icon"></i>
@@ -106,15 +106,15 @@
                 </a>
 
             </div>
-        </li>
+        </li> --}}
 
 
 
         @auth
             <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light rounded" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="assets/images/logos/logo-user-login.svg" alt="user-image" class="rounded-circle">
+                    <i class="fe-settings noti-icon"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                     <!-- item-->
@@ -123,16 +123,11 @@
                                 class="text-danger">{{ auth()->user()->name }}</span></h6>
                     </div>
 
+
                     <!-- item-->
                     <a href="contacts-profile.html" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>My Account</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="auth-lock-screen.html" class="dropdown-item notify-item">
-                        <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
@@ -164,17 +159,17 @@
             </li>
         @endguest
 
-        <li class="dropdown notification-list">
+        {{-- <li class="dropdown notification-list">
             <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                 <i class="fe-settings noti-icon"></i>
             </a>
-        </li>
+        </li> --}}
 
     </ul>
 
     <!-- LOGO -->
     <div class="logo-box">
-        <a href="index.html" class="logo logo-light text-center">
+        <a href="{{ route('home') }}" class="logo logo-light text-center">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -182,7 +177,7 @@
                 <img src="assets/images/logo-light.png" alt="" height="16">
             </span>
         </a>
-        <a href="index.html" class="logo logo-dark text-center">
+        <a href="{{ route('home') }}" class="logo logo-dark text-center">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -199,9 +194,9 @@
             </button>
         </li>
 
-        <li>
+        {{-- <li>
             <h4 class="page-title-main">Marketplace</h4>
-        </li>
+        </li> --}}
 
     </ul>
 

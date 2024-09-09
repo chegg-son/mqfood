@@ -18,7 +18,7 @@ class BarangSeeder extends Seeder
         // using faker
         $faker = Factory::create();
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Barang::create([
                 'kode_barang' => $faker->ean8,
                 'nama_barang' => $faker->realText(30),
