@@ -56,4 +56,9 @@ class ProductsTable extends Component
         ]);
         $this->dispatch('cart_updated');
     }
+
+    // public function showCart()
+    // {
+    //     dd(Cart::session(session()->getId())->getContent());
+    // }
 }

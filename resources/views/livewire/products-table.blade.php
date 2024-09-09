@@ -14,6 +14,9 @@
     <div class="port">
         <div class="row mb-2 justify-content-end">
             <div class="col-md-3">
+                <button class="btn btn-primary">cek isi keranjang</button>
+            </div>
+            <div class="col-md-3">
                 <select wire:click="resetPage" name="category" wire:model="category" class="form-select">
                     <option value="">Semua Kategori</option>
                     @foreach ($kategoris as $kategori)
