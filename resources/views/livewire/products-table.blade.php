@@ -42,8 +42,7 @@
                         </a>
                         <div class="card-body">
                             <h2 class="card-title">{{ $barang->nama_barang }}</h2>
-                            <h4 class="fw-bold">Harga: Rp. {{ number_format($barang->harga, 0, ',', '.') }}
-                            </h4>
+                            <h4 class="fw-bold">Harga: Rp. {{ number_format($barang->harga, 0, ',', '.') }}</h4>
                             <p>Stok: {{ $barang->stok }}</p>
                             @if ($cart->where('id', $barang->id)->count() > 0)
                                 <button class="btn btn-bordered-success w-100 " disabled>Barang sudah di

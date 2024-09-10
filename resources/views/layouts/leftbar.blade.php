@@ -3,7 +3,7 @@
         @auth
             <!-- User box -->
             <div class="user-box text-center">
-                <img src="assets/images/logos/logo-user-login.svg" alt="user-img" title="Mat Helme"
+                <img src="{{ url('assets/images/logos/logo-user-login.svg') }}" alt="user-img" title="Mat Helme"
                     class="rounded-circle img-thumbnail avatar-md">
                 <div class="dropdown">
                     <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
@@ -52,19 +52,19 @@
                 </li>
                 @if (auth()->check() && auth()->user()->is_admin == 1)
                     <li class="menu-title">Administrator Menu</li>
-                    <li>
+                    <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
                         <a href='{{ route('master.product') }}'>
                             <i class="mdi mdi-dropbox"></i>
                             <span> Master Barang </span>
                         </a>
                     </li>
-                    <li>
+                    <li @if (url()->current() == route('add.user')) class="menuitem-active" @endif>
                         <a href='{{ route('users') }}'>
                             <i class="mdi mdi-account-cog-outline"></i>
                             <span> Master User </span>
                         </a>
                     </li>
-                    <li>
+                    <li @if (url()->current() == route('add.category')) class="menuitem-active" @endif>
                         <a href='{{ route('categories') }}'>
                             <i class="mdi mdi-book-cog-outline"></i>
                             <span> Master Kategori </span>
@@ -78,6 +78,14 @@
                             {{-- <span class="badge bg-danger rounded-pill float-end">0</span> --}}
                             @livewire('cart-counter')
                             <span> Keranjang </span>
+                        </a>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href='#'>
+                            <i class="mdi mdi-view-list-outline"></i>
+                            <span class="badge bg-danger rounded-pill float-end">0</span>
+                            <span> Pesanan </span>
                         </a>
                     </li>
                 @endif

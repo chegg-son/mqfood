@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Date;
 use Carbon\Carbon;
+use Hashids\Hashids;
 
 class UserController extends Controller
 {
@@ -101,12 +102,22 @@ class UserController extends Controller
         return redirect()->route('users');
     }
 
-    public function checkout()
+    public function order()
     {
-        $time = Carbon::now()->format('H:i:s');
-        $time = strtotime($time);
-
-        $faktur = Carbon::now()->format('Y-m-') . $time;
-        return view('pages.user.checkout', compact('faktur'));
+        // bagian untuk melihat daftar pesanan serta status pesanan yang sudah dibuat
+        // pesanan memiliki beberapa status seperti pending, paid, success, dan canceled
     }
+
+    // public function checkout()
+    // {
+    //     $time = Carbon::now()->format('H:i:s');
+    //     $time = strtotime($time);
+    //     $sess_id = session()->getId();
+
+    //     $hashids = new Hashids($sess_id);
+    //     $order_id = $hashids->encode(1, 2, 3);
+
+    //     $faktur = Carbon::now()->format('Y-m-') . $time;
+    //     return view('pages.user.checkout', compact('faktur', 'order_id'));
+    // }
 }

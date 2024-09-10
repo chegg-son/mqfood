@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
 use App\Livewire\Counter;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BarangController;
+
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KeranjangController;
 
 // Login Route
 Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -54,7 +55,9 @@ Route::get('/search', [BarangController::class, 'search'])->name('search');
 
 // User Route
 Route::get('users', [UserController::class, 'index'])->name('users');
-Route::get('/checkout', [UserController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::get('/confirmation', [KeranjangController::class, 'konfirmasi'])->name('confirmation')->middleware('auth');
+Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware('auth');
 
 // Livewire Route test
 Route::get('counter', Counter::class);

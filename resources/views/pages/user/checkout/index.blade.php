@@ -39,7 +39,7 @@
                                                     {{ \Carbon\Carbon::now()->translatedFormat('F d, Y') }}</p>
                                                 <p class="m-t-10"><strong>Order Status: </strong> <span
                                                         class="label label-pink">Pending</span></p>
-                                                <p class="m-t-10"><strong>Order ID: </strong> #123456</p>
+                                                <p class="m-t-10"><strong>Order ID: </strong> {{ $order_id }}</p>
                                             </div>
                                         </div><!-- end col -->
                                     </div>
@@ -56,7 +56,8 @@
                                             <a href="javascript:window.print()"
                                                 class="btn btn-dark waves-effect waves-light"><i
                                                     class="fa fa-print"></i></a>
-                                            <a href="#" class="btn btn-primary waves-effect waves-light">Bayar</a>
+                                            <a href="{{ route('confirmation') }}"
+                                                class="btn btn-primary waves-effect waves-light">Check Out</a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
