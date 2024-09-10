@@ -19,19 +19,26 @@
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama<span class="text-danger">*</span></label>
                                     <input type="text" name="nama" parsley-trigger="change" required
-                                        placeholder="Mohon mengisi Nama di sini!" class="form-control" id="nama" />
+                                        class="form-control" id="nama" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="alamat" class="form-label">Alamat<span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="alamat" parsley-trigger="change" required
-                                        placeholder="Mohon mengisi alamat di sini!" class="form-control" id="alamat" />
+                                    <textarea rows="5" type="text" name="alamat" parsley-trigger="change" required class="form-control"
+                                        id="alamat"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="telepon" class="form-label">No. HP<span
                                             class="text-danger">*</span></label>
+
                                     <input type="text" name="telepon" parsley-trigger="change" required
-                                        placeholder="Mohon mengisi telepon di sini!" class="form-control" id="telepon" />
+                                        placeholder="Isi dengan format awalan 62851xxxxx" class="form-control"
+                                        id="telepon" />
+
+
+                                </div>
+                                <div class="d-grid mb-2">
+                                    <button class="btn btn-primary waves-effect">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -40,7 +47,9 @@
                         <div class="card">
                             <div class="card-footer">
                                 <h3>Daftar Keranjang</h3>
-                                <table class="table">
+                            </div>
+                            <div class="card-body">
+                                <table class="table border">
                                     <thead class="table-secondary">
                                         <tr>
                                             <th>Barang</th>
@@ -57,23 +66,17 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2">Total</td>
-                                            <td>11</td>
+                                            <td colspan="2"><strong>Subtotal</strong></td>
+                                            <td>{{ $subtotal }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><strong>Total</strong></td>
+                                            <td><strong>{{ $subtotal }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-end">
-                                    <button class="btn btn-secondary waves-effect">Kembali</button>
-                                    <button class="btn btn-primary waves-effect">Submit</button>
-                                </div>
+
+
                             </div>
                         </div>
                     </div>
