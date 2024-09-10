@@ -62,16 +62,16 @@
                                             <tr>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->quantity }}</td>
-                                                <td>{{ $item->price }}</td>
+                                                <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
                                         <tr>
                                             <td colspan="2"><strong>Subtotal</strong></td>
-                                            <td>{{ $subtotal }}</td>
+                                            <td>Rp. {{ number_format($subtotal, 0, ',', '.') }}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"><strong>Total</strong></td>
-                                            <td><strong>{{ $subtotal }}</strong></td>
+                                            <td><strong>Rp. {{ number_format($subtotal, 0, ',', '.') }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
