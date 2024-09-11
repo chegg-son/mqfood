@@ -57,6 +57,7 @@ Route::get('/search', [BarangController::class, 'search'])->name('search');
 Route::get('users', [UserController::class, 'index'])->name('users');
 Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkout')->middleware('auth');
 Route::get('/confirmation', [KeranjangController::class, 'confirmation'])->name('confirmation')->middleware('auth');
+Route::post('/confirmation', [KeranjangController::class, 'actionconfirm'])->name('action.confirmation')->middleware('auth');
 Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware('auth');
 
 // Livewire Route test
