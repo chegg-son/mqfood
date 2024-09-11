@@ -16,28 +16,17 @@
                                 <h3>Keterangan</h3>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="{{ route('action.confirmation') }}" class="needs-validation"
-                                    novalidate>
+                                <form method="post" action="{{ route('action.confirmation') }}" novalidate>
                                     @csrf
-                                    <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama<span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" name="nama" parsley-trigger="change" required
-                                            class="form-control" id="nama" />
-                                    </div>
-                                    <div class="mb-3">
+                                    <x-input.text name="nama" label="Nama"></x-input.text>
+                                    {{-- <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat<span
                                                 class="text-danger">*</span></label>
                                         <textarea rows="5" type="text" name="alamat" parsley-trigger="change" required class="form-control"
                                             id="alamat"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="telepon" class="form-label">No. HP<span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" name="telepon" parsley-trigger="change" required
-                                            placeholder="Isi dengan format awalan 62851xxxxx" class="form-control"
-                                            id="telepon" />
-                                    </div>
+                                    </div> --}}
+                                    <x-input.textarea name="alamat" label="Alamat"></x-input.textarea>
+                                    <x-input.text name="telepon" label="No. Hp"></x-input.text>
                                     <div class="d-grid mb-2">
                                         <button class="btn btn-primary waves-effect">Submit</button>
                                     </div>
