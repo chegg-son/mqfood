@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Hashids\Hashids;
+use App\Models\Barang;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Models\TransaksiDetail;
@@ -79,8 +80,13 @@ class KeranjangController extends Controller
                 'price' => $item->price,
                 'attributes' => $item->attributes
             ]);
+            $barang = Barang::find($item->id);
+            $barang->stok = $barang->stok - $item->quantity;
+            $barang->save();
         }
+        $cart->clear();
 
+        flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Barang berhasil dipesan!');
         return redirect()->route('orders');
     }
 }
