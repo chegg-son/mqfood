@@ -14,13 +14,13 @@
                                 <div class="panel-body">
                                     <div class="clearfix">
                                         <div class="float-start">
-                                            <h3>Adminto</h3>
+                                            <h3>Daftar Barang</h3>
                                         </div>
-                                        <div class="float-end">
+                                        {{-- <div class="float-end">
                                             <h4>Faktur # <br>
                                                 <strong>{{ $faktur }}</strong>
                                             </h4>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <hr>
                                     <div class="row">

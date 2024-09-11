@@ -80,7 +80,6 @@
                             <span> Keranjang </span>
                         </a>
                     </li>
-                    <hr>
                     <li>
                         <a href='#'>
                             <i class="mdi mdi-view-list-outline"></i>

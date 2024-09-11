@@ -20,6 +20,6 @@ class Barang extends Model
 
     public function transaksi_detail()
     {
-        return $this->belongsTo(Transaksi_Detail::class);
+        return $this->belongsTo(TransaksiDetail::class);
     }
 }
