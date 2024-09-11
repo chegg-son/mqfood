@@ -16,7 +16,9 @@
                                 <h3>Keterangan</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('action.confirmation') }}">
+                                <form method="post" action="{{ route('action.confirmation') }}" class="needs-validation"
+                                    novalidate>
+                                    @csrf
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama<span
                                                 class="text-danger">*</span></label>
