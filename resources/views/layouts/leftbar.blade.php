@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li @if (url()->current() == route('add.user')) class="menuitem-active" @endif>
-                        <a href='{{ route('users') }}'>
+                        <a href='{{ route('master.user') }}'>
                             <i class="mdi mdi-account-cog-outline"></i>
                             <span> Master User </span>
                         </a>

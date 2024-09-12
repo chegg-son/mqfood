@@ -21,6 +21,14 @@ Route::middleware(['isAdmin'])->group(function () {
         return view('pages.admin.index');
     })->name('admin.panel');
 
+    // Management Users Route
+    Route::get('/users', [UserController::class, 'index'])->name('master.user');
+    Route::get('/users/create', [UserController::class, 'create'])->name('add.user');
+    Route::post('/users', [UserController::class, 'store'])->name('action.add.user');
+    Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit.user');
+    Route::put('edit-user/{id}', [UserController::class, 'update'])->name('action.edit.user');
+    Route::delete('/delete-user/{id}', [UserController::class, 'destroy'])->name('delete.user');
+
     // Barang Route
     Route::get('/products', [BarangController::class, 'index'])->name('master.product');
     Route::get('/products/create', [BarangController::class, 'create'])->name('add.product');
@@ -29,13 +37,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('edit-product/{id}', [BarangController::class, 'update'])->name('action.edit.product');
     Route::delete('/delete-product/{id}', [BarangController::class, 'destroy'])->name('delete.product');
 
-    // Management Users Route
-    Route::get('users', [UserController::class, 'index'])->name('users');
-    Route::get('/users/create', [UserController::class, 'create'])->name('add.user');
-    Route::post('users', [UserController::class, 'store'])->name('action.add.user');
-    Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit.user');
-    Route::put('edit-user/{id}', [UserController::class, 'update'])->name('action.edit.user');
-    Route::delete('/delete-user/{id}', [UserController::class, 'destroy'])->name('delete.user');
+
 
     // Management Categorys Route
     Route::get('categories', [KategoriController::class, 'index'])->name('categories');
@@ -54,7 +56,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [BarangController::class, 'search'])->name('search');
 
 // User Route
-Route::get('users', [UserController::class, 'index'])->name('users');
 Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkout')->middleware('auth');
 Route::get('/confirmation', [KeranjangController::class, 'confirmation'])->name('confirmation')->middleware('auth');
 Route::post('/confirmation', [KeranjangController::class, 'actionconfirm'])->name('action.confirmation')->middleware('auth');

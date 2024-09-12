@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Date;
 use Carbon\Carbon;
 use Hashids\Hashids;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -29,7 +30,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|',
+            'name' => 'required|string',
             'username' => 'required|string|unique:users',
             'password' => 'required|string',
             'is_admin' => 'required|boolean'
@@ -49,8 +50,9 @@ class UserController extends Controller
             'password' => $hashedpassword,
             'is_admin' => $request->is_admin,
         ]);
+
         flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil ditambahkan!');
-        return redirect()->route('users');
+        return redirect()->route('master.user');
     }
 
     public function edit($id)
@@ -80,7 +82,7 @@ class UserController extends Controller
                 'is_admin' => $request->is_admin,
             ]);
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil diubah!');
-            return redirect()->route('users');
+            return redirect()->route('master.user');
         } else {
             $user->update([
                 'name' => $request->name,
@@ -89,7 +91,7 @@ class UserController extends Controller
                 'is_admin' => $request->is_admin,
             ]);
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil diubah!');
-            return redirect()->route('users');
+            return redirect()->route('master.user');
         }
     }
 
@@ -99,7 +101,7 @@ class UserController extends Controller
         if ($user->delete()) {
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil dihapus!');
         }
-        return redirect()->route('users');
+        return redirect()->route('master.user');
     }
 
     public function order()

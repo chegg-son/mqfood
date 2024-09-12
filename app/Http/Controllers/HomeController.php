@@ -10,8 +10,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // $barangs = Barang::latest()->paginate(12);
-        // return view('pages.home.index', compact('barangs', 'kategoris'));
         return view('pages.home.index');
     }
 }
