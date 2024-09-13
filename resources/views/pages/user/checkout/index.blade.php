@@ -28,19 +28,19 @@
 
                                             <div class="float-start mt-3">
                                                 <address>
-                                                    <strong>Yayasan Permata Sunnah</strong><br>
+                                                    <strong>Pesantren Islam Al Irsyad Tengaran 7</strong><br>
                                                     Jl. Mojowarno No 63, Mojorejo, Junrejo, Kota Batu<br>
                                                     Jawa Timur, ID 65322<br>
-                                                    <span class="mdi mdi-phone">:</span> (0341) 513-262
+                                                    <span class="mdi mdi-phone"></span> (0341) 513-262
                                                 </address>
                                             </div>
-                                            <div class="float-end mt-3">
+                                            {{-- <div class="float-end mt-3">
                                                 <p><strong>Order Date: </strong>
                                                     {{ \Carbon\Carbon::now()->translatedFormat('F d, Y') }}</p>
                                                 <p class="m-t-10"><strong>Order Status: </strong> <span
                                                         class="label label-pink">Pending</span></p>
                                                 <p class="m-t-10"><strong>Order ID: </strong> {{ $order_id }}</p>
-                                            </div>
+                                            </div> --}}
                                         </div><!-- end col -->
                                     </div>
                                     <!-- end row -->
@@ -53,9 +53,9 @@
                                     <hr>
                                     <div class="d-print-none">
                                         <div class="float-end">
-                                            <a href="javascript:window.print()"
+                                            {{-- <a href="javascript:window.print()"
                                                 class="btn btn-dark waves-effect waves-light"><i
-                                                    class="fa fa-print"></i></a>
+                                                    class="fa fa-print"></i></a> --}}
                                             <a href="{{ route('confirmation') }}"
                                                 class="btn btn-primary waves-effect waves-light">Check Out</a>
                                         </div>

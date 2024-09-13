@@ -83,7 +83,6 @@
                     <li>
                         <a href='#'>
                             <i class="mdi mdi-view-list-outline"></i>
-                            <span class="badge bg-danger rounded-pill float-end">0</span>
                             <span> Pesanan </span>
                         </a>
                     </li>

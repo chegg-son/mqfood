@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\TransaksiDetail;
 use Illuminate\Support\Facades\Auth;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
+use Livewire\Livewire;
+
 
 class KeranjangController extends Controller
 {
@@ -35,6 +37,12 @@ class KeranjangController extends Controller
     {
         $cart = Cart::session(session()->getId());
         $cart_items = $cart->getContent();
+
+        if (count($cart_items) == 0) {
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->error('Keranjang belanja masih kosong!');
+            return back();
+        }
+
         $subtotal = $cart->getSubTotal();
         return view('pages.user.confirmation.index', compact('cart_items', 'subtotal'));
     }
@@ -50,12 +58,15 @@ class KeranjangController extends Controller
 
         $request->validate([
             'nama' => 'required|string|min:3',
+            'kelas' => 'required|string',
+            'keterangan' => 'string|nullable',
             'alamat' => 'required|string',
             'telepon' => 'required|numeric',
         ], [
 
             'nama.required' => 'Nama harus diisi!',
             'nama.min' => 'Nama minimal 3 karakter!',
+            'kelas.required' => 'Kelas harus diisi!',
             'alamat.required' => 'Alamat harus diisi!',
             'telepon.required' => 'Telepon harus diisi!',
             'telepon.numeric' => 'Telepon harus berupa angka!',
@@ -64,6 +75,7 @@ class KeranjangController extends Controller
         $transaksi = Transaksi::create([
             'user_id' => Auth::user()->id,
             'faktur' => $faktur,
+            'tanggal_transaksi' => Carbon::now(),
             'order_id' => $order_id,
             'total' => $subtotal,
             'status' => 'pending',

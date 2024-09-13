@@ -12,7 +12,7 @@
     </div> --}}
 
     <div class="port">
-        <div class="row mb-2 justify-content-end">
+        <div class="row mt-2 mb-4 justify-content-end">
             <div class="col-md-3">
                 <button wire:click="showCart" class="btn btn-primary">cek isi keranjang</button>
             </div>
@@ -42,7 +42,8 @@
                         </a>
                         <div class="card-body">
                             <h2 class="card-title">{{ $barang->nama_barang }}</h2>
-                            <h4 class="fw-bold">Harga: Rp. {{ number_format($barang->harga, 0, ',', '.') }}</h4>
+                            <h4 class="fw-bold"><strong> Rp. {{ number_format($barang->harga, 0, ',', '.') }}</strong>
+                            </h4>
                             <p>Stok: {{ $barang->stok }}</p>
                             @if ($cart->where('id', $barang->id)->count() > 0)
                                 <button class="btn btn-bordered-success w-100 " disabled>Barang sudah di

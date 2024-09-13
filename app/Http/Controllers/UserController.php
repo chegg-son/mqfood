@@ -104,10 +104,9 @@ class UserController extends Controller
         return redirect()->route('master.user');
     }
 
-    public function order()
+    public function orders()
     {
-        // bagian untuk melihat daftar pesanan serta status pesanan yang sudah dibuat
-        // pesanan memiliki beberapa status seperti pending, paid, success, dan canceled
+        return view('pages.user.order.index');
     }
 
     // public function checkout()

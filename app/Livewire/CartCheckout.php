@@ -54,5 +54,6 @@ class CartCheckout extends Component
         $cart = Cart::session(session()->getId());
         $cart->remove($id);
         flash()->option('position', 'bottom-right')->option('timeout', 2000)->success('Berhasil dihapus!');
+        $this->dispatch('cart_updated');
     }
 }

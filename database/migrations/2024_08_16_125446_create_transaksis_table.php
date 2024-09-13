@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('total');
             $table->string('status');
             $table->string('nama');
+            $table->string('kelas');
+            $table->string('keterangan');
             $table->string('alamat');
             $table->string('telepon');
 

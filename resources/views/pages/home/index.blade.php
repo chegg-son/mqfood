@@ -27,7 +27,7 @@
                                         <i class="mdi mdi-dots-horizontal"></i>
                                     </a>
                                 </div>
-                                <h3>Ahlan wa sahlan!</h3>
+                                <h1>Ahlan wa sahlan!</h1>
                                 <p>Silahkan berbelanja di Katalog kami.</p>
                             </div>
                         </div>

@@ -43,11 +43,11 @@
     </table>
     <div class="row justify-content-end">
         <div class="col-xl-3 col-6 offset-xl-3">
-            <p class="text-end"><b>Sub-total:</b> {{ $subtotal }}</p>
+            <p class="text-end"><b>Sub-total: Rp. </b> {{ number_format($subtotal, 0, ',', '.') }}</p>
             {{-- <p class="text-end">Discount: 12.9%</p> --}}
             {{-- <p class="text-end">VAT: 12.9%</p> --}}
             <hr>
-            <h3 class="text-end">IDR {{ $subtotal }}</h3>
+            <h3 class="text-end"> <strong>Total</strong> Rp. {{ number_format($subtotal, 0, ',', '.') }}</h3>
         </div>
     </div>
 </div>

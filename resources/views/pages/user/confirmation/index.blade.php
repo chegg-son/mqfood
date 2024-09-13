@@ -19,14 +19,9 @@
                                 <form method="post" action="{{ route('action.confirmation') }}" novalidate>
                                     @csrf
                                     <x-input.text name="nama" label="Nama"></x-input.text>
-                                    {{-- <div class="mb-3">
-                                        <label for="alamat" class="form-label">Alamat<span
-                                                class="text-danger">*</span></label>
-                                        <textarea rows="5" type="text" name="alamat" parsley-trigger="change" required class="form-control"
-                                            id="alamat"></textarea>
-                                    </div> --}}
-                                    <x-input.textarea name="alamat" label="Alamat"></x-input.textarea>
-                                    <x-input.text name="telepon" label="No. Hp"></x-input.text>
+                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
+                                    <x-input.textarea name="keterangan" label="Keterangan"></x-input.textarea>
+                                    <x-input.text name="telepon" label="No. Hp Orang Tua"></x-input.text>
                                     <div class="d-grid mb-2">
                                         <button class="btn btn-primary waves-effect">Submit</button>
                                     </div>
