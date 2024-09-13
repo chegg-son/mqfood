@@ -20,10 +20,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('action.add.product') }}" class="needs-validation" id="addProduct"
-                                    method="post" novalidate>
+                                    method="post" novalidate enctype="multipart/form-data">
                                     @csrf
                                     <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
-                                    <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
+                                    <x-input.text name="nama_barang" label="Nama Barang"></x-input.text>
+                                    <x-input.file name="gambar_barang" label="Gambar Barang"></x-input.file>
                                     <x-input.group type="number" name="stok" label="Stok Barang"
                                         prefix="Qty"></x-input.group>
                                     <x-input.group type="number" name="harga" label="Harga Barang"

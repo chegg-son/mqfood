@@ -38,7 +38,9 @@
 
                     <div class="card p-1">
                         <a href="{{ route('show.product', $barang->id) }}">
-                            <img class="card-img-top img-fluid" src="assets/images/gallery/11.jpg" alt="Card cap">
+                            <img class="card-img-top img-fluid"
+                                src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}" alt=""
+                                width="150px">
                         </a>
                         <div class="card-body">
                             <h2 class="card-title">{{ $barang->nama_barang }}</h2>
