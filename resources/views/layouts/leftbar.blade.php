@@ -74,14 +74,12 @@
                     <li>
                         <a href={{ route('checkout') }}>
                             <i class="mdi mdi-cart-variant"></i>
-                            {{-- catatan jika item 0 maka hide dari database --}}
-                            {{-- <span class="badge bg-danger rounded-pill float-end">0</span> --}}
                             @livewire('cart-counter')
                             <span> Keranjang </span>
                         </a>
                     </li>
                     <li>
-                        <a href='#'>
+                        <a href='{{ route('orders') }}'>
                             <i class="mdi mdi-view-list-outline"></i>
                             <span> Pesanan </span>
                         </a>

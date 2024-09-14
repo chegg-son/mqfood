@@ -20,5 +20,12 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345'),
             'is_admin' => true
         ]);
+
+        User::create([
+            'name' => 'Si Flan User',
+            'username' => 'user',
+            'password' => bcrypt('12345'),
+            'is_admin' => false
+        ]);
     }
 }

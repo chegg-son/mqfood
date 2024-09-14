@@ -18,7 +18,8 @@ class Transaksi extends Model
         'total',
         'status',
         'nama',
-        'alamat',
+        'kelas',
+        'keterangan',
         'telepon',
     ];
 

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use Illuminate\Support\Facades\Date;
 use Carbon\Carbon;
+use App\Models\User;
 use Hashids\Hashids;
+use App\Models\Transaksi;
+use App\Models\TransaksiDetail;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -106,19 +109,15 @@ class UserController extends Controller
 
     public function orders()
     {
-        return view('pages.user.order.index');
+        $id = Auth::user()->id;
+        $orders = Transaksi::where('user_id', $id)->get();
+        return view('pages.user.order.index', compact('orders'));
     }
 
-    // public function checkout()
-    // {
-    //     $time = Carbon::now()->format('H:i:s');
-    //     $time = strtotime($time);
-    //     $sess_id = session()->getId();
-
-    //     $hashids = new Hashids($sess_id);
-    //     $order_id = $hashids->encode(1, 2, 3);
-
-    //     $faktur = Carbon::now()->format('Y-m-') . $time;
-    //     return view('pages.user.checkout', compact('faktur', 'order_id'));
-    // }
+    public function orderdetail($id)
+    {
+        $order = Transaksi::findOrFail($id);
+        $order_detail = TransaksiDetail::where('transaksi_id', $id)->get();
+        return view('pages.user.order.detail', compact('order', 'order_detail'));
+    }
 }

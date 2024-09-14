@@ -59,15 +59,13 @@ class KeranjangController extends Controller
         $request->validate([
             'nama' => 'required|string|min:3',
             'kelas' => 'required|string',
-            'keterangan' => 'string|nullable',
-            'alamat' => 'required|string',
+            'keterangan' => 'nullable|string',
             'telepon' => 'required|numeric',
         ], [
 
             'nama.required' => 'Nama harus diisi!',
             'nama.min' => 'Nama minimal 3 karakter!',
             'kelas.required' => 'Kelas harus diisi!',
-            'alamat.required' => 'Alamat harus diisi!',
             'telepon.required' => 'Telepon harus diisi!',
             'telepon.numeric' => 'Telepon harus berupa angka!',
         ]);
@@ -80,12 +78,14 @@ class KeranjangController extends Controller
             'total' => $subtotal,
             'status' => 'pending',
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
+            'kelas' => $request->kelas,
+            'keterangan' => empty($request->keterangan) ? '' : $request->keterangan,
             'telepon' => $request->telepon,
         ]);
 
+
         foreach ($cart_items as $item) {
-            TransaksiDetail::create([
+            $transaksi_detail =  TransaksiDetail::create([
                 'transaksi_id' => $transaksi->id,
                 'barang_id' => $item->id,
                 'quantity' => $item->quantity,
@@ -96,9 +96,18 @@ class KeranjangController extends Controller
             $barang->stok = $barang->stok - $item->quantity;
             $barang->save();
         }
-        $cart->clear();
 
+        $cart->clear();
         flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Barang berhasil dipesan!');
-        return redirect()->route('orders');
+        return redirect()->route('show.confirmation', [
+            'id' => $transaksi->id,
+            'detail' => $transaksi_detail->id
+        ],);
+    }
+
+    public function showconfirmation($id, $detail)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        return view('pages.user.confirmation.show', compact('transaksi'));
     }
 }

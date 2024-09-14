@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kelas');
             $table->string('keterangan');
-            $table->string('alamat');
             $table->string('telepon');
 
             $table->timestamps();
