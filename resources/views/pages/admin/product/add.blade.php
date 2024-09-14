@@ -20,10 +20,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('action.add.product') }}" class="needs-validation" id="addProduct"
-                                    method="post" novalidate>
+                                    method="post" novalidate enctype="multipart/form-data">
                                     @csrf
                                     <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
-                                    <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
+                                    <x-input.text name="nama_barang" label="Nama Barang"></x-input.text>
+                                    <x-input.file name="gambar_barang" label="Gambar Barang"></x-input.file>
                                     <x-input.group type="number" name="stok" label="Stok Barang"
                                         prefix="Qty"></x-input.group>
                                     <x-input.group type="number" name="harga" label="Harga Barang"
@@ -45,16 +46,15 @@
 @endsection
 
 @push('scripts')
-    <script></script>
     <!-- Vendor -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ url('assets/js/app.min.js') }}"></script>
 @endpush

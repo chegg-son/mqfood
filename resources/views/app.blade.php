@@ -13,7 +13,7 @@
     <link href={{ asset('assets/css/app.min.css') }} rel="stylesheet" type="text/css" id="app-style" />
     <link href={{ asset('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
     <!-- Sweet Alert-->
-    <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     @stack('styles')
 </head>

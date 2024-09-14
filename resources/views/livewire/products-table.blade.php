@@ -12,7 +12,7 @@
     </div> --}}
 
     <div class="port">
-        <div class="row mb-2 justify-content-end">
+        <div class="row mt-2 mb-4 justify-content-end">
             <div class="col-md-3">
                 <button wire:click="showCart" class="btn btn-primary">cek isi keranjang</button>
             </div>
@@ -37,12 +37,13 @@
                 <div class="col-md-6 col-xl-3 {{ $barang->kategori->jenis }}">
 
                     <div class="card p-1">
-                        <a href="{{ route('show.product', $barang->id) }}">
-                            <img class="card-img-top img-fluid" src="assets/images/gallery/11.jpg" alt="Card cap">
+                        <a class="text-center" href="{{ route('show.product', $barang->id) }}">
+                            <img class=" img-responsive" src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}"
+                                alt="" style="width: 250px; height: 250px">
                         </a>
                         <div class="card-body">
                             <h2 class="card-title">{{ $barang->nama_barang }}</h2>
-                            <h4 class="fw-bold">Harga: Rp. {{ number_format($barang->harga, 0, ',', '.') }}
+                            <h4 class="fw-bold"><strong> Rp. {{ number_format($barang->harga, 0, ',', '.') }}</strong>
                             </h4>
                             <p>Stok: {{ $barang->stok }}</p>
                             @if ($cart->where('id', $barang->id)->count() > 0)

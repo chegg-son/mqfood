@@ -2,18 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Hashids\Hashids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $fillable = ['jenis_transaksi', 'faktur', 'nota'];
+    protected $fillable = [
+        'user_id',
+        'faktur',
+        'tanggal_transaksi',
+        'order_id',
+        'total',
+        'status',
+        'nama',
+        'kelas',
+        'keterangan',
+        'telepon',
+    ];
 
-    public function detail()
+    public function user()
     {
-        return $this->hasMany(Transaksi_Detail::class);
+        return $this->belongsTo(User::class);
     }
 }

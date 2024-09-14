@@ -39,7 +39,10 @@ class ProductsTable extends Component
         return view('livewire.products-table', compact('barangs', 'kategoris', 'cart'));
     }
 
-    public function searchProducts() {}
+    public function searchProducts()
+    {
+        // untuk mentrigger submit button
+    }
 
 
     public function addToCart($id)

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\Transaksi_Detail;
+use App\Models\TransaksiDetail;
 use Faker\Factory;
 
 class TransaksiDetailSeeder extends Seeder
@@ -18,7 +18,7 @@ class TransaksiDetailSeeder extends Seeder
         $faker = Factory::create();
 
         for ($i = 0; $i < 10; $i++) {
-            Transaksi_Detail::created([
+            TransaksiDetail::created([
                 'keterangan' => $faker->sentence,
             ]);
         }

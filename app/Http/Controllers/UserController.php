@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use App\Models\User;
+use Hashids\Hashids;
+use App\Models\Transaksi;
+use App\Models\TransaksiDetail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,7 +33,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|',
+            'name' => 'required|string',
             'username' => 'required|string|unique:users',
             'password' => 'required|string',
             'is_admin' => 'required|boolean'
@@ -46,8 +53,9 @@ class UserController extends Controller
             'password' => $hashedpassword,
             'is_admin' => $request->is_admin,
         ]);
+
         flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil ditambahkan!');
-        return redirect()->route('users');
+        return redirect()->route('master.user');
     }
 
     public function edit($id)
@@ -77,7 +85,7 @@ class UserController extends Controller
                 'is_admin' => $request->is_admin,
             ]);
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil diubah!');
-            return redirect()->route('users');
+            return redirect()->route('master.user');
         } else {
             $user->update([
                 'name' => $request->name,
@@ -86,7 +94,7 @@ class UserController extends Controller
                 'is_admin' => $request->is_admin,
             ]);
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil diubah!');
-            return redirect()->route('users');
+            return redirect()->route('master.user');
         }
     }
 
@@ -96,6 +104,20 @@ class UserController extends Controller
         if ($user->delete()) {
             flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('User berhasil dihapus!');
         }
-        return redirect()->route('users');
+        return redirect()->route('master.user');
+    }
+
+    public function orders()
+    {
+        $id = Auth::user()->id;
+        $orders = Transaksi::where('user_id', $id)->get();
+        return view('pages.user.order.index', compact('orders'));
+    }
+
+    public function orderdetail($id)
+    {
+        $order = Transaksi::findOrFail($id);
+        $order_detail = TransaksiDetail::where('transaksi_id', $id)->get();
+        return view('pages.user.order.detail', compact('order', 'order_detail'));
     }
 }

@@ -11,7 +11,7 @@ class Barang extends Model
 
     protected $guarded = ['id'];
     // kategori_id masih belum dihapus
-    protected $fillable = ['kode_barang', 'nama_barang', 'stok', 'harga', 'kelas', 'kategori_id'];
+    protected $fillable = ['kode_barang', 'nama_barang', 'gambar_barang', 'stok', 'harga', 'kelas', 'kategori_id'];
 
     public function kategori()
     {
@@ -20,6 +20,6 @@ class Barang extends Model
 
     public function transaksi_detail()
     {
-        return $this->belongsTo(Transaksi_Detail::class);
+        return $this->belongsTo(TransaksiDetail::class);
     }
 }
