@@ -26,7 +26,7 @@ class BarangController extends Controller
         return view('pages.admin.product.add', compact('kategoris'));
     }
 
-    public function store(Request $request, FlasherInterface $flasher)
+    public function store(Request $request)
     {
         $request->validate([
             'kode_barang' => 'required|string|unique:barangs',

@@ -37,9 +37,6 @@
             </div>
         @endauth
 
-
-
-
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul id="side-menu">
@@ -50,6 +47,14 @@
                         <span> Beranda </span>
                     </a>
                 </li>
+                @if (auth()->check() && auth()->user()->is_admin == 1)
+                    <li>
+                        <a href="{{ route('orders') }}">
+                            <i class="mdi mdi-home"></i>
+                            <span> Daftar Pesanan </span>
+                        </a>
+                    </li>
+                @endif
                 @if (auth()->check() && auth()->user()->is_admin == 1)
                     <li class="menu-title">Administrator Menu</li>
                     <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>

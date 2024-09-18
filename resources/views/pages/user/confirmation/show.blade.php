@@ -39,7 +39,8 @@
                                     <li>Total Pembayaran: <strong>Rp.
                                             {{ number_format($transaksi->total, 0, ',', '.') }}</strong></li>
                                 </ul>
-                                <p>Sudah melakukan pembayaran? bisa upload bukti pembayaran <a href="#">disini</a> 👈
+                                <p>Sudah melakukan pembayaran? bisa upload bukti pembayaran <a
+                                        href="{{ route('show.payment', $transaksi->id) }}">disini</a> 👈
                                 </p>
                                 <div>
                                     <a href="{{ route('checkout') }}" class="btn btn-danger"><span

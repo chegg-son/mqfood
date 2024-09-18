@@ -37,8 +37,6 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('edit-product/{id}', [BarangController::class, 'update'])->name('action.edit.product');
     Route::delete('/delete-product/{id}', [BarangController::class, 'destroy'])->name('delete.product');
 
-
-
     // Management Categorys Route
     Route::get('categories', [KategoriController::class, 'index'])->name('categories');
     Route::get('/categories/create', [KategoriController::class, 'create'])->name('add.category');
@@ -46,6 +44,10 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/edit-category/{id}', [KategoriController::class, 'edit'])->name('edit.category');
     Route::put('edit-category/{id}', [KategoriController::class, 'update'])->name('action.edit.category');
     Route::delete('/delete-category/{id}', [KategoriController::class, 'destroy'])->name('delete.category');
+
+    // Orders Route Management
+    Route::get('orders', [UserController::class, 'orders'])->name('order');
+    Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail');
 });
 
 // Barang Route Show
@@ -63,6 +65,8 @@ Route::get('/confirmation/{id}/show/{detail}', [KeranjangController::class, 'sho
 Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware('auth');
 Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail')->middleware('auth');
 Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth');
+Route::get('orders/{id}/payment', [UserController::class, 'showPayment'])->name('show.payment')->middleware('auth');
+Route::post('orders/{id}/payment', [UserController::class, 'actionPayment'])->name('action.payment')->middleware('auth');
 
 // Livewire Route test
 Route::get('counter', Counter::class);

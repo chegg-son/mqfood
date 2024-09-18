@@ -28,7 +28,6 @@
                             </div>
 
                             <div class="col-xl-4">
-
                                 <div class="card">
                                     <div class="card-header">
                                         <h3 class="text-center fw-bold">Detail Barang</h3>

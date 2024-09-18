@@ -107,11 +107,42 @@ class UserController extends Controller
         return redirect()->route('master.user');
     }
 
+    public function showPayment($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        return view('pages.user.order.payment', compact('transaksi'));
+    }
+
+    public function actionPayment(Request $request, $id)
+    {
+        $request->validate(
+            [
+                'bukti_transfer' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            ],
+            [
+                'bukti_transfer.required' => 'Bukti transfer harus diisi!',
+                'bukti_transfer.image' => 'Bukti transfer harus berupa gambar!',
+                'bukti_transfer.mimes' => 'Bukti transfer harus berupa jpeg,png,jpg!',
+                'bukti_transfer.max' => 'Bukti transfer maksimal 1 MB!',
+            ]
+        );
+
+        $transaksi = Transaksi::findOrFail($id);
+        $file = $request->file('bukti_transfer');
+        $file->storeAs('public/bayar/' . Auth::user()->id . '/' . $transaksi->id, $file->hashName());
+        $transaksi->update([
+            'bukti_transfer' => $file->hashName(),
+        ]);
+    }
+
     public function orders()
     {
-
         $id = Auth::user()->id;
         $orders = Transaksi::where('user_id', $id)->get();
+        $admin_orders = Transaksi::all();
+        if (Auth::user()->is_admin == 1) {
+            return view('pages.admin.order.index', compact('admin_orders'));
+        }
         return view('pages.user.order.index', compact('orders'));
     }
 
@@ -119,12 +150,14 @@ class UserController extends Controller
     {
         $order = Transaksi::findOrFail($id);
         $order_detail = TransaksiDetail::where('transaksi_id', $id)->get();
+        if (Auth::user()->is_admin == 1) {
+            return view('pages.admin.order.detail', compact('order', 'order_detail'));
+        }
         return view('pages.user.order.detail', compact('order', 'order_detail'));
     }
 
     public function cancelOrder($id)
     {
-
         $order = Transaksi::findOrFail($id);
         $order->update([
             'status' => 'canceled',
