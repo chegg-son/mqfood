@@ -34,9 +34,17 @@
                             <div>
                                 <h3><strong>Total : Rp. {{ number_format($order->total, 0, ',', '.') }}</strong></h3>
                             </div>
-                            <div class="text-end">
-                                <a class="btn btn-danger waves-effect" href="#">Batalkan Pesanan?</a>
-                            </div>
+                            @if ($order->status == 'canceled')
+                            @else
+                                <div class="text-end">
+                                    <form action="{{ route('cancel.order', $order->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="btn btn-danger waves-effect ">Batalkan
+                                            Pesanan?</button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
 
                     </div>

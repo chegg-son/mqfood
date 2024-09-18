@@ -15,11 +15,12 @@
                             <table class="table ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
+                                        <th scope="col" class="col-1">No</th>
                                         <th scope="col">Order ID</th>
+                                        <th scope="col">Tanggal Order</th>
                                         <th scope="col">Total</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col" class="col-1">Status</th>
+                                        <th scope="col" class="col-1">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -27,17 +28,18 @@
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $order->order_id }}</td>
+                                            <td>{{ $order->tanggal_transaksi }}</td>
                                             <td>Rp. {{ number_format($order->total, 0, ',', '.') }}</td>
                                             <td>
                                                 @if ($order->status == 'pending')
                                                     <a
-                                                        class="btn btn-sm btn-outline-secondary rounded waves-effect">{{ $order->status }}</a>
+                                                        class="btn btn-sm w-100 btn-outline-secondary rounded waves-effect">{{ $order->status }}</a>
                                                 @elseif ($order->status == 'sukses')
                                                     <a
-                                                        class="btn btn-sm btn-outline-primary rounded waves-effect">{{ $order->status }}</a>
-                                                @elseif ($order->status == 'cancel')
+                                                        class="btn btn-sm w-100 btn-outline-primary rounded waves-effect">{{ $order->status }}</a>
+                                                @elseif ($order->status == 'canceled')
                                                     <a
-                                                        class="btn btn-sm btn-outline-danger rounded waves-effect">{{ $order->status }}</a>
+                                                        class="btn btn-sm w-100 btn-outline-danger rounded waves-effect">{{ $order->status }}</a>
                                                 @endif
                                             </td>
                                             <td>

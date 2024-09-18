@@ -62,6 +62,7 @@ Route::post('/confirmation', [KeranjangController::class, 'actionconfirm'])->nam
 Route::get('/confirmation/{id}/show/{detail}', [KeranjangController::class, 'showconfirmation'])->name('show.confirmation')->middleware('auth');
 Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware('auth');
 Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail')->middleware('auth');
+Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth');
 
 // Livewire Route test
 Route::get('counter', Counter::class);

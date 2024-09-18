@@ -38,8 +38,9 @@
 
                     <div class="card p-1">
                         <a class="text-center" href="{{ route('show.product', $barang->id) }}">
-                            <img class=" img-responsive" src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}"
-                                alt="" style="width: 250px; height: 250px">
+                            <img class="w-auto img-responsive"
+                                src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}" alt=""
+                                style="height: 200px">
                         </a>
                         <div class="card-body">
                             <h2 class="card-title">{{ $barang->nama_barang }}</h2>

@@ -109,6 +109,7 @@ class UserController extends Controller
 
     public function orders()
     {
+
         $id = Auth::user()->id;
         $orders = Transaksi::where('user_id', $id)->get();
         return view('pages.user.order.index', compact('orders'));
@@ -119,5 +120,14 @@ class UserController extends Controller
         $order = Transaksi::findOrFail($id);
         $order_detail = TransaksiDetail::where('transaksi_id', $id)->get();
         return view('pages.user.order.detail', compact('order', 'order_detail'));
+    }
+
+    public function cancelOrder($id)
+    {
+        $order = Transaksi::findOrFail($id);
+        $order->update([
+            'status' => 'canceled',
+        ]);
+        return redirect()->route('orders');
     }
 }
