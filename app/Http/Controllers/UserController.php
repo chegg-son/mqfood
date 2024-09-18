@@ -124,10 +124,12 @@ class UserController extends Controller
 
     public function cancelOrder($id)
     {
+
         $order = Transaksi::findOrFail($id);
         $order->update([
             'status' => 'canceled',
         ]);
+        flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Order berhasil dibatalkan!');
         return redirect()->route('orders');
     }
 }

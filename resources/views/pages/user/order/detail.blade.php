@@ -1,4 +1,9 @@
 @extends('app')
+@push('styles')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.min.js"
+        integrity="sha512-OlF0YFB8FRtvtNaGojDXbPT7LgcsSB3hj0IZKaVjzFix+BReDmTWhntaXBup8qwwoHrTHvwTxhLeoUqrYY9SEw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endpush
 
 @section('content')
     <div class="content-page">
@@ -37,12 +42,12 @@
                             @if ($order->status == 'canceled')
                             @else
                                 <div class="text-end">
-                                    <form action="{{ route('cancel.order', $order->id) }}" method="POST">
+                                    <form id="cancelOrder" action="{{ route('cancel.order', $order->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <button class="btn btn-danger waves-effect ">Batalkan
-                                            Pesanan?</button>
                                     </form>
+                                    <button onclick="cancelOrder()" class="btn btn-danger waves-effect ">Batalkan
+                                        Pesanan?</button>
                                 </div>
                             @endif
                         </div>
@@ -55,6 +60,25 @@
 @endsection
 
 @push('scripts')
+    <script>
+        function cancelOrder() {
+            Swal.fire({
+                title: "Batalkan Pesanan?",
+                text: "Apakah anda yakin ingin membatalkan pesanan ini?",
+                icon: "warning",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Ya!",
+                showCancelButton: true,
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Tidak"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('cancelOrder').submit();
+                }
+            });
+        }
+    </script>
+
     <!-- Vendor -->
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
