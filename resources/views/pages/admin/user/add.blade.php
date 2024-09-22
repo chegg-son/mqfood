@@ -24,17 +24,20 @@
                                     @csrf
                                     <x-input.text name="name" label="Nama"></x-input.text>
                                     <x-input.text name="username" label="Username"></x-input.text>
-                                    <x-input.text type="password" name="password" label="Password"></x-input.text>
+                                    <x-input.text name="password" label="Password" type="password"></x-input.text>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Role</label>
-                                        <select name="is_admin" id="" class="form-select">
+                                        <select name="is_admin" id=""
+                                            class="form-select @error('is_admin') is-invalid @enderror">
                                             <option value="">Pilih Jenis Role</option>
                                             <option value="1">Admin</option>
                                             <option value="0">User</option>
                                         </select>
-                                        <div class="invalid-feedback">
-                                            Pilih salah satu dari Role yang ada!
-                                        </div>
+                                        @error('is_admin')
+                                            <div class="invalid-feedback">
+                                                Pilih salah satu dari Role yang ada!
+                                            </div>
+                                        @enderror
                                     </div>
 
                                     <button class="btn btn-primary" type="submit">Submit form</button>

@@ -14,6 +14,17 @@
                     </div>
                 </div>
 
+                <div class="row justify-content-center">
+                    <div class="col-9">
+                        <div class="card py-5">
+                            <div class="text-center">
+                                <img class="rounded" src="{{ asset('storage/barangs/' . $barang->gambar_barang) }}"
+                                    alt="" style="width: 50%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -24,6 +35,7 @@
                                     @method('PUT')
                                     <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
                                     <x-input.text name="nama_barang" label="Nama barang"></x-input.text>
+                                    <x-input.file name="gambar_barang" label="Gambar Barang"></x-input.file>
                                     <x-input.group type="number" name="stok" label="Stok Barang"
                                         prefix="Qty"></x-input.group>
                                     <x-input.group type="number" name="harga" label="Harga Barang"

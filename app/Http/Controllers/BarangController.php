@@ -87,6 +87,7 @@ class BarangController extends Controller
         $request->validate([
             'kode_barang' => 'required|string|min:3',
             'nama_barang' => 'required|string|min:3',
+            'gambar_barang' => 'nullable|image|mimes:jpeg,jpg,png|max:1024',
             'stok' => 'required|numeric|min:0',
             'harga' => 'required|numeric|min:0',
             'kelas' => 'required|string|min:1',
@@ -96,6 +97,10 @@ class BarangController extends Controller
             'kode_barang.min' => 'Kode barang minimal 3 karakter!',
             'nama_barang.required' => 'Nama harus diisi!',
             'nama_barang.min' => 'Nama minimal 3 karakter!',
+            'gambar_barang.image' => 'File harus berupa gambar!',
+            'gambar_barang.mimes' => 'File harus berupa jpeg,png,jpg!',
+            'gambar_barang.max' => 'File maksimal 1 MB!',
+            'stok.numeric' => 'Stok harus berupa angka!',
             'stok.required' => 'Stok harus diisi!',
             'stok.min' => 'Stok minimal 0!',
             'harga.required' => 'Harga harus diisi!',
@@ -108,14 +113,29 @@ class BarangController extends Controller
 
         $barang = Barang::findOrFail($id);
 
-        $barang->update([
-            'kode_barang' => $request->kode_barang,
-            'nama_barang' => $request->nama_barang,
-            'stok' => $request->stok,
-            'harga' => $request->harga,
-            'kelas' => $request->kelas,
-            'kategori_id' => $request->kategori_id,
-        ]);
+        $file = $request->file('gambar_barang');
+        if ($file) {
+            $file->storeAs('public/barangs', $file->hashName());
+            $barang->update([
+                'kode_barang' => $request->kode_barang,
+                'nama_barang' => $request->nama_barang,
+                'gambar_barang' => $file->hashName(),
+                'stok' => $request->stok,
+                'harga' => $request->harga,
+                'kelas' => $request->kelas,
+                'kategori_id' => $request->kategori_id,
+            ]);
+        } else {
+            $barang->update([
+                'kode_barang' => $request->kode_barang,
+                'nama_barang' => $request->nama_barang,
+                'stok' => $request->stok,
+                'harga' => $request->harga,
+                'kelas' => $request->kelas,
+                'kategori_id' => $request->kategori_id,
+            ]);
+        }
+
         flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Barang berhasil diubah!');
         return redirect()->route('master.product');
     }

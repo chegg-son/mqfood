@@ -29,7 +29,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('edit-user/{id}', [UserController::class, 'update'])->name('action.edit.user');
     Route::delete('/delete-user/{id}', [UserController::class, 'destroy'])->name('delete.user');
 
-    // Barang Route
+    // Products Route
     Route::get('/products', [BarangController::class, 'index'])->name('master.product');
     Route::get('/products/create', [BarangController::class, 'create'])->name('add.product');
     Route::post('products', [BarangController::class, 'store'])->name('action.add.product');
