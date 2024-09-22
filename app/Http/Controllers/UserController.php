@@ -181,4 +181,11 @@ class UserController extends Controller
         flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Order berhasil dikonfirmasi!');
         return redirect()->route('orders');
     }
+
+    public function showInvoice($id)
+    {
+        $order = Transaksi::findOrFail($id);
+        $order_detail = TransaksiDetail::where('transaksi_id', $id)->get();
+        return view('pages.user.order.invoice', compact('order', 'order_detail'));
+    }
 }

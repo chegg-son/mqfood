@@ -20,7 +20,7 @@
                                         <th scope="col">Tanggal Order</th>
                                         <th scope="col">Total</th>
                                         <th scope="col" class="col-1">Status</th>
-                                        <th scope="col" class="col-1">Action</th>
+                                        <th scope="col" class="col-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +48,8 @@
                                             <td>
                                                 <a href="{{ route('order.detail', $order->id) }}"
                                                     class="btn btn-sm btn-primary">Detail</a>
+                                                <a href="{{ route('show.invoice', $order->id) }}"
+                                                    class="btn btn-sm btn-soft-danger">Invoice</a>
                                             </td>
                                         </tr>
                                     @endforeach

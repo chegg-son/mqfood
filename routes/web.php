@@ -68,6 +68,7 @@ Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.d
 Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth');
 Route::get('orders/{id}/payment', [UserController::class, 'showPayment'])->name('show.payment')->middleware('auth');
 Route::put('orders/{id}/payment', [UserController::class, 'actionPayment'])->name('action.payment')->middleware('auth');
+Route::get('orders/{id}/invoice', [UserController::class, 'showInvoice'])->name('show.invoice')->middleware('auth');
 
 // Livewire Route test
 Route::get('counter', Counter::class);
