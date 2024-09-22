@@ -40,8 +40,9 @@
                                 style="height: 200px">
                         </a>
                         <div class="card-body">
-                            <h2 class="card-title" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-custom-class="custom-tooltip" data-bs-title="{{ $barang->nama_barang }}">
+                            <h2 class="card-title" title="{{ $barang->nama_barang }}" data-plugin="tippy"
+                                data-tippy-followCursor="false" data-tippy-inertia="true"
+                                data-tippy-animation="perspective" data-tippy-animation="fade">
                                 {{ $barang->nama_barang }}
                             </h2>
                             <h4 class="fw-bold"><strong> Rp. {{ number_format($barang->harga, 0, ',', '.') }}</strong>

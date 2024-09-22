@@ -39,7 +39,7 @@
                             <div>
                                 <h3><strong>Total : Rp. {{ number_format($order->total, 0, ',', '.') }}</strong></h3>
                             </div>
-                            @if ($order->status == 'canceled')
+                            @if ($order->status == 'canceled' || $order->status == 'success')
                             @else
                                 <div class="row">
                                     <div class="text-end">

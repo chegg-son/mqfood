@@ -62,6 +62,9 @@
     <!-- Gallery Init-->
     <script src="{{ asset('assets/js/pages/gallery.init.js') }}"></script>
 
+    <!-- Tippy js-->
+    <script src="assets/libs/tippy.js/tippy.all.min.js"></script>
+
     <!-- App js -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
