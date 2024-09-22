@@ -35,12 +35,15 @@
 
                     <div class="card p-1">
                         <a class="text-center" href="{{ route('show.product', $barang->id) }}">
-                            <img class="w-auto img-responsive"
+                            <img class="w-auto img-responsive mt-2"
                                 src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}" alt=""
                                 style="height: 200px">
                         </a>
                         <div class="card-body">
-                            <h2 class="card-title">{{ $barang->nama_barang }}</h2>
+                            <h2 class="card-title" data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="{{ $barang->nama_barang }}">
+                                {{ $barang->nama_barang }}
+                            </h2>
                             <h4 class="fw-bold"><strong> Rp. {{ number_format($barang->harga, 0, ',', '.') }}</strong>
                             </h4>
                             <p>Stok: {{ $barang->stok }}</p>

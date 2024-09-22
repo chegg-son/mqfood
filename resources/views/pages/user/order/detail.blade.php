@@ -41,13 +41,18 @@
                             </div>
                             @if ($order->status == 'canceled')
                             @else
-                                <div class="text-end">
-                                    <form id="cancelOrder" action="{{ route('cancel.order', $order->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                    </form>
-                                    <button onclick="cancelOrder()" class="btn btn-danger waves-effect ">Batalkan
-                                        Pesanan?</button>
+                                <div class="row">
+                                    <div class="text-end">
+                                        <form id="cancelOrder" action="{{ route('cancel.order', $order->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                        </form>
+                                        <a class="btn btn-primary" href="{{ route('show.payment', $order->id) }}">Kirim
+                                            bukti transfer</a>
+                                        <button onclick="cancelOrder()" class="btn btn-danger waves-effect ">Batalkan
+                                            Pesanan?</button>
+                                    </div>
                                 </div>
                             @endif
                         </div>
