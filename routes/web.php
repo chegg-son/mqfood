@@ -48,6 +48,7 @@ Route::middleware(['isAdmin'])->group(function () {
     // Orders Route Management
     Route::get('orders', [UserController::class, 'orders'])->name('order');
     Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail');
+    Route::post('orders/{id}/confirm', [UserController::class, 'actionConfirm'])->name('action.order.confirm');
 });
 
 // Barang Route Show
@@ -66,7 +67,7 @@ Route::get('orders', [UserController::class, 'orders'])->name('orders')->middlew
 Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail')->middleware('auth');
 Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth');
 Route::get('orders/{id}/payment', [UserController::class, 'showPayment'])->name('show.payment')->middleware('auth');
-Route::post('orders/{id}/payment', [UserController::class, 'actionPayment'])->name('action.payment')->middleware('auth');
+Route::put('orders/{id}/payment', [UserController::class, 'actionPayment'])->name('action.payment')->middleware('auth');
 
 // Livewire Route test
 Route::get('counter', Counter::class);

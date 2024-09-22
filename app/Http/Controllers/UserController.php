@@ -128,11 +128,16 @@ class UserController extends Controller
         );
 
         $transaksi = Transaksi::findOrFail($id);
+
         $file = $request->file('bukti_transfer');
-        $file->storeAs('public/bayar/' . Auth::user()->id . '/' . $transaksi->id, $file->hashName());
+        $file->storeAs('public/payments/' . Auth::user()->id . '/' . $transaksi->id, $file->hashName());
         $transaksi->update([
             'bukti_transfer' => $file->hashName(),
+            'status' => 'paid',
         ]);
+
+        flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Transaksi berhasil diupdate!');
+        return redirect()->route('orders');
     }
 
     public function orders()
@@ -163,6 +168,17 @@ class UserController extends Controller
             'status' => 'canceled',
         ]);
         flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Order berhasil dibatalkan!');
+        return redirect()->route('orders');
+    }
+
+    public function actionConfirm($id)
+    {
+        $order = Transaksi::findOrFail($id);
+        $order->update([
+            'status' => 'success',
+        ]);
+
+        flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Order berhasil dikonfirmasi!');
         return redirect()->route('orders');
     }
 }

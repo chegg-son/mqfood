@@ -12,7 +12,10 @@
                     {{-- data order --}}
                     <div class="card">
                         <div class="card-body">
-                            <form class="" action="{{ route('action.payment', $transaksi->id) }}">
+                            <form class="" action="{{ route('action.payment', $transaksi->id) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <h3>Bukti Transfer</h3>
                                 <p>Kirimkan bukti pembayaran di sini:</p>
                                 <x-input.file name="bukti_transfer"></x-input.file>

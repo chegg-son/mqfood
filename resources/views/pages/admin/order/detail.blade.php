@@ -22,7 +22,17 @@
                                     <h3>Bukti Transfer</h3>
                                 </div>
                                 <div class="card-body">
-                                    <img class="rounded" src="#" alt="Bukti Transfer" style="width: 100%">
+                                    @if ($order->bukti_transfer)
+                                        <img class="rounded"
+                                            src="{{ asset('storage/payments/' . $order->user_id . '/' . $order->id . '/' . $order->bukti_transfer) }}"
+                                            alt="Bukti Transfer" style="width: 100%">
+                                    @elseif ($order->status == 'canceled')
+                                        <h3 class="text-center">Pesanan dibatalkan</h3>
+                                    @else
+                                        <div class="text-center">
+                                            <h3>Belum ada bukti transfer</h3>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -55,12 +65,14 @@
                                         <h3><strong>Total : Rp. {{ number_format($order->total, 0, ',', '.') }}</strong>
                                         </h3>
                                     </div>
-                                    @if ($order->status == 'canceled')
+                                    @if ($order->status == 'canceled' || $order->status == 'success')
                                     @else
                                         <div class="row">
                                             <div class="col-12 d-flex gap-1 text-end">
                                                 <div class="col">
-                                                    <form id="acceptOrder" action="#" method="POST">
+                                                    <form id="acceptOrder"
+                                                        action="{{ route('action.order.confirm', $order->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                     </form>
                                                     <button onclick="acceptOrder()"

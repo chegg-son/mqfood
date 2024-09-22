@@ -34,9 +34,12 @@
                                                 @if ($order->status == 'pending')
                                                     <a
                                                         class="btn btn-sm w-100 btn-outline-secondary rounded waves-effect">{{ $order->status }}</a>
-                                                @elseif ($order->status == 'sukses')
+                                                @elseif ($order->status == 'paid')
                                                     <a
-                                                        class="btn btn-sm w-100 btn-outline-primary rounded waves-effect">{{ $order->status }}</a>
+                                                        class="btn btn-sm w-100 btn-outline-warning rounded waves-effect">{{ $order->status }}</a>
+                                                @elseif ($order->status == 'success')
+                                                    <a
+                                                        class="btn btn-sm w-100 btn-outline-success rounded waves-effect">{{ $order->status }}</a>
                                                 @elseif ($order->status == 'canceled')
                                                     <a
                                                         class="btn btn-sm w-100 btn-outline-danger rounded waves-effect">{{ $order->status }}</a>

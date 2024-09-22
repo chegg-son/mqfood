@@ -48,10 +48,16 @@
                                             @csrf
                                             @method('PUT')
                                         </form>
-                                        <a class="btn btn-primary" href="{{ route('show.payment', $order->id) }}">Kirim
-                                            bukti transfer</a>
-                                        <button onclick="cancelOrder()" class="btn btn-danger waves-effect ">Batalkan
-                                            Pesanan?</button>
+                                        @if ($order->status == 'paid')
+                                            <div class="text-end">
+                                                <h3>Sudah mengirim bukti transfer</h3>
+                                            </div>
+                                        @else
+                                            <a class="btn btn-primary" href="{{ route('show.payment', $order->id) }}">Kirim
+                                                bukti transfer</a>
+                                            <button onclick="cancelOrder()" class="btn btn-danger waves-effect ">Batalkan
+                                                Pesanan?</button>
+                                        @endif
                                     </div>
                                 </div>
                             @endif
