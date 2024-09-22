@@ -12,26 +12,28 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="panel-body ">
-                                    <div class="clearfix bg-success rounded">
+                                    <div class=" rounded bg-success justify-self-center mx-auto" style="max-width: 650px">
                                         <div class="text-center rounded-xl d-print-none">
-                                            <img src="{{ url('storage/logo/piat7-transparent.png') }}" alt="">
+                                            <img class="img-fluid" src="{{ url('storage/logo/piat7-transparent.png') }}"
+                                                alt="">
                                         </div>
+                                    </div>
+                                    <div class="clearfix bg-success rounded">
                                         <div class="text-center rounded-xl d-none d-print-block">
                                             <img src="{{ url('storage/logo/piat7.png') }}" alt="">
                                         </div>
-                                        <br>
                                         <div class="float-end d-none d-print-block">
                                             <h4>Faktur # <br>
                                                 <strong>{{ $order->faktur }}</strong>
                                             </h4>
                                         </div>
-                                        <div class="float-end d-print-none me-3">
-                                            <h4 class="text-white">Faktur # <br>
-                                                <strong class="text-white">{{ $order->faktur }}</strong>
-                                            </h4>
-                                        </div>
                                     </div>
-                                    <hr>
+                                    <div class="d-flex justify-content-end d-print-none">
+                                        <h4>Faktur # <br>
+                                            <strong>{{ $order->faktur }}</strong>
+                                        </h4>
+                                    </div>
+                                    <hr class="d-print-block">
                                     <div class="row">
                                         <div class="col-md-12">
 
