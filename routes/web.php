@@ -5,17 +5,30 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Api\LoginController as ApiLoginController;
 use App\Http\Controllers\BarangController;
 
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
+use Illuminate\Support\Facades\Auth;
 
 // Login Route
 Route::get('/login', [LoginController::class, 'login'])->name('login');
-
-// Admin Route
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth');
+
+// API Login Route
+Route::get('/api-login', [ApiLoginController::class, 'login'])->name('api.login');
+Route::post('/api-login', [ApiLoginController::class, 'actionLogin'])->name('api.action.login');
+
+Route::middleware(['auth.session', 'check.role:superadmin'])->group(function () {
+    Route::get('/api-check', function () {
+        return response('<h1>anda seorang ' . Auth::user()->name . '</h1>', 200)
+            ->header('Content-Type', 'text/html');
+    });
+});
+
+// Admin Route
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('pages.admin.index');

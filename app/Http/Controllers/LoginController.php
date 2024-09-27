@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function login()
     {
-        if (Auth::check()) {
+        if (Auth::check() || session()->has('user')) {
             return redirect()->route('home');
         } else {
             return view('pages.login.index');
