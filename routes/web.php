@@ -29,7 +29,7 @@ Route::middleware(['auth.session', 'check.role:superadmin'])->group(function () 
 });
 
 // Admin Route
-Route::middleware(['isAdmin'])->group(function () {
+Route::middleware(['isAdmin', 'auth.session', 'check.role:superadmin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('pages.admin.index');
     })->name('admin.panel');
