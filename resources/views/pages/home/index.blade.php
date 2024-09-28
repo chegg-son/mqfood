@@ -29,6 +29,7 @@
                                 </div>
                                 <h1>Ahlan wa sahlan!</h1>
                                 <p>Silahkan berbelanja di Katalog kami.</p>
+
                             </div>
                         </div>
                     </div><!-- end col -->

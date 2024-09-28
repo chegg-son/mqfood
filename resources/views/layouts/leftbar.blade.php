@@ -37,6 +37,30 @@
             </div>
         @endauth
 
+        @if (session()->has('user'))
+            <!-- User box -->
+            <div class="user-box text-center">
+                <img src="{{ url('assets/images/logos/logo-user-login.svg') }}" alt="user-img" title="Mat Helme"
+                    class="rounded-circle img-thumbnail avatar-md">
+                <div class="dropdown">
+                    <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
+                        aria-expanded="false">{{ session()->get('user')['name'] }}</a>
+                </div>
+
+                <p class="text-muted left-user-info">
+                    {{ session()->get('role')[0]['name'] }}
+                </p>
+
+                {{-- <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="#" class="text-muted left-user-info">
+                        <i class="mdi mdi-cog"></i>
+                    </a>
+                </li> --}}
+                </ul>
+            </div>
+        @endif
+
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul id="side-menu">
@@ -47,15 +71,23 @@
                         <span> Beranda </span>
                     </a>
                 </li>
-                @if (auth()->check() && auth()->user()->is_admin == 1)
+
+                @if (
+                    (auth()->check() && auth()->user()->is_admin == 1) ||
+                        session()->get('role')[0]['name'] == 'superadmin' ||
+                        session()->get('role')[0]['name'] == 'admin')
                     <li>
                         <a href="{{ route('orders') }}">
                             <i class="mdi mdi-home"></i>
                             <span> Daftar Pesanan </span>
+
                         </a>
                     </li>
                 @endif
-                @if (auth()->check() && auth()->user()->is_admin == 1)
+                @if (
+                    (auth()->check() && auth()->user()->is_admin == 1) ||
+                        session()->get('role')[0]['name'] == 'superadmin' ||
+                        session()->get('role')[0]['name'] == 'admin')
                     <li class="menu-title">Administrator Menu</li>
                     <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
                         <a href='{{ route('master.product') }}'>

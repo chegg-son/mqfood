@@ -165,10 +165,13 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="{{ route('action.logout') }}" class="dropdown-item notify-item">
-                        <i class="fe-log-out"></i>
-                        <span>Logout</span>
-                    </a>
+                    <form action="{{ route('api.action.logout') }}" method="POST">
+                        @csrf
+                        <button class="dropdown-item notify-item">
+                            <i class="fe-log-out"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
 
                 </div>
             </li>

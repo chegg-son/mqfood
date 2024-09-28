@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Session\TokenMismatchException;
 
 class LoginController extends Controller
 {
@@ -53,16 +57,20 @@ class LoginController extends Controller
 
     public function actionLogout(Request $request)
     {
-        $response = Http::post('https://www.santri.pesantrenalirsyad7.org/api/logout', [
-            'token' => $request->session()->get('access_token'),
-        ]);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $request->session()->get('access_token'),
+        ])->post('https://www.santri.pesantrenalirsyad7.org/api/logout');
 
         if ($response->status() == 200) {
             $data = $response->json();
             if ($data['meta']['status'] == 'success') {
                 $request->session()->forget('access_token');
                 $request->session()->forget('user');
-                return redirect()->route('login');
+                $request->session()->forget('role');
+                $request->session()->flush();
+
+                flash()->option('position', 'bottom-right')->option('timeout', 3000)->success($data['meta']['message']);
+                return redirect()->route('api.login');
             }
         }
     }

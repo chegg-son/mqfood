@@ -20,16 +20,16 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 // API Login Route
 Route::get('/api-login', [ApiLoginController::class, 'login'])->name('api.login');
 Route::post('/api-login', [ApiLoginController::class, 'actionLogin'])->name('api.action.login');
+Route::post('/api-logout', [ApiLoginController::class, 'actionLogout'])->name('api.action.logout');
 
-Route::middleware(['auth.session', 'check.role:superadmin'])->group(function () {
-    Route::get('/api-check', function () {
-        return response('<h1>anda seorang ' . Auth::user()->name . '</h1>', 200)
-            ->header('Content-Type', 'text/html');
-    });
-});
+// Route::middleware(['isAdmin', 'auth.session', 'check.role:superadmin'])->group(function () {
+//     Route::get('/api-test', function () {
+//         return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
+//     });
+// });
 
 // Admin Route
-Route::middleware(['isAdmin', 'auth.session', 'check.role:superadmin'])->group(function () {
+Route::middleware(['isAdmin', 'auth.session', 'check.role:superadmin,admin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('pages.admin.index');
     })->name('admin.panel');

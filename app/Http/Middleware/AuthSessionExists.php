@@ -16,12 +16,12 @@ class AuthSessionExists
     public function handle(Request $request, Closure $next): Response
     {
         if (!session()->has('access_token') || !session()->has('user')) {
-            return redirect()->route('login');
+            return redirect()->route('api.login');
         }
 
         $user = session('user');
         if (!isset($user['role']) || !is_array($user['role']) || empty($user['role'])) {
-            return redirect()->route('login');
+            return redirect()->route('api.login');
         }
 
         $roles = array_map(function ($role) {

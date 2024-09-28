@@ -16,7 +16,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (!$request->has('user_roles')) {
-            return redirect()->route('login');
+            return redirect()->route('api.login');
         }
 
         $userRoles = $request->user_roles;
