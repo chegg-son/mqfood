@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Session\TokenMismatchException;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 class LoginController extends Controller
 {
