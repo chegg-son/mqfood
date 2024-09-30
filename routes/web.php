@@ -22,14 +22,14 @@ Route::get('/api-login', [ApiLoginController::class, 'login'])->name('api.login'
 Route::post('/api-login', [ApiLoginController::class, 'actionLogin'])->name('api.action.login');
 Route::post('/api-logout', [ApiLoginController::class, 'actionLogout'])->name('api.action.logout');
 
-// Route::middleware(['isAdmin', 'auth.session', 'check.role:superadmin'])->group(function () {
-//     Route::get('/api-test', function () {
-//         return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
-//     });
-// });
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/api-test', function () {
+        return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
+    });
+});
 
 // Admin Route
-Route::middleware(['isAdmin', 'auth.session', 'check.role:superadmin,admin'])->group(function () {
+Route::middleware(['isAdmin', 'authSession', 'checkRole:superadmin,admin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('pages.admin.index');
     })->name('admin.panel');
@@ -76,7 +76,7 @@ Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkou
 Route::get('/confirmation', [KeranjangController::class, 'confirmation'])->name('confirmation')->middleware('auth');
 Route::post('/confirmation', [KeranjangController::class, 'actionconfirm'])->name('action.confirmation')->middleware('auth');
 Route::get('/confirmation/{id}/show/{detail}', [KeranjangController::class, 'showconfirmation'])->name('show.confirmation')->middleware('auth');
-Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware('auth');
+Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware(['auth']);
 Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail')->middleware('auth');
 Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth');
 Route::get('orders/{id}/payment', [UserController::class, 'showPayment'])->name('show.payment')->middleware('auth');

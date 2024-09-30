@@ -17,7 +17,7 @@ class LoginController extends Controller
 {
     public function login()
     {
-        if (session()->has('user') || Auth::check()) {
+        if (session()->has('user')) {
             return redirect()->route('home');
         }
         return view('pages.login.api.index');

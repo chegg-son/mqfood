@@ -15,8 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'isAdmin' => \App\Http\Middleware\IsAdmin::class,
             'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-            'auth.session' => \App\Http\Middleware\AuthSessionExists::class,
-            'check.role' => \App\Http\Middleware\CheckRole::class,
+            'authSession' => \App\Http\Middleware\AuthSessionExists::class,
+            'checkRole' => \App\Http\Middleware\CheckRole::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
