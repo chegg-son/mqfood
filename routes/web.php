@@ -22,14 +22,14 @@ Route::get('/api-login', [ApiLoginController::class, 'login'])->name('api.login'
 Route::post('/api-login', [ApiLoginController::class, 'actionLogin'])->name('api.action.login');
 Route::post('/api-logout', [ApiLoginController::class, 'actionLogout'])->name('api.action.logout');
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/api-test', function () {
-        return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
-    });
-});
+
+Route::get('/api-test', function () {
+    return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
+})->middleware('authSession');
+
 
 // Admin Route
-Route::middleware(['isAdmin', 'authSession', 'checkRole:superadmin,admin'])->group(function () {
+Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('pages.admin.index');
     })->name('admin.panel');

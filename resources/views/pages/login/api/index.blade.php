@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8" />
     <title>Login ke Aplikasi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +10,22 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href={{ url('assets/images/favicon.ico') }}>
+    <link rel="shortcut icon" href={{ url('assets/images/favicon.ico') }}>
+    <link href={{ url('assets/css/app.min.css') }} rel="stylesheet" type="text/css" id="app-style" />
+    <link href={{ url('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
+    <!-- Sweet Alert-->
+    <link href="{{ url('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
 
     <!-- App css -->
 
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- icons -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -33,7 +41,8 @@
                             <img src="assets/images/logo-dark.png" alt="" height="22" class="mx-auto">
                         </a>
                         <p class="text-muted mt-2 mb-4">Responsive Admin Dashboard</p>
-
+                        {{-- dump if auth is true --}}
+                        {{ auth()->check() ? 'true' : 'false' }}
                     </div>
                     <div class="card">
                         <div class="card-body p-4">
@@ -102,16 +111,16 @@
     <!-- end page -->
 
     <!-- Vendor -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ url('assets/js/app.min.js') }}"></script>
 
 
 

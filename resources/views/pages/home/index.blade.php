@@ -46,28 +46,28 @@
 
 @push('scripts')
     <!-- Vendor -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
 
     <!-- isotope filter plugin -->
-    <script src="{{ asset('assets/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url('assets/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
 
     <!-- Magnific Popup-->
-    <script src="{{ asset('assets/libs/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url('assets/libs/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
     <!-- Gallery Init-->
-    <script src="{{ asset('assets/js/pages/gallery.init.js') }}"></script>
+    <script src="{{ url('assets/js/pages/gallery.init.js') }}"></script>
 
     <!-- Tippy js-->
     <script src="assets/libs/tippy.js/tippy.all.min.js"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ url('assets/js/app.min.js') }}"></script>
 
     <script></script>
 @endpush

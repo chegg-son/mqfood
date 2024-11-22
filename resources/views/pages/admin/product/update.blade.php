@@ -18,7 +18,7 @@
                     <div class="col-9">
                         <div class="card py-5">
                             <div class="text-center">
-                                <img class="rounded" src="{{ asset('storage/barangs/' . $barang->gambar_barang) }}"
+                                <img class="rounded" src="{{ url('storage/barangs/' . $barang->gambar_barang) }}"
                                     alt="" style="width: 50%">
                             </div>
                         </div>
@@ -57,35 +57,35 @@
 
 @push('scripts')
     <!-- Vendor -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
 
     <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ url('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ url('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ url('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
     <!-- third party js ends -->
 
     <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ url('assets/js/pages/datatables.init.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ url('assets/js/app.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {

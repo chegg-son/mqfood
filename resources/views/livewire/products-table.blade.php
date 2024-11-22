@@ -36,7 +36,7 @@
                     <div class="card p-1">
                         <a class="text-center" href="{{ route('show.product', $barang->id) }}">
                             <img class="w-auto img-responsive mt-2"
-                                src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}" alt=""
+                                src="{{ url('/storage/barangs/' . $barang->gambar_barang) }}" alt=""
                                 style="height: 200px">
                         </a>
                         <div class="card-body">

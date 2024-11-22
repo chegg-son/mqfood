@@ -8,9 +8,9 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href={{ asset('assets/images/favicon.ico') }}>
-    <link href={{ asset('assets/css/app.min.css') }} rel="stylesheet" type="text/css" id="app-style" />
-    <link href={{ asset('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href={{ url('assets/images/favicon.ico') }}>
+    <link href={{ url('assets/css/app.min.css') }} rel="stylesheet" type="text/css" id="app-style" />
+    <link href={{ url('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
 </head>
 
 <!-- body start -->
@@ -1559,26 +1559,26 @@
     <div class="rightbar-overlay"></div>
 
     <!-- Vendor -->
-    <script src={{ asset('assets/libs/jquery/jquery.min.js') }}></script>
-    <script src={{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}></script>
-    <script src={{ asset('assets/libs/simplebar/simplebar.min.js') }}></script>
-    <script src={{ asset('assets/libs/node-waves/waves.min.js') }}></script>
-    <script src={{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}></script>
-    <script src={{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}></script>
-    <script src={{ asset('assets/libs/feather-icons/feather.min.js') }}></script>
+    <script src={{ url('assets/libs/jquery/jquery.min.js') }}></script>
+    <script src={{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ url('assets/libs/simplebar/simplebar.min.js') }}></script>
+    <script src={{ url('assets/libs/node-waves/waves.min.js') }}></script>
+    <script src={{ url('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}></script>
+    <script src={{ url('assets/libs/jquery.counterup/jquery.counterup.min.js') }}></script>
+    <script src={{ url('assets/libs/feather-icons/feather.min.js') }}></script>
 
     <!-- knob plugin -->
     <script src={{ 'assets/libs/jquery-knob/jquery.knob.min.js' }}></script>
 
     <!--Morris Chart-->
-    <script src={{ asset('assets/libs/morris.js06/morris.min.js') }}></script>
-    <script src={{ asset('assets/libs/raphael/raphael.min.js') }}></script>
+    <script src={{ url('assets/libs/morris.js06/morris.min.js') }}></script>
+    <script src={{ url('assets/libs/raphael/raphael.min.js') }}></script>
 
     <!-- Dashboar init js-->
-    <script src={{ asset('assets/js/pages/dashboard.init.js') }}></script>
+    <script src={{ url('assets/js/pages/dashboard.init.js') }}></script>
 
     <!-- App js-->
-    <script src={{ asset('assets/js/app.min.js') }}></script>
+    <script src={{ url('assets/js/app.min.js') }}></script>
 
 </body>
 

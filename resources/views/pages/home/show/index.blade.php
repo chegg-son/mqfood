@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <div class="card p-3 align-items-center">
-                                    <img class="rounded" src="{{ asset('storage/barangs/' . $barang->gambar_barang) }}"
+                                    <img class="rounded" src="{{ url('storage/barangs/' . $barang->gambar_barang) }}"
                                         alt="Card cap" style="width: 100%">
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
+
 class LoginController extends Controller
 {
     public function login()

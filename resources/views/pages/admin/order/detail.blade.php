@@ -24,7 +24,7 @@
                                 <div class="card-body">
                                     @if ($order->bukti_transfer)
                                         <img class="rounded"
-                                            src="{{ asset('storage/payments/' . $order->user_id . '/' . $order->id . '/' . $order->bukti_transfer) }}"
+                                            src="{{ url('storage/payments/' . $order->user_id . '/' . $order->id . '/' . $order->bukti_transfer) }}"
                                             alt="Bukti Transfer" style="width: 100%">
                                     @elseif ($order->status == 'canceled')
                                         <h3 class="text-center">Pesanan dibatalkan</h3>
@@ -141,14 +141,14 @@
     </script>
 
     <!-- Vendor -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url('assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ url('assets/js/app.min.js') }}"></script>
 @endpush

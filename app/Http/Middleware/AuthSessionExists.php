@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthSessionExists
@@ -15,6 +16,10 @@ class AuthSessionExists
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (!Auth::check()) {
+            return redirect()->route('api.login');
+        }
+
         if (!session()->has('access_token') || !session()->has('user')) {
             return redirect()->route('api.login');
         }

@@ -1,3 +1,8 @@
+@php
+    $isAdmin = auth()->check() && auth()->user()->is_admin == 1;
+    $isSuperAdmin = session()->has('user') && session('user')['role'][0]['name'] == 'superadmin';
+@endphp
+
 <div class="left-side-menu" style="z-index: 0">
     <div class="h-100" data-simplebar>
         @auth
@@ -37,30 +42,6 @@
             </div>
         @endauth
 
-        @if (session()->has('user'))
-            <!-- User box -->
-            <div class="user-box text-center">
-                <img src="{{ url('assets/images/logos/logo-user-login.svg') }}" alt="user-img" title="Mat Helme"
-                    class="rounded-circle img-thumbnail avatar-md">
-                <div class="dropdown">
-                    <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
-                        aria-expanded="false">{{ session()->get('user')['name'] }}</a>
-                </div>
-
-                <p class="text-muted left-user-info">
-                    {{ session()->get('role')[0]['name'] }}
-                </p>
-
-                {{-- <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="#" class="text-muted left-user-info">
-                        <i class="mdi mdi-cog"></i>
-                    </a>
-                </li> --}}
-                </ul>
-            </div>
-        @endif
-
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul id="side-menu">
@@ -72,7 +53,38 @@
                     </a>
                 </li>
 
-                @if ((auth()->check() && auth()->user()->is_admin == 1) || session()->get('role')[0]['name'] == 'superadmin')
+                @if ($isSuperAdmin)
+                    <li>
+                        <a href="{{ route('orders') }}">
+                            <i class="mdi mdi-home"></i>
+                            <span> Daftar Pesanan </span>
+
+                        </a>
+                    </li>
+                    <li class="menu-title">Administrator Menu</li>
+                    <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
+                        <a href='{{ route('master.product') }}'>
+                            <i class="mdi mdi-dropbox"></i>
+                            <span> Master Barang </span>
+                        </a>
+                    </li>
+                    <li @if (url()->current() == route('add.user')) class="menuitem-active" @endif>
+                        <a href='{{ route('master.user') }}'>
+                            <i class="mdi mdi-account-cog-outline"></i>
+                            <span> Master User </span>
+                        </a>
+                    </li>
+                    <li @if (url()->current() == route('add.category')) class="menuitem-active" @endif>
+                        <a href='{{ route('categories') }}'>
+                            <i class="mdi mdi-book-cog-outline"></i>
+                            <span> Master Kategori </span>
+                        </a>
+                    </li>
+                @endif
+
+                {{-- kurang bagian if walisantri --}}
+
+                @if ($isAdmin)
                     <li>
                         <a href="{{ route('orders') }}">
                             <i class="mdi mdi-home"></i>
@@ -81,7 +93,8 @@
                         </a>
                     </li>
                 @endif
-                @if ((auth()->check() && auth()->user()->is_admin == 1) || session()->get('role')[0]['name'] == 'superadmin')
+
+                @if ($isAdmin)
                     <li class="menu-title">Administrator Menu</li>
                     <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
                         <a href='{{ route('master.product') }}'>
