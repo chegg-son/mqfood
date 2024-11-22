@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PortalSantri;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-
 use function Laravel\Prompts\alert;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -26,17 +29,31 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        $data = [
+        $credentials = [
             'username' => $request->input('username'),
             'password' => $request->input('password'),
         ];
 
-        if (Auth::attempt($data)) {
+        // Contoh validasi dengan hashing
+        $userDb1 = User::where('username', $credentials['username'])->first();
+
+        if ($userDb1 && Hash::check($credentials['password'], $userDb1->password)) {
+            Auth::login($userDb1);
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Login berhasil!');
             return redirect()->route('home');
-        } else {
-            Session::flash('error', 'Username atau Password salah');
-            return redirect()->route('login');
         }
+
+        // Contoh validasi dengan hashing
+        $userDb2 = PortalSantri::where('username', $credentials['username'])->first();
+
+        if ($userDb2 && Hash::check($credentials['password'], $userDb2->password)) {
+            Auth::login($userDb2);
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Login berhasil!');
+            return redirect()->route('home');
+        }
+
+        // Jika tidak ditemukan di kedua database
+        return redirect()->back()->withErrors(['error' => 'Login gagal, username atau password salah!']);
     }
 
     public function actionlogout()
