@@ -17,12 +17,10 @@ class IsAdmin
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Auth::user()->is_admin != 1) {
-            return abort(403, 'فقط المسؤولون يمكنهم الوصول إلى هذه الصفحة');
+        if (!in_array(Auth::guard('web')->user()->is_admin, [1, 2])) {
+            abort(403, 'فقط المسؤولون يمكنهم الوصول إلى هذه الصفحة');
         }
-        if (session()->has('user')) {
-            return $next($request);
-        }
+
         if (!Auth::check()) {
             return redirect()->route('home');
         }
