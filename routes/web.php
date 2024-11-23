@@ -15,18 +15,7 @@ use Illuminate\Support\Facades\Auth;
 // Login Route
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth');
-
-// API Login Route
-Route::get('/api-login', [ApiLoginController::class, 'login'])->name('api.login');
-Route::post('/api-login', [ApiLoginController::class, 'actionLogin'])->name('api.action.login');
-Route::post('/api-logout', [ApiLoginController::class, 'actionLogout'])->name('api.action.logout');
-
-
-Route::get('/api-test', function () {
-    return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
-})->middleware('authSession');
-
+Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth:web,portal_santri');
 
 // Admin Route
 Route::middleware(['isAdmin'])->group(function () {

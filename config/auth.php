@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'portal_santri' => [
+            'driver' => 'session',
+            'provider' => 'portal_santri',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'portal_santri' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PortalSantri::class,
+        ],
     ],
 
     /*

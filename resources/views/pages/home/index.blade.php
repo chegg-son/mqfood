@@ -29,6 +29,7 @@
                                 </div>
                                 <h1>Ahlan wa sahlan!</h1>
                                 <p>Silahkan berbelanja di Katalog kami.</p>
+                                <p>{{ auth('portal_santri')->user()->kelas()->nama_kelas }}</p>
 
                             </div>
                         </div>

@@ -108,9 +108,39 @@
             </div>
         </li> --}}
 
+        @auth('portal_santri')
+            <li class="dropdown notification-list topbar-dropdown">
+                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light rounded" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-settings noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                    <!-- item-->
+                    <div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Assalamu'alaikum! <span
+                                class="text-danger">{{ auth('portal_santri')->user()->name }}</span></h6>
+                    </div>
 
 
-        @auth
+                    <!-- item-->
+                    <a href="contacts-profile.html" class="dropdown-item notify-item">
+                        <i class="fe-user"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- item-->
+                    <a href="{{ route('action.logout') }}" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Logout</span>
+                    </a>
+
+                </div>
+            </li>
+        @endauth
+
+        @auth('web')
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light rounded" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -142,70 +172,27 @@
             </li>
         @endauth
 
-        @if (session()->has('user'))
-            <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light rounded"
-                    data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="fe-settings noti-icon"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                    <!-- item-->
-                    <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Assalamu'alaikum! <span
-                                class="text-danger">{{ session('user')['name'] }}</span></h6>
-                    </div>
-
-
-                    <!-- item-->
-                    <a href="contacts-profile.html" class="dropdown-item notify-item">
-                        <i class="fe-user"></i>
-                        <span>My Account</span>
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <!-- item-->
-                    <form action="{{ route('api.action.logout') }}" method="POST">
-                        @csrf
-                        <button class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
-                            <span>Logout</span>
-                        </button>
-                    </form>
-
-                </div>
-            </li>
-        @endif
-
-        @if (session()->has('user'))
-        @else()
-            @guest
+        <!-- Check if user is not logged in as either portal_santri or web -->
+        @guest('portal_santri')
+            @guest('web')
                 <li class="dropdown notification-list topbar-dropdown">
                     <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
                         href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ url('assets/images/logos/logo-user-login.svg') }}" alt="user-image"
-                            class="rounded-circle">
+                        <img src="{{ url('assets/images/logos/logo-user-login.svg') }}" alt="user-image" class="rounded-circle">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                        <!-- item-->
+                    <div class="dropdown-menu dropdown-menu-end profile-dropdown">
+                        <!-- Login link -->
                         <a href="{{ route('login') }}" class="dropdown-item notify-item">
                             <i class="fe-log-in"></i>
                             <span>Login</span>
                         </a>
-                        <a href="{{ route('api.login') }}" class="dropdown-item notify-item">
-                            <i class="fe-log-in"></i>
-                            <span>Login API</span>
-                        </a>
                     </div>
                 </li>
             @endguest
+        @endguest
 
-            {{-- <li class="dropdown notification-list">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                <i class="fe-settings noti-icon"></i>
-            </a>
-        </li> --}}
-        @endif
+
+
     </ul>
 
     <!-- LOGO -->
