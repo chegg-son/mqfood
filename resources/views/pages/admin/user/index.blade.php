@@ -59,6 +59,8 @@
                                                 <td>
                                                     @if ($user->is_admin == 1)
                                                         Admin
+                                                    @elseif ($user->is_admin == 2)
+                                                        Admin Maqshaf
                                                     @elseif ($user->is_admin == 0)
                                                         User
                                                     @endif

@@ -31,6 +31,7 @@
                                         <select name="is_admin" id="is_admin" class="form-select">
                                             <option value="">Pilih Jenis Role</option>
                                             <option value="1">Admin</option>
+                                            <option value="2">Admin Maqshaf</option>
                                             <option value="0">User</option>
                                         </select>
                                         <div class="invalid-feedback">

@@ -11,7 +11,7 @@ class Barang extends Model
 
     protected $guarded = ['id'];
     // kategori_id masih belum dihapus
-    protected $fillable = ['kode_barang', 'nama_barang', 'gambar_barang', 'stok', 'harga', 'kelas', 'kategori_id'];
+    protected $fillable = ['kode_barang', 'nama_barang', 'gambar_barang', 'stok', 'harga', 'kategori_id'];
 
     public function kategori()
     {

@@ -31,6 +31,7 @@
                                             class="form-select @error('is_admin') is-invalid @enderror">
                                             <option value="">Pilih Jenis Role</option>
                                             <option value="1">Admin</option>
+                                            <option value="2">Admin Maqshaf</option>
                                             <option value="0">User</option>
                                         </select>
                                         @error('is_admin')

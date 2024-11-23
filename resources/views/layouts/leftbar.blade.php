@@ -1,5 +1,6 @@
 @php
     $isAdmin = auth()->check() && auth()->user()->is_admin == 1;
+    $isAdminMaqshaf = auth()->check() && auth()->user()->is_admin == 2;
 @endphp
 
 <div class="left-side-menu" style="z-index: 0">
@@ -30,8 +31,13 @@
                     </div>
                 </div>
 
-                <p class="text-muted left-user-info">{{ auth()->user()->is_admin == 1 ? 'Admin' : 'User' }}</p>
-
+                @if ($isAdminMaqshaf)
+                    <p class="text-muted left-user-info">Admin Maqshaf</p>
+                @elseif ($isAdmin)
+                    <p class="text-muted left-user-info">Admin</p>
+                @else
+                    <p class="text-muted left-user-info">User</p>
+                @endif
 
                 {{-- <ul class="list-inline">
                 <li class="list-inline-item">
@@ -100,12 +106,28 @@
 
                 {{-- kurang bagian if walisantri --}}
 
-                @if ($isAdmin)
+                @if ($isAdmin || $isAdminMaqshaf)
                     <li>
                         <a href="{{ route('orders') }}">
-                            <i class="mdi mdi-home"></i>
+                            <i class="mdi mdi-view-list"></i>
                             <span> Daftar Pesanan </span>
 
+                        </a>
+                    </li>
+                @endif
+
+                @if ($isAdminMaqshaf)
+                    <li class="menu-title">Administrator Menu</li>
+                    <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
+                        <a href='{{ route('master.product') }}'>
+                            <i class="mdi mdi-dropbox"></i>
+                            <span> Master Barang </span>
+                        </a>
+                    </li>
+                    <li @if (url()->current() == route('add.category')) class="menuitem-active" @endif>
+                        <a href='{{ route('categories') }}'>
+                            <i class="mdi mdi-book-cog-outline"></i>
+                            <span> Master Kategori </span>
                         </a>
                     </li>
                 @endif
