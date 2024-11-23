@@ -38,6 +38,7 @@ class LoginController extends Controller
         $user = User::where('username', $request->username)->first();
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user); // Log in using Laravel's default authentication
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Berhasil Login!');
             return redirect()->route('home');  // Redirect to home after login
         }
 
@@ -46,12 +47,13 @@ class LoginController extends Controller
         if ($portalUser && Hash::check($request->password, $portalUser->password)) {
             // Ensure login using the custom guard
             Auth::guard('portal_santri')->login($portalUser);
-
+            flash()->option('position', 'bottom-right')->option('timeout', 3000)->success('Berhasil Login!');
             return redirect()->route('home');
         }
 
         // If both authentication attempts fail
-        return back()->withErrors(['username' => 'The provided credentials are incorrect.']);
+        Session::flash('error', 'Username atau Password salah');
+        return back();
     }
 
 
