@@ -51,7 +51,7 @@
                 <div class="dropdown">
                     <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
                         aria-expanded="false">{{ auth('portal_santri')->user()->name }}</a>
-                    <p>{{ auth('portal_santri')->user()->kelas()->nama_kelas }}</p>
+
                     <div class="dropdown-menu user-pro-dropdown">
 
                         <!-- item-->
