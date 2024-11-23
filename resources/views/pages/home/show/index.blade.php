@@ -22,16 +22,17 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <div class="card p-3 align-items-center">
-                                    <img class="rounded" src="{{ asset('assets/images/gallery/11.jpg') }}" alt="Card cap"
-                                        style="width: 100%">
+                                    <img class="rounded" src="{{ url('storage/barangs/' . $barang->gambar_barang) }}"
+                                        alt="Card cap" style="width: 100%">
                                 </div>
                             </div>
 
                             <div class="col-xl-4">
-
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-header">
                                         <h3 class="text-center fw-bold">Detail Barang</h3>
+                                    </div>
+                                    <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table mb-0">
                                                 <tbody>

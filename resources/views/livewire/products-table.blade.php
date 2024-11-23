@@ -14,9 +14,6 @@
     <div class="port">
         <div class="row mt-2 mb-4 justify-content-end">
             <div class="col-md-3">
-                <button wire:click="showCart" class="btn btn-primary">cek isi keranjang</button>
-            </div>
-            <div class="col-md-3">
                 <select wire:click="resetPage" name="category" wire:model="category" class="form-select">
                     <option value="">Semua Kategori</option>
                     @foreach ($kategoris as $kategori)
@@ -38,11 +35,16 @@
 
                     <div class="card p-1">
                         <a class="text-center" href="{{ route('show.product', $barang->id) }}">
-                            <img class=" img-responsive" src="{{ asset('/storage/barangs/' . $barang->gambar_barang) }}"
-                                alt="" style="width: 250px; height: 250px">
+                            <img class="w-auto img-responsive mt-2"
+                                src="{{ url('/storage/barangs/' . $barang->gambar_barang) }}" alt=""
+                                style="height: 200px">
                         </a>
                         <div class="card-body">
-                            <h2 class="card-title">{{ $barang->nama_barang }}</h2>
+                            <h2 class="card-title" title="{{ $barang->nama_barang }}" data-plugin="tippy"
+                                data-tippy-followCursor="false" data-tippy-inertia="true"
+                                data-tippy-animation="perspective" data-tippy-animation="fade">
+                                {{ $barang->nama_barang }}
+                            </h2>
                             <h4 class="fw-bold"><strong> Rp. {{ number_format($barang->harga, 0, ',', '.') }}</strong>
                             </h4>
                             <p>Stok: {{ $barang->stok }}</p>

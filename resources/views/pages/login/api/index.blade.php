@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href={{ url('assets/images/favicon.ico') }}>
+    <link rel="shortcut icon" href={{ url('assets/images/favicon.ico') }}>
     <link href={{ url('assets/css/app.min.css') }} rel="stylesheet" type="text/css" id="app-style" />
     <link href={{ url('assets/css/icons.min.css') }} rel="stylesheet" type="text/css" />
     <!-- Sweet Alert-->
@@ -40,7 +41,8 @@
                             <img src="assets/images/logo-dark.png" alt="" height="22" class="mx-auto">
                         </a>
                         <p class="text-muted mt-2 mb-4">Responsive Admin Dashboard</p>
-
+                        {{-- dump if auth is true --}}
+                        {{ auth()->check() ? 'true' : 'false' }}
                     </div>
                     <div class="card">
                         <div class="card-body p-4">
@@ -56,45 +58,55 @@
                             @endif
 
                             {{-- form submit --}}
-                            <form action="{{ route('action.login') }}" method="post">
+                            <form action="{{ route('api.action.login') }}" method="post" novalidate>
                                 @csrf
                                 {{-- {{ csrf_field() }} --}}
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input name="username" class="form-control" type="text" id="username" required
+                                    <input name="username" class="form-control" type="text" id="username"
                                         placeholder="">
+                                    @error('username')
+                                        <div>
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input name="password" class="form-control" type="password" required id="password"
+                                    <input name="password" class="form-control" type="password" id="password"
                                         placeholder="">
-                                </div>
+                                    @error('password')
+                                        <div></div>
+                                        <small class="text-danger">{{ $message }}</small>
+                                    </div>
+                                @enderror
+                        </div>
 
-                                <div class="mb-3 d-grid text-center">
-                                    <button class="btn btn-primary" type="submit"> Log In </button>
-                                </div>
-                            </form>
+                        <div class="mb-3 d-grid text-center">
+                            <button class="btn btn-primary" type="submit"> Log In </button>
+                        </div>
+                        </form>
 
-                        </div> <!-- end card-body -->
-                    </div>
-                    <!-- end card -->
+                    </div> <!-- end card-body -->
+                </div>
+                <!-- end card -->
 
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <h4>Jika lupa password bisa klik<a href="http://wa.me/6285159171553" target="_blank"
-                                    class="text-muted fw-500 ms-1"><span class="text-primary">di sini </span><span
-                                        class="mdi mdi-arrow-right"></span></a>
-                            </h4>
-                        </div> <!-- end col -->
-                    </div>
-                    <!-- end row -->
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <h4>Jika lupa password bisa klik<a href="http://wa.me/6285159171553" target="_blank"
+                                class="text-muted fw-500 ms-1"><span class="text-primary">di sini </span><span
+                                    class="mdi mdi-arrow-right"></span></a>
+                        </h4>
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
 
-                </div> <!-- end col -->
-            </div>
-            <!-- end row -->
+            </div> <!-- end col -->
         </div>
-        <!-- end container -->
+        <!-- end row -->
+    </div>
+    <!-- end container -->
     </div>
     <!-- end page -->
 

@@ -21,6 +21,7 @@ class Transaksi extends Model
         'kelas',
         'keterangan',
         'telepon',
+        'bukti_transfer',
     ];
 
     public function user()
