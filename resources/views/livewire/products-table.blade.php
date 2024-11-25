@@ -56,8 +56,9 @@
                                     @csrf
                                     <button
                                         class="btn btn-danger w-100
-                                            @if (auth()->check() && in_array(auth()->user()->is_admin, [1, 2])) d-none @endif
-                                            @if (auth('portal_santri')->check())  @endif"><span
+                                            @if (auth('web')->check() && in_array(auth('web')->user()->is_admin, [1, 2])) d-none
+                                            @elseif (auth('portal_santri')->check())
+                                            @else d-none @endif"><span
                                             class="mdi mdi-cart">Tambah ke Keranjang</span></button>
                                 </form>
                             @endif
