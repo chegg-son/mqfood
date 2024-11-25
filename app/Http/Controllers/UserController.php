@@ -36,7 +36,7 @@ class UserController extends Controller
             'name' => 'required|string',
             'username' => 'required|string|unique:users',
             'password' => 'required|string',
-            'is_admin' => 'required|boolean'
+            'is_admin' => 'required'
         ], [
             'name.required' => 'Nama tidak boleh kosong!',
             'username.required' => 'Username tidak boleh kosong!',
@@ -69,7 +69,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|',
             'username' => 'required|string',
-            'is_admin' => 'required|boolean'
+            'is_admin' => 'required'
         ], [
             'name.required' => 'Nama tidak boleh kosong!',
             'username.required' => 'Username tidak boleh kosong!',
@@ -142,13 +142,15 @@ class UserController extends Controller
 
     public function orders()
     {
-        $id = Auth::user()->id;
+        $id = Auth::guard('web')->user()?->id ?? Auth::guard('portal_santri')->user()->id;
         $orders = Transaksi::where('user_id', $id)->get();
         $admin_orders = Transaksi::all();
-        if (Auth::user()->is_admin == 1) {
+
+        if (Auth::guard('portal_santri')->check()) {
+            return view('pages.user.order.index', compact('orders'));
+        } elseif (in_array(Auth::guard('web')->user()->is_admin, [1, 2]) ?? Auth::guard('portal_santri')->user()->is_admin == 1) {
             return view('pages.admin.order.index', compact('admin_orders'));
         }
-        return view('pages.user.order.index', compact('orders'));
     }
 
     public function orderdetail($id)
