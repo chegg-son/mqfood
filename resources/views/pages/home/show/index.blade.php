@@ -22,8 +22,11 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <div class="card p-3 align-items-center">
+                                    <div1 class="gallery-container" id="lightgallery">
+
+                                    </div1>
                                     <img class="rounded" src="{{ url('storage/barangs/' . $barang->gambar_barang) }}"
-                                        alt="Card cap" style="width: 100%">
+                                        alt="Card cap" style="width: 50%">
                                 </div>
                             </div>
 
@@ -36,12 +39,6 @@
                                         <div class="table-responsive">
                                             <table class="table mb-0">
                                                 <tbody>
-                                                    {{-- <tr>
-                                                        <td>{{ $barang->stok }}</td>
-                                                        <td>{{ $barang->harga }}</td>
-                                                        <td>{{ $barang->kelas }}</td>
-                                                        <td>{{ $barang->kategori->jenis }}</td>
-                                                    </tr> --}}
                                                     <tr>
                                                         <td class="fw-bold fs-4 col-1">
                                                             Stok
@@ -58,15 +55,6 @@
                                                         <td class="col-1">:</td>
                                                         <td class="fs-4 col-10 text-start">
                                                             {{ $barang->harga }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fw-bold fs-4 col-1">
-                                                            Kelas
-                                                        </td>
-                                                        <td class="col-1">:</td>
-                                                        <td class="fs-4 col-10 text-start">
-                                                            {{ $barang->kelas }}
                                                         </td>
                                                     </tr>
                                                     <tr>

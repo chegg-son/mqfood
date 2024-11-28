@@ -45,6 +45,7 @@
                                             <th>Stok</th>
                                             <th>Harga</th>
                                             <th>Kategori ID</th>
+                                            <th>Supplier</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -60,6 +61,7 @@
                                                 <td>{{ $barang->stok }}</td>
                                                 <td>{{ $barang->harga }}</td>
                                                 <td>{{ $barang->kategori->jenis }}</td>
+                                                <td>{{ $barang->supplier->name }}</td>
                                                 <td>
                                                     <a href="{{ route('edit.product', $barang->id) }}"
                                                         class="btn btn-secondary btn-sm"><span

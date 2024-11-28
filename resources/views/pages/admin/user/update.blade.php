@@ -28,10 +28,12 @@
                                         placeholder="Isi password jika ingin merubahnya"></x-input.text>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Role</label>
-                                        <select name="is_admin" id="is_admin" class="form-select">
+                                        <select name="is_admin" id="is_admin"
+                                            class="form-select @error('is_admin') is-invalid @enderror">
                                             <option value="">Pilih Jenis Role</option>
                                             <option value="1">Admin</option>
                                             <option value="2">Admin Maqshaf</option>
+                                            <option value="3">Supplier</option>
                                             <option value="0">User</option>
                                         </select>
                                         <div class="invalid-feedback">

@@ -1,6 +1,7 @@
 @php
     $isAdmin = auth()->check() && auth()->user()->is_admin == 1;
     $isAdminMaqshaf = auth()->check() && auth()->user()->is_admin == 2;
+    $isSupplier = auth()->check() && auth()->user()->is_admin == 3;
 @endphp
 
 <div class="left-side-menu" style="z-index: 0">
@@ -35,6 +36,8 @@
                     <p class="text-muted left-user-info">Admin Maqshaf</p>
                 @elseif ($isAdmin)
                     <p class="text-muted left-user-info">Admin</p>
+                @elseif ($isSupplier)
+                    <p class="text-muted left-user-info">Supplier</p>
                 @else
                     <p class="text-muted left-user-info">User</p>
                 @endif
@@ -103,9 +106,6 @@
                     </a>
                 </li>
 
-
-                {{-- kurang bagian if walisantri --}}
-
                 @if ($isAdmin || $isAdminMaqshaf)
                     <li>
                         <a href="{{ route('orders') }}">
@@ -116,23 +116,28 @@
                     </li>
                 @endif
 
-                @if ($isAdminMaqshaf)
-                    <li class="menu-title">Administrator Menu</li>
-                    <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
-                        <a href='{{ route('master.product') }}'>
-                            <i class="mdi mdi-dropbox"></i>
-                            <span> Master Barang </span>
+                @if ($isSupplier)
+                    <li>
+                        <a href="#">
+                            <i class="mdi mdi-application"></i>
+                            <span> Dashboard </span>
                         </a>
                     </li>
-                    <li @if (url()->current() == route('add.category')) class="menuitem-active" @endif>
-                        <a href='{{ route('categories') }}'>
-                            <i class="mdi mdi-book-cog-outline"></i>
-                            <span> Master Kategori </span>
+                    <li>
+                        <a href="#">
+                            <i class="mdi mdi-view-list"></i>
+                            <span> Daftar Pesanan </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('supplier') }}">
+                            <i class="mdi mdi-view-list"></i>
+                            <span> Daftar Supplier </span>
                         </a>
                     </li>
                 @endif
 
-                @if ($isAdmin)
+                @if ($isAdmin || $isAdminMaqshaf)
                     <li class="menu-title">Administrator Menu</li>
                     <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
                         <a href='{{ route('master.product') }}'>
@@ -143,7 +148,13 @@
                     <li @if (url()->current() == route('add.user')) class="menuitem-active" @endif>
                         <a href='{{ route('master.user') }}'>
                             <i class="mdi mdi-account-cog-outline"></i>
-                            <span> Master User </span>
+                            <span> Master
+                                @if ($isAdmin)
+                                    User
+                                @elseif ($isAdminMaqshaf)
+                                    Supplier
+                                @endif
+                            </span>
                         </a>
                     </li>
                     <li @if (url()->current() == route('add.category')) class="menuitem-active" @endif>

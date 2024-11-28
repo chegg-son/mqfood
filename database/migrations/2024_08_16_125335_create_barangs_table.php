@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_barang')->unique();
             $table->string('nama_barang');
+            $table->foreignId('supplier_id')->constrained('users')->onDelete('cascade');
             $table->string('gambar_barang');
             $table->integer('stok')->default(0);
             $table->integer('harga')->unsigned()->min(0);

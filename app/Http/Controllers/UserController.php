@@ -19,19 +19,28 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $suppliers = User::where('is_admin', 3)->get();
         $title = 'Hapus Data?';
         $text = 'Apakah anda yakin ingin menghapus data ini?';
         confirmDelete($title, $text);
+
+        if (Auth::user()->is_admin == 2) {
+            return view('pages.admin.supplier.index', compact('suppliers'));
+        }
         return view('pages.admin.user.index', compact('users'));
     }
 
     public function create()
     {
+        if (Auth::user()->is_admin == 2) {
+            return view('pages.admin.supplier.add');
+        }
         return view('pages.admin.user.add');
     }
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string',
             'username' => 'required|string|unique:users',

@@ -27,5 +27,26 @@ class UserSeeder extends Seeder
             'password' => bcrypt('anggapiat7'),
             'is_admin' => 2
         ]);
+
+        User::create([
+            'name' => 'Bro',
+            'username' => 'supp',
+            'password' => bcrypt('12345'),
+            'is_admin' => 3
+        ]);
+
+        User::create([
+            'name' => 'Akhir',
+            'username' => 'supp1',
+            'password' => bcrypt('12345'),
+            'is_admin' => 3
+        ]);
+
+        User::create([
+            'name' => 'Golden Boy',
+            'username' => 'supp2',
+            'password' => bcrypt('12345'),
+            'is_admin' => 3
+        ]);
     }
 }
