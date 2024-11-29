@@ -16,6 +16,11 @@
 
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    {{-- sweetalert2 --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.min.js"
+        integrity="sha512-OlF0YFB8FRtvtNaGojDXbPT7LgcsSB3hj0IZKaVjzFix+BReDmTWhntaXBup8qwwoHrTHvwTxhLeoUqrYY9SEw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endpush
 
 @section('content')
