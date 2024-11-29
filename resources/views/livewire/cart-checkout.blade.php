@@ -25,9 +25,8 @@
                         <a class="btn btn-default btn-sm ms-1" wire:click="increment({{ $item->id }})"><span
                                 class="mdi mdi-plus"></span></a>
                     </td>
-                    <td>{{ $item->price }}</td>
-                    {{-- <td>{{ $item->price * $item->quantity }}</td> --}}
-                    <td>{{ $item->getPriceSum() }}</td>
+                    <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
+                    <td>Rp. {{ number_format($item->getPriceSum() * $item->quantity, 0, ',', '.') }}</td>
                     <td><a wire:click="destroy({{ $item->id }})" class="btn btn-danger btn-sm"><span
                                 class="mdi mdi-delete"></span></a></td>
                 </tr>

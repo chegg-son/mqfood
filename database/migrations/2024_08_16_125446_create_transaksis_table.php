@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('keterangan');
             $table->string('telepon');
             $table->string('bukti_transfer')->nullable();
+            $table->string('expired_at')->required();
 
             $table->timestamps();
         });

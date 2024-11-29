@@ -60,7 +60,7 @@
                 <div class="dropdown">
                     <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"
                         aria-expanded="false">{{ auth('portal_santri')->user()->name }}</a>
-                    @if (auth('portal_santri')->user()->user_role() === 'user')
+                    @if (auth('portal_santri')->user()->user_role()->name === 'user')
                         <p>{{ auth('portal_santri')->user()->kelas()->nama_kelas }}</p>
                     @endif
                     <div class="dropdown-menu user-pro-dropdown">
@@ -80,9 +80,6 @@
 
                     </div>
                 </div>
-
-
-                <p class="text-muted left-user-info">{{ auth('portal_santri')->user()->user_role()->name }}</p>
 
 
                 {{-- <ul class="list-inline">
