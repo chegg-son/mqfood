@@ -17,7 +17,7 @@
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-    {{-- sweetalert2 --}}
+    {{-- sweeetalert2 --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.min.js"
         integrity="sha512-OlF0YFB8FRtvtNaGojDXbPT7LgcsSB3hj0IZKaVjzFix+BReDmTWhntaXBup8qwwoHrTHvwTxhLeoUqrYY9SEw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -33,13 +33,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="mt-0">Daftar Users</h3>
+                                <h3 class="mt-0">Daftar Suppliers</h3>
                                 <hr>
                                 <div class="mb-2">
                                     <a href="{{ route('add.user') }}">
                                         <button type="button" class="btn btn-success waves-effect waves-light"><i
                                                 class="mdi mdi-plus me-1"></i>
-                                            Tambah User</button>
+                                            Tambah Supplier</button>
                                     </a>
                                 </div>
                                 <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
@@ -56,27 +56,21 @@
                                         <?php
                                         $i = 0;
                                         ?>
-                                        @foreach ($users as $user)
+                                        @foreach ($suppliers as $supplier)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->username }}</td>
+                                                <td>{{ $supplier->name }}</td>
+                                                <td>{{ $supplier->username }}</td>
                                                 <td>
-                                                    @if ($user->is_admin == 1)
-                                                        Admin
-                                                    @elseif ($user->is_admin == 2)
-                                                        Admin Maqshaf
-                                                    @elseif ($user->is_admin == 3)
+                                                    @if ($supplier->is_admin == 3)
                                                         Supplier
-                                                    @elseif ($user->is_admin == 0)
-                                                        User
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('edit.user', $user->id) }}"
+                                                    <a href="{{ route('edit.user', $supplier->id) }}"
                                                         class="btn btn-secondary btn-sm"><span
                                                             class="mdi mdi-pencil"></span></a>
-                                                    <a href="{{ route('delete.user', $user->id) }}"
+                                                    <a href="{{ route('delete.user', $supplier->id) }}"
                                                         class="btn btn-danger btn-sm" data-confirm-delete="true"><span
                                                             class="mdi mdi-delete"></span></a>
                                                 </td>

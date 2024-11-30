@@ -16,6 +16,11 @@
 
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    {{-- Sweetalert2 --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.0/sweetalert2.min.js"
+        integrity="sha512-OlF0YFB8FRtvtNaGojDXbPT7LgcsSB3hj0IZKaVjzFix+BReDmTWhntaXBup8qwwoHrTHvwTxhLeoUqrYY9SEw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endpush
 @section('content')
     <div class="content-page">
@@ -45,6 +50,7 @@
                                             <th>Stok</th>
                                             <th>Harga</th>
                                             <th>Kategori ID</th>
+                                            <th>Supplier</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -60,6 +66,7 @@
                                                 <td>{{ $barang->stok }}</td>
                                                 <td>{{ $barang->harga }}</td>
                                                 <td>{{ $barang->kategori->jenis }}</td>
+                                                <td>{{ $barang->supplier->name }}</td>
                                                 <td>
                                                     <a href="{{ route('edit.product', $barang->id) }}"
                                                         class="btn btn-secondary btn-sm"><span

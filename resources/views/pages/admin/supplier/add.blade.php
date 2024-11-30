@@ -25,15 +25,11 @@
                                     <x-input.text name="name" label="Nama"></x-input.text>
                                     <x-input.text name="username" label="Username"></x-input.text>
                                     <x-input.text name="password" label="Password" type="password"></x-input.text>
-                                    <div class="mb-3">
+                                    <div class="mb-3" hidden>
                                         <label for="" class="form-label">Role</label>
                                         <select name="is_admin" id=""
                                             class="form-select @error('is_admin') is-invalid @enderror">
-                                            <option value="">Pilih Jenis Role</option>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Admin Maqshaf</option>
                                             <option value="3">Supplier</option>
-                                            <option value="0">User</option>
                                         </select>
                                         @error('is_admin')
                                             <div class="invalid-feedback">

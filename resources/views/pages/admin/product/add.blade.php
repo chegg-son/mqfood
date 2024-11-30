@@ -1,4 +1,7 @@
 @extends('app')
+@push('styles')
+@endpush
+
 @section('content')
     <div class="content-page">
         <div class="content">
@@ -24,12 +27,14 @@
                                     @csrf
                                     <x-input.text name="kode_barang" label="Kode Barang"></x-input.text>
                                     <x-input.text name="nama_barang" label="Nama Barang"></x-input.text>
+                                    <x-input.select2 name="supplier_id" label="Supplier" id="supplier"
+                                        :options="$suppliers"></x-input.select2>
+
                                     <x-input.file name="gambar_barang" label="Gambar Barang"></x-input.file>
                                     <x-input.group type="number" name="stok" label="Stok Barang"
                                         prefix="Qty"></x-input.group>
                                     <x-input.group type="number" name="harga" label="Harga Barang"
                                         prefix="Rp"></x-input.group>
-                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
                                     <x-input.option name="kategori_id" label="Kategori Barang"
                                         :options="$kategoris"></x-input.option>
 

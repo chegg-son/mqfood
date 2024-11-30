@@ -48,18 +48,22 @@
                             <h4 class="fw-bold"><strong> Rp. {{ number_format($barang->harga, 0, ',', '.') }}</strong>
                             </h4>
                             <p>Stok: {{ $barang->stok }}</p>
-                            @if ($cart->where('id', $barang->id)->count() > 0)
-                                <button class="btn btn-bordered-success w-100 " disabled>Barang sudah di
-                                    Keranjang</button>
+                            @if (!auth('web')->check() && !auth('portal_santri')->check())
                             @else
-                                <form id="addProduct" wire:submit.prevent='addToCart({{ $barang->id }})'>
-                                    @csrf
-                                    <button
-                                        class="btn btn-danger w-100
-                                            @if (auth()->check() && auth()->user()->is_admin == 1) d-none @endif
-                                            @if (auth()->check() == 0) d-none @endif"><span
-                                            class="mdi mdi-cart">Tambah ke Keranjang</span></button>
-                                </form>
+                                @if ($cart->where('id', $barang->id)->count() > 0)
+                                    <button class="btn btn-bordered-success w-100 " disabled>Barang sudah di
+                                        Keranjang</button>
+                                @else
+                                    <form id="addProduct" wire:submit.prevent='addToCart({{ $barang->id }})'>
+                                        @csrf
+                                        <button
+                                            class="btn btn-danger w-100
+                                            @if (auth('web')->check() && in_array(auth('web')->user()->is_admin, [1, 2])) d-none
+                                            @elseif (auth('portal_santri')->check())
+                                            @else d-none @endif"><span
+                                                class="mdi mdi-cart">Tambah ke Keranjang</span></button>
+                                    </form>
+                                @endif
                             @endif
                         </div>
                     </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\BarangController;
 
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Auth;
 
 // Login Route
@@ -51,6 +52,20 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('orders', [UserController::class, 'orders'])->name('order');
     Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail');
     Route::post('orders/{id}/confirm', [UserController::class, 'actionConfirm'])->name('action.order.confirm');
+
+    // Supplier Route Management
+    Route::get('/suppliers', [UserController::class, 'index'])->name('master.supplier');
+    Route::get('/suppliers/create', [UserController::class, 'create'])->name('add.supplier');
+    Route::post('/suppliers', [UserController::class, 'store'])->name('action.add.supplier');
+    Route::get('/edit-supplier/{id}', [UserController::class, 'edit'])->name('edit.supplier');
+    Route::put('edit-supplier/{id}', [UserController::class, 'update'])->name('action.edit.supplier');
+    Route::delete('/delete-supplier/{id}', [UserController::class, 'destroy'])->name('delete.supplier');
+});
+
+// Supplier Group Route
+Route::middleware(['isSupplier'])->group(function () {
+    Route::get('/supplier-panel', [SupplierController::class, 'index'])->name('supplier.panel');
+    Route::get('/supplier/orders', [SupplierController::class, 'orders'])->name('supplier.order');
 });
 
 // Barang Route Show
@@ -61,16 +76,16 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [BarangController::class, 'search'])->name('search');
 
 // User Route
-Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkout')->middleware('auth');
-Route::get('/confirmation', [KeranjangController::class, 'confirmation'])->name('confirmation')->middleware('auth');
-Route::post('/confirmation', [KeranjangController::class, 'actionconfirm'])->name('action.confirmation')->middleware('auth');
-Route::get('/confirmation/{id}/show/{detail}', [KeranjangController::class, 'showconfirmation'])->name('show.confirmation')->middleware('auth');
-Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware(['auth']);
-Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail')->middleware('auth');
-Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth');
-Route::get('orders/{id}/payment', [UserController::class, 'showPayment'])->name('show.payment')->middleware('auth');
-Route::put('orders/{id}/payment', [UserController::class, 'actionPayment'])->name('action.payment')->middleware('auth');
-Route::get('orders/{id}/invoice', [UserController::class, 'showInvoice'])->name('show.invoice')->middleware('auth');
+Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkout')->middleware('auth:portal_santri');
+Route::get('/confirmation', [KeranjangController::class, 'confirmation'])->name('confirmation')->middleware('auth:portal_santri');
+Route::post('/confirmation', [KeranjangController::class, 'actionconfirm'])->name('action.confirmation')->middleware('auth:portal_santri');
+Route::get('/confirmation/{id}/show/{detail}', [KeranjangController::class, 'showconfirmation'])->name('show.confirmation')->middleware('auth:portal_santri');
+Route::get('orders', [UserController::class, 'orders'])->name('orders')->middleware('auth:portal_santri');
+Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail')->middleware('auth:portal_santri');
+Route::put('orders/{id}/cancel', [UserController::class, 'cancelOrder'])->name('cancel.order')->middleware('auth:portal_santri');
+Route::get('orders/{id}/payment', [UserController::class, 'showPayment'])->name('show.payment')->middleware('auth:portal_santri');
+Route::put('orders/{id}/payment', [UserController::class, 'actionPayment'])->name('action.payment')->middleware('auth:portal_santri');
+Route::get('orders/{id}/invoice', [UserController::class, 'showInvoice'])->name('show.invoice')->middleware('auth:portal_santri');
 
 // Livewire Route test
 Route::get('counter', Counter::class);

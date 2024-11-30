@@ -22,10 +22,20 @@ class Transaksi extends Model
         'keterangan',
         'telepon',
         'bukti_transfer',
+        'expired_at',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function checkExpiration()
+    // {
+    //     if ($this->status === 'pending' && $this->expired_at && $this->expired_at < now()) {
+    //         $this->update([
+    //             'status' => 'expired',
+    //         ]);
+    //     }
+    // }
 }

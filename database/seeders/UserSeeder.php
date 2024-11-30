@@ -15,17 +15,38 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Admin Fulan',
+            'name' => 'Admin Utama',
             'username' => 'admin',
             'password' => bcrypt('12345'),
-            'is_admin' => true
+            'is_admin' => 1
         ]);
 
         User::create([
-            'name' => 'Si Flan User',
-            'username' => 'user',
+            'name' => 'Admin Maqshaf',
+            'username' => 'angga',
+            'password' => bcrypt('anggapiat7'),
+            'is_admin' => 2
+        ]);
+
+        User::create([
+            'name' => 'Bro',
+            'username' => 'supp',
             'password' => bcrypt('12345'),
-            'is_admin' => false
+            'is_admin' => 3
+        ]);
+
+        User::create([
+            'name' => 'Akhir',
+            'username' => 'supp1',
+            'password' => bcrypt('12345'),
+            'is_admin' => 3
+        ]);
+
+        User::create([
+            'name' => 'Golden Boy',
+            'username' => 'supp2',
+            'password' => bcrypt('12345'),
+            'is_admin' => 3
         ]);
     }
 }

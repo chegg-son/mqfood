@@ -11,12 +11,18 @@ class Barang extends Model
 
     protected $guarded = ['id'];
     // kategori_id masih belum dihapus
-    protected $fillable = ['kode_barang', 'nama_barang', 'gambar_barang', 'stok', 'harga', 'kelas', 'kategori_id'];
+    protected $fillable = ['kode_barang', 'nama_barang', 'gambar_barang', 'stok', 'harga', 'kategori_id', 'supplier_id'];
 
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function supplier()
+    {
+        return $this->belongsTo(User::class, 'supplier_id')->where('is_admin', 3);
+    }
+
 
     public function transaksi_detail()
     {

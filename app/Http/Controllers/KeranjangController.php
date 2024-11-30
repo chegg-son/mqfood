@@ -55,6 +55,7 @@ class KeranjangController extends Controller
         $cart = Cart::session(session()->getId());
         $cart_items = $cart->getContent();
         $subtotal = $cart->getSubTotal();
+        $expired_time = now()->addMinutes(3);
 
         $request->validate([
             'nama' => 'required|string|min:3',
@@ -69,7 +70,7 @@ class KeranjangController extends Controller
             'telepon.required' => 'Telepon harus diisi!',
             'telepon.numeric' => 'Telepon harus berupa angka!',
         ]);
-
+        dd(auth()->user()->id);
         $transaksi = Transaksi::create([
             'user_id' => Auth::user()->id,
             'faktur' => $faktur,
@@ -81,7 +82,9 @@ class KeranjangController extends Controller
             'kelas' => $request->kelas,
             'keterangan' => empty($request->keterangan) ? '' : $request->keterangan,
             'telepon' => $request->telepon,
+            'expired_at' => $expired_time,
         ]);
+
 
 
         foreach ($cart_items as $item) {
