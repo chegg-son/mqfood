@@ -18,11 +18,9 @@ class IsAdmin
     {
 
         if (Auth::user()->is_admin != 1) {
-            return abort(403, 'فقط المسؤولون يمكنهم الوصول إلى هذه الصفحة');
+            abort(403, 'فقط المسؤولون يمكنهم الوصول إلى هذه الصفحة');
         }
-        if (session()->has('user')) {
-            return $next($request);
-        }
+
         if (!Auth::check()) {
             return redirect()->route('home');
         }

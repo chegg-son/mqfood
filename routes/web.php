@@ -17,11 +17,6 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth');
 
-// API Login Route
-Route::get('/api-login', [ApiLoginController::class, 'login'])->name('api.login');
-Route::post('/api-login', [ApiLoginController::class, 'actionLogin'])->name('api.action.login');
-Route::post('/api-logout', [ApiLoginController::class, 'actionLogout'])->name('api.action.logout');
-
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/api-test', function () {
         return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
@@ -29,7 +24,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 // Admin Route
-Route::middleware(['isAdmin', 'authSession', 'checkRole:superadmin,admin'])->group(function () {
+Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin-panel', function () {
         return view('pages.admin.index');
     })->name('admin.panel');

@@ -72,7 +72,7 @@
                     </a>
                 </li>
 
-                @if ((auth()->check() && auth()->user()->is_admin == 1) || session()->get('role')[0]['name'] == 'superadmin')
+                @if (auth()->check() && auth()->user()->is_admin == 1)
                     <li>
                         <a href="{{ route('orders') }}">
                             <i class="mdi mdi-home"></i>
@@ -81,7 +81,7 @@
                         </a>
                     </li>
                 @endif
-                @if ((auth()->check() && auth()->user()->is_admin == 1) || session()->get('role')[0]['name'] == 'superadmin')
+                @if (auth()->check() && auth()->user()->is_admin == 1)
                     <li class="menu-title">Administrator Menu</li>
                     <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
                         <a href='{{ route('master.product') }}'>

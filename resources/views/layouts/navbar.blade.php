@@ -192,10 +192,6 @@
                             <i class="fe-log-in"></i>
                             <span>Login</span>
                         </a>
-                        <a href="{{ route('api.login') }}" class="dropdown-item notify-item">
-                            <i class="fe-log-in"></i>
-                            <span>Login API</span>
-                        </a>
                     </div>
                 </li>
             @endguest
