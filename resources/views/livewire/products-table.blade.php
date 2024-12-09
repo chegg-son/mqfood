@@ -54,11 +54,12 @@
                             @else
                                 <form id="addProduct" wire:submit.prevent='addToCart({{ $barang->id }})'>
                                     @csrf
-                                    <button
-                                        class="btn btn-danger w-100
-                                            @if (auth()->check() && auth()->user()->is_admin == 1) d-none @endif
+                                    @auth
+                                        <button
+                                            class="btn btn-danger w-100 @if (in_array(Auth::user()->user_role()->name, ['admin', 'superadmin'])) d-none @endif
                                             @if (auth()->check() == 0) d-none @endif"><span
-                                            class="mdi mdi-cart">Tambah ke Keranjang</span></button>
+                                                class="mdi mdi-cart">Tambah ke Keranjang</span></button>
+                                    @endauth
                                 </form>
                             @endif
                         </div>

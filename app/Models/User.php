@@ -2,39 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-    /**
-     * The database connection that should be used by the model.
-     *
-     * @var string
-     */
+
     protected $connection = 'portal_santri';
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
-
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'username',
-        'password',
-        'is_admin',
-    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -56,5 +34,24 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function user_role()
+    {
+        return DB::connection('portal_santri')
+            ->table('roles')
+            ->join('user_role', 'user_role.role_id', '=', 'roles.id')
+            ->where('user_role.user_id', $this->id)
+            ->select('roles.name') // Only select the role name
+            ->first();
+    }
+
+    public function kelas()
+    {
+        return DB::connection('portal_santri')
+            ->table('kelas')
+            ->join('santri', 'santri.kelas_id', '=', 'kelas.id')
+            ->where('santri.user_id', $this->id)
+            ->first();
     }
 }

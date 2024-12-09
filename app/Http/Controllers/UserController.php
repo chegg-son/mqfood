@@ -145,7 +145,7 @@ class UserController extends Controller
         $id = Auth::user()->id;
         $orders = Transaksi::where('user_id', $id)->get();
         $admin_orders = Transaksi::all();
-        if (Auth::user()->is_admin == 1) {
+        if (in_array(Auth::user()->user_role()->name, ['admin', 'superadmin'])) {
             return view('pages.admin.order.index', compact('admin_orders'));
         }
         return view('pages.user.order.index', compact('orders'));
@@ -155,7 +155,7 @@ class UserController extends Controller
     {
         $order = Transaksi::findOrFail($id);
         $order_detail = TransaksiDetail::where('transaksi_id', $id)->get();
-        if (Auth::user()->is_admin == 1) {
+        if (in_array(Auth::user()->user_role()->name, ['admin', 'superadmin'])) {
             return view('pages.admin.order.detail', compact('order', 'order_detail'));
         }
         return view('pages.user.order.detail', compact('order', 'order_detail'));

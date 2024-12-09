@@ -25,7 +25,7 @@
                     </div>
                 </div>
 
-                <p class="text-muted left-user-info">{{ auth()->user()->is_admin == 1 ? 'Admin' : 'User' }}</p>
+                <p class="text-muted left-user-info">{{ auth()->user()->user_role()->name }}</p>
 
                 {{-- <ul class="list-inline">
                 <li class="list-inline-item">
@@ -72,7 +72,7 @@
                     </a>
                 </li>
 
-                @if (auth()->check() && auth()->user()->is_admin == 1)
+                @if (auth()->check() && in_array(auth()->user()->user_role()->name, ['admin', 'superadmin']))
                     <li>
                         <a href="{{ route('orders') }}">
                             <i class="mdi mdi-home"></i>
@@ -81,7 +81,7 @@
                         </a>
                     </li>
                 @endif
-                @if (auth()->check() && auth()->user()->is_admin == 1)
+                @if (auth()->check() && in_array(auth()->user()->user_role()->name, ['admin', 'superadmin']))
                     <li class="menu-title">Administrator Menu</li>
                     <li @if (url()->current() == route('add.product')) class="menuitem-active" @endif>
                         <a href='{{ route('master.product') }}'>
@@ -101,7 +101,7 @@
                             <span> Master Kategori </span>
                         </a>
                     </li>
-                @elseif (auth()->check() && auth()->user()->is_admin == 0)
+                @elseif (auth()->check() && !in_array(auth()->user()->user_role()->name, ['admin', 'superadmin']))
                     <li>
                         <a href={{ route('checkout') }}>
                             <i class="mdi mdi-cart-variant"></i>

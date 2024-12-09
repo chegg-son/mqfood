@@ -18,8 +18,19 @@
                             <div class="card-body">
                                 <form method="post" action="{{ route('action.confirmation') }}" novalidate>
                                     @csrf
-                                    <x-input.text name="nama" label="Nama"></x-input.text>
-                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
+                                    {{-- <x-input.text name="nama" label="Nama"></x-input.text>
+                                    <x-input.text name="kelas" label="Kelas"></x-input.text> --}}
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Nama</label>
+                                        <input type="text" name="nama" class="form-control disabled"
+                                            value="{{ auth()->user()->name }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Kelas</label>
+                                        <input type="text" name="kelas" class="form-control disabled"
+                                            value="{{ auth()->user()->kelas()->nama_kelas }}">
+                                    </div>
+                                    <div class="mb-3"></div>
                                     <x-input.textarea name="keterangan" label="Keterangan"></x-input.textarea>
                                     <x-input.text name="telepon" label="No. Hp Orang Tua"></x-input.text>
                                     <div class="d-grid mb-2">
