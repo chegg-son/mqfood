@@ -34,7 +34,6 @@ class BarangController extends Controller
             'gambar_barang' => 'required|image|mimes:jpeg,jpg,png|max:1024',
             'stok' => 'required|numeric|min:0',
             'harga' => 'required|numeric|min:100',
-            'kelas' => 'required|string|min:1',
             'kategori_id' => 'required|exists:kategoris,id',
         ], [
             'kode_barang.unique' => 'Kode barang sudah ada!',
@@ -51,8 +50,6 @@ class BarangController extends Controller
             'stok.min' => 'Stok minimal 0!',
             'harga.required' => 'Harga harus diisi!',
             'harga.min' => 'Harga minimal Rp 100!',
-            'kelas.required' => 'Kelas harus diisi!',
-            'kelas.min' => 'Kelas minimal 1 karakter!',
             'kategori_id.required' => 'Kategori harus diisi!',
             'kategori_id.exists' => 'Kategori tidak ditemukan!',
         ]);
@@ -66,7 +63,6 @@ class BarangController extends Controller
             'gambar_barang' => $file->hashName(),
             'stok' => $request->stok,
             'harga' => $request->harga,
-            'kelas' => $request->kelas,
             'kategori_id' => $request->kategori_id,
         ]);
 
@@ -90,7 +86,7 @@ class BarangController extends Controller
             'gambar_barang' => 'nullable|image|mimes:jpeg,jpg,png|max:1024',
             'stok' => 'required|numeric|min:0',
             'harga' => 'required|numeric|min:0',
-            'kelas' => 'required|string|min:1',
+            // 'kelas' => 'required|string|min:1',
             'kategori_id' => 'required|exists:kategoris,id',
         ], [
             'kode_barang.required' => 'Kode barang harus diisi!',
@@ -105,8 +101,8 @@ class BarangController extends Controller
             'stok.min' => 'Stok minimal 0!',
             'harga.required' => 'Harga harus diisi!',
             'harga.min' => 'Harga minimal 0!',
-            'kelas.required' => 'Kelas harus diisi!',
-            'kelas.min' => 'Kelas minimal 1 karakter!',
+            // 'kelas.required' => 'Kelas harus diisi!',
+            // 'kelas.min' => 'Kelas minimal 1 karakter!',
             'kategori_id.required' => 'Kategori harus diisi!',
             'kategori_id.exists' => 'Kategori tidak ditemukan!',
         ]);
@@ -122,7 +118,7 @@ class BarangController extends Controller
                 'gambar_barang' => $file->hashName(),
                 'stok' => $request->stok,
                 'harga' => $request->harga,
-                'kelas' => $request->kelas,
+                // 'kelas' => $request->kelas,
                 'kategori_id' => $request->kategori_id,
             ]);
         } else {
@@ -131,7 +127,7 @@ class BarangController extends Controller
                 'nama_barang' => $request->nama_barang,
                 'stok' => $request->stok,
                 'harga' => $request->harga,
-                'kelas' => $request->kelas,
+                // 'kelas' => $request->kelas,
                 'kategori_id' => $request->kategori_id,
             ]);
         }

@@ -40,7 +40,7 @@
                                         prefix="Qty"></x-input.group>
                                     <x-input.group type="number" name="harga" label="Harga Barang"
                                         prefix="Rp"></x-input.group>
-                                    <x-input.text name="kelas" label="Kelas"></x-input.text>
+                                    {{-- <x-input.text name="kelas" label="Kelas"></x-input.text> --}}
                                     <x-input.option name="kategori_id" label="Kategori Barang"
                                         :options="$kategoris"></x-input.option>
                                     <button class="btn btn-primary" type="submit">Update Data</button>

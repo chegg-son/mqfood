@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('gambar_barang');
             $table->integer('stok')->default(0);
             $table->integer('harga')->unsigned()->min(0);
-            $table->string('kelas');
+            // $table->string('kelas');
             $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
             $table->timestamps();
         });

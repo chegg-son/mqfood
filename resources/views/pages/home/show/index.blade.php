@@ -60,7 +60,7 @@
                                                             {{ $barang->harga }}
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    {{-- <tr>
                                                         <td class="fw-bold fs-4 col-1">
                                                             Kelas
                                                         </td>
@@ -68,7 +68,7 @@
                                                         <td class="fs-4 col-10 text-start">
                                                             {{ $barang->kelas }}
                                                         </td>
-                                                    </tr>
+                                                    </tr> --}}
                                                     <tr>
                                                         <td class="fw-bold fs-4 col-1">
                                                             Kategori
