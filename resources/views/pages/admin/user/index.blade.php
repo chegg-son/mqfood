@@ -57,11 +57,7 @@
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->username }}</td>
                                                 <td>
-                                                    @if ($user->is_admin == 1)
-                                                        Admin
-                                                    @elseif ($user->is_admin == 0)
-                                                        User
-                                                    @endif
+                                                    {{ $user->user_role()->name }}
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('edit.user', $user->id) }}"
