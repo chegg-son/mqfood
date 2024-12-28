@@ -10,18 +10,13 @@ use App\Http\Controllers\BarangController;
 
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\TokoBukaController;
 use Illuminate\Support\Facades\Auth;
 
 // Login Route
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('action.logout')->middleware('auth');
-
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/api-test', function () {
-        return response('<h1>oke</h1>')->header('Content-Type', 'text/html');
-    });
-});
 
 // Admin Route
 Route::middleware(['isAdmin'])->group(function () {
@@ -57,6 +52,9 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('orders', [UserController::class, 'orders'])->name('order');
     Route::get('orders/{id}', [UserController::class, 'orderdetail'])->name('order.detail');
     Route::post('orders/{id}/confirm', [UserController::class, 'actionConfirm'])->name('action.order.confirm');
+
+    // Toko Buka Management
+    Route::resource('open-time', TokoBukaController::class);
 });
 
 // Barang Route Show

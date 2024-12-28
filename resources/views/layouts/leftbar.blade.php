@@ -101,6 +101,13 @@
                             <span> Master Kategori </span>
                         </a>
                     </li>
+                    <li class="menu-title">Store Settings</li>
+                    <li @if (url()->current() == route('open-time.index')) class="menuitem-active" @endif>
+                        <a href='{{ route('open-time.index') }}'>
+                            <i class="mdi mdi-calendar-clock"></i>
+                            <span> Waktu Buka </span>
+                        </a>
+                    </li>
                 @elseif (auth()->check() && !in_array(auth()->user()->user_role()->name, ['admin', 'superadmin']))
                     <li>
                         <a href={{ route('checkout') }}>
